@@ -1,0 +1,13 @@
+# Local files and credentials
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+*.log
+private/
+hub-data*/
+demo-mondocar/
+# Review captures, not site assets
+/captura-*.jpg
+/portada_split.png
