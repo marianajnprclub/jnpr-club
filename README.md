@@ -4,11 +4,12 @@ Local portfolio website for Mariana Ortega. This repository contains only the pu
 
 ## Preview
 
-Run `python3 -m http.server 8766 --bind 127.0.0.1` from this directory, then open `http://127.0.0.1:8766/split.html`.
+Run `python3 -m http.server 8766 --bind 127.0.0.1` from this directory, then open `http://127.0.0.1:8766/`.
 
 ## Current source
 
-- `split.html`: homepage and project views.
+- `index.html`: homepage, Motion and project views.
+- `video/`: Motion videos (compressed to 720p with avconvert).
 - `entry.js`: homepage entrance.
 - `magazine.js`: Pocoyo catalogue.
 - `sound.js`: optional sound effects.
@@ -20,4 +21,4 @@ Preserve the retro visual language, PP Monument Wide, orange and blue, chrome, v
 
 JNPR Lab will present Brand Hub, AI Studio and Websites through a retro chrome computer. Demonstrations must distinguish implemented features from planned functionality and must not expose private Hub data. Vertical videos retain their 9:16 framing.
 
-GitHub hosting and deployment are not configured yet. Do not publish automatically.
+Hosted on GitHub Pages from `main` (root). Publish only with Mariana's OK.
