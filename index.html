@@ -1334,6 +1334,14 @@
   .case {opacity:1;clip-path:inset(0 0 100% 0);background:var(--w);transition:clip-path .36s cubic-bezier(.22,1,.36,1),visibility 0s linear .36s;}
   .case.on {clip-path:inset(0);transition-delay:0s;}
   @media(prefers-reduced-motion:reduce){.case{transition:none;}}
+
+  /* Hero fixes 7 Nov: one floating Contact only; keep the hero inside one screen on short laptops */
+  .hero .sleeve > footer .cta { display: none !important; }
+  @media (min-width: 1101px) and (max-height: 860px) {
+    .hero .sleeve h1 { font-size: clamp(34px, 5.6vh, 52px) !important; }
+    .hero #win, .hero #peek { height: clamp(74px, 11vh, 100px) !important; }
+    .hero #tracks li, .hero #tracks a { padding-top: 2px !important; padding-bottom: 2px !important; }
+  }
 </style>
 </head>
 <body>
@@ -1349,7 +1357,7 @@
 </div></div><span class="hole"></span></div>
 
 <section class="sleeve">
-  <header><a class="logo" href="#" aria-label="JNPR® Club"></a><nav><a href="#work">Work</a><a href="#motion">Motion</a><a href="#services">Services</a><a class="hide" href="#">JNPR Labs</a><a href="#contact">Contact</a><button type="button" id="sound-toggle" aria-pressed="false" aria-label="Enable sound effects"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><g class="sound-waves"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g><path class="sound-mute" d="m16 9 5 6m0-6-5 6"/></svg></button></nav></header>
+  <header><a class="logo" href="#" aria-label="JNPR® Club"></a><nav><a href="#work">Work</a><a href="#motion">Motion</a><a href="#services">Services</a><a href="#contact">Contact</a><button type="button" id="sound-toggle" aria-pressed="false" aria-label="Enable sound effects"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><g class="sound-waves"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g><path class="sound-mute" d="m16 9 5 6m0-6-5 6"/></svg></button></nav></header>
   <main>
     <h1 aria-label="Where creativity meets (rebellion)*"><span class="ln"><span>Where creativity</span></span><span class="ln"><span>meets</span></span><span class="ln"><span><span class="rb">(<span class="w"><span class="lt" style="--k:0">r</span><span class="lt" style="--k:1">e</span><span class="lt" style="--k:2">b</span><span class="lt" style="--k:3">e</span><span class="lt" style="--k:4">l</span><span class="lt" style="--k:5">l</span><span class="lt" style="--k:6">i</span><span class="lt" style="--k:7">o</span><span class="lt" style="--k:8">n</span></span>)</span><span class="st" aria-hidden="true"><img id="ast" src="img/ast/chrome.webp" alt=""></span></span></span></h1>
     <div class="hero-preview-slot"><div class="peek" id="peek" aria-hidden="true"><div class="win" id="win" style="background-image:url(img/col/pocoyo.webp);background-position:50% 46%;background-size:cover"></div></div></div>
