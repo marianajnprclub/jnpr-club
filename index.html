@@ -1337,6 +1337,31 @@
     .hero #win, .hero #peek { height: clamp(74px, 11vh, 100px) !important; }
     .hero #tracks li, .hero #tracks a { padding-top: 2px !important; padding-bottom: 2px !important; }
   }
+
+  /* Smart Branding: her method, own section */
+  .smartsec { position: relative; padding: clamp(80px, 12vh, 140px) var(--pad); background: var(--blue); color: var(--red); display: grid; gap: clamp(36px, 5vw, 72px); }
+  .sb-k { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+  .sb-head { display: grid; gap: 16px; max-width: 980px; }
+  .smartsec h2 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(54px, 9vw, 150px); line-height: .9; display: grid; }
+  .smartsec h2 img { width: .8em; height: .8em; vertical-align: -.05em; margin-left: .12em; }
+  .sb-lede { font-family: 'MW'; text-transform: uppercase; font-size: clamp(16px, 1.7vw, 26px); line-height: 1.15; max-width: 32ch; }
+  .sb-sub { font-size: clamp(14px, 1.1vw, 17px); line-height: 1.5; max-width: 56ch; }
+  .sbp { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; counter-reset: sb; }
+  .sbp li { counter-increment: sb; background: var(--red); color: var(--w); padding: 22px 20px 24px; display: grid; gap: 10px; align-content: start; font-size: 14px; line-height: 1.45; }
+  .smartsec .sbp { grid-auto-flow: row !important; grid-template-rows: none !important; }
+  .smartsec .sbp li { opacity: 1 !important; grid-template-columns: 1fr !important; transform: none !important; grid-column: auto !important; grid-row: auto !important; text-transform: none !important; width: auto !important; }
+  .sbp li::before { content: '0' counter(sb); font-family: 'MW'; font-size: 11px; opacity: .8; }
+  .sbp b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(16px, 1.4vw, 22px); line-height: 1.05; }
+  .hubshow { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(28px, 4vw, 70px); align-items: center; }
+  .hub-copy { display: grid; gap: 14px; font-size: clamp(14px, 1.1vw, 16px); line-height: 1.5; max-width: 46ch; }
+  .hub-copy h3 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(24px, 2.6vw, 42px); line-height: 1; }
+  .hub-quote { font-family: 'MW'; text-transform: uppercase; font-size: 13px; }
+  .sb-cta { justify-self: start; background: var(--red) !important; color: var(--w) !important; }
+  .hub-shots { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .3fr); gap: 16px; align-items: start; }
+  .hub-shots img { width: 100%; height: auto; display: block; border-radius: 10px; box-shadow: 0 24px 50px rgb(20 60 80 / .25); }
+  .hub-shots .s3 { border-radius: 16px; }
+  @media (max-width: 900px) { .sbp { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hubshow { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .sbp { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -1352,7 +1377,7 @@
 </div></div><span class="hole"></span></div>
 
 <section class="sleeve">
-  <header><a class="logo" href="#" aria-label="JNPR® Club"></a><nav><a href="#work">Work</a><a href="#motion">Motion</a><a href="#services">Services</a><a href="#contact">Contact</a><button type="button" id="sound-toggle" aria-pressed="false" aria-label="Enable sound effects"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><g class="sound-waves"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g><path class="sound-mute" d="m16 9 5 6m0-6-5 6"/></svg></button></nav></header>
+  <header><a class="logo" href="#" aria-label="JNPR® Club"></a><nav><a href="#work">Work</a><a href="#smart-branding">Smart Branding</a><a href="#motion">Motion</a><a href="#services">Services</a><a href="#contact">Contact</a><button type="button" id="sound-toggle" aria-pressed="false" aria-label="Enable sound effects"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><g class="sound-waves"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g><path class="sound-mute" d="m16 9 5 6m0-6-5 6"/></svg></button></nav></header>
   <main>
     <h1 aria-label="Where creativity meets (rebellion)*"><span class="ln"><span>Where creativity</span></span><span class="ln"><span>meets</span></span><span class="ln"><span><span class="rb">(<span class="w"><span class="lt" style="--k:0">r</span><span class="lt" style="--k:1">e</span><span class="lt" style="--k:2">b</span><span class="lt" style="--k:3">e</span><span class="lt" style="--k:4">l</span><span class="lt" style="--k:5">l</span><span class="lt" style="--k:6">i</span><span class="lt" style="--k:7">o</span><span class="lt" style="--k:8">n</span></span>)</span><span class="st" aria-hidden="true"><img id="ast" src="img/ast/chrome.webp" alt=""></span></span></span></h1>
     <div class="hero-preview-slot"><div class="peek" id="peek" aria-hidden="true"><div class="win" id="win" style="background-image:url(img/col/pocoyo.webp);background-position:50% 46%;background-size:cover"></div></div></div>
@@ -1401,6 +1426,35 @@
   <div class="fnav"><button type="button" id="fprev" aria-label="Previous record">←</button><span id="fcount">01 / 19</span><button type="button" id="fnext" aria-label="Next record">→</button></div>
 </section>
 
+<section class="smartsec" id="smart-branding">
+  <div class="sb-head">
+    <p class="sb-k">My method</p>
+    <h2 aria-label="Smart Branding"><span>Smart</span><span>Branding<img src="img/ast/chrome.webp" alt="" width="180" height="180"></span></h2>
+    <p class="sb-lede">A complete brand system. Built to stay consistent, adapt and keep working.</p>
+    <p class="sb-sub">AI can make a brand in five minutes. Smart Branding makes it work every single time, in every format, whoever makes the piece.</p>
+  </div>
+  <ol class="sbp">
+    <li><b>Strategy</b>Who you are and what you say.</li>
+    <li><b>Brand System</b>The rules that hold every touchpoint together.</li>
+    <li><b>Brand Engine</b>Design that adapts itself to every format.</li>
+    <li><b>Smart Brand Hub</b>Your private brand home, always up to date.</li>
+  </ol>
+  <div class="hubshow">
+    <div class="hub-copy">
+      <p class="sb-k">Smart Brand Hub</p>
+      <h3>Your whole brand, in one place.</h3>
+      <p>An online space where the brand lives. Clients see their campaigns, review the content calendar and approve every piece before it goes out. Nothing is published without their OK.</p>
+      <p>Video is edited on an automated system with templates designed by people, so every reel needs only a few tweaks.</p>
+      <p class="hub-quote">“Everything you see here is designed by people.”</p>
+      <a class="cta sb-cta" href="#contact">Ask for your Brand Hub</a>
+    </div>
+    <div class="hub-shots">
+      <img class="s1" src="img/hub/calendar.webp" alt="Brand Hub content calendar" width="1440" height="1007" loading="lazy">
+      <img class="s3" src="img/hub/mobile.webp" alt="Brand Hub on mobile" width="390" height="780" loading="lazy">
+    </div>
+  </div>
+</section>
+
 <section class="motion" id="motion">
   <h2>Motion</h2>
   <div class="mstage">
@@ -1417,14 +1471,6 @@
 
 <section class="services" id="services">
   <h2>Services</h2>
-  <div class="poster-mount">
-  <div class="smart smart-feature"><h3 aria-label="Smart Branding"><span>Smart</span><span class="smart-title-line">Branding<span class="smart-asterisk" aria-hidden="true"><img src="img/ast/chrome.webp" alt="" width="180" height="180"></span></span></h3><div class="smart-body">
-    
-    <p class="lede">A complete brand system. Built to stay consistent, adapt and keep working.</p>
-    <ul class="sb4"><li><b>Strategy</b>Who you are and what you say.</li><li><b>Brand System</b>The rules that hold every touchpoint together.</li><li><b>Brand Engine</b>Design that adapts itself to every format.</li><li><b>Smart Brand Hub</b>Your private brand home, always up to date.</li></ul>
-    
-  </div></div>
-  </div>
   <div class="tapes">
     <div class="deck"><div class="wm tape-pending"><div class="tape-window"><div class="big"><span class="reel l"></span><span class="reel r"></span><span class="tl"><b id="dkn">Smart Branding</b><i id="dkc">Now playing</i></span></div></div><span class="glass" aria-hidden="true"></span></div><div class="dside"><div class="service-copy" aria-live="polite"><p class="k">Now playing</p><h3 class="service-title" id="service-title">Smart Branding</h3><p class="dkd" id="dkd">Brand systems that keep working on their own: strategy, brand system, brand engine and your Smart Brand Hub.</p><a class="service-projects cta" id="service-projects" href="#work"><span>Explore brand projects</span></a></div><div class="wkeys" role="tablist"><button type="button" class="wk on" data-i="sb" data-lb="#F12009" data-lf="#FCFCFC">Smart Branding</button><button type="button" class="wk" data-i="0" data-lb="#F12009" data-lf="#FCFCFC">Brand Identity</button><button type="button" class="wk" data-i="1" data-lb="#7ECAE4" data-lf="#F12009">Creative Direction</button><button type="button" class="wk" data-i="2" data-lb="#7ECAE4" data-lf="#F12009">Web Design</button><button type="button" class="wk" data-i="3" data-lb="#F12009" data-lf="#FCFCFC">Campaign Design</button><button type="button" class="wk" data-i="4" data-lb="#7ECAE4" data-lf="#F12009">Art Direction</button><button type="button" class="wk" data-i="5" data-lb="#F12009" data-lf="#FCFCFC">Social Media Design</button><button type="button" class="wk" data-i="6" data-lb="#7ECAE4" data-lf="#F12009">Consulting</button></div></div></div>
     <div class="rack" role="tablist" hidden></div>
@@ -1445,7 +1491,7 @@
     <div><p class="k">@Oktopus Ideas Lab</p><p>Baïa · Fitz Club · Vandido · Bonded Club · Virtual Arena · Morris Club · Fortuny · Rives · Popeyes · Sockscription · Colexio M. Peleteiro · Balcony Affairs · Hainver · Casa Pacha · Yuma Marbella</p></div>
     <div><p class="k">@JNPR</p><p>MIU University · UNIR · Nueva Revista · Pocoyo (Animaj) · The Clarity Protocol · Quantum Realisation · Paralelo Estudio · The O Creative Studio · Camomilla/Xico (Fashion Week MX) · Albateg · Martí</p></div>
     <div><p class="k">@The Ad. Boutique</p><p>Le Labo · Antera · Ulixol · Suburbia · Bvlgari · Crayola</p></div>
-    <div><p class="k">@TD7</p><p>Mondocar · Treemers · Óptica Universitaria</p></div>
+    <div><p class="k">@TD7</p><p>Mondocar · TD7 Portfolio</p></div>
   </div>
   <div class="wall clean-wall" id="project-gallery" aria-label="Selected project images"><a class="po" data-id="pocoyo" href="?open=0" aria-label="View Pocoyo"><img src="img/p/pocoyo/book/60.jpg" width="1237" height="1752" alt="Pocoyo" loading="lazy" decoding="async"></a><a class="po" data-id="proarte" href="?open=4" aria-label="View Proarte"><img src="img/p/proarte/03.webp" width="1080" height="760" alt="Proarte" loading="lazy" decoding="async"></a><a class="po" data-id="clarity" href="?open=1" aria-label="View The Clarity Protocol"><img src="img/p/clarity/02.webp" width="1800" height="1013" alt="The Clarity Protocol" loading="lazy" decoding="async"></a><a class="po" data-id="miravia" href="?open=2" aria-label="View Miravia"><img src="img/p/miravia/01.webp" width="1800" height="1013" alt="Miravia" loading="lazy" decoding="async"></a><a class="po mondocar" href="https://www.instagram.com/mondocar_es/reel/DekTjP5JkIk/" target="_blank" rel="noopener" aria-label="Mondocar — ¿Le damos color?"><img src="img/p/mondocar/color.jpg" width="1080" height="1920" alt="Mondocar — ¿Le damos color?" loading="lazy" decoding="async"></a><a class="po" data-id="argen" href="?open=5" aria-label="View Espacio Argén"><img src="img/p/argen/03.webp" width="1080" height="760" alt="Espacio Argén" loading="lazy" decoding="async"></a><a class="po" data-id="pocoyo" href="?open=0" aria-label="View Pocoyo"><img src="img/p/pocoyo/book/37.jpg" width="1237" height="1752" alt="Pocoyo" loading="lazy" decoding="async"></a><a class="po" data-id="fitz" href="?open=3" aria-label="View Fitz"><img src="img/p/fitz/01.webp" width="1080" height="760" alt="Fitz" loading="lazy" decoding="async"></a><a class="po" data-id="popeyes" href="?open=13" aria-label="View Popeyes"><img src="img/p/popeyes/03.webp" width="1080" height="760" alt="Popeyes" loading="lazy" decoding="async"></a><a class="po" data-id="camomilla" href="?open=9" aria-label="View Camomilla x Xico"><img src="img/p/camomilla/01.webp" width="1800" height="1013" alt="Camomilla x Xico" loading="lazy" decoding="async"></a><a class="po" data-id="pocoyo" href="?open=0" aria-label="View Pocoyo"><img src="img/p/pocoyo/book/68.jpg" width="1237" height="1752" alt="Pocoyo" loading="lazy" decoding="async"></a><a class="po" data-id="vandido" href="?open=6" aria-label="View Vandido"><img src="img/p/vandido/01.webp" width="1080" height="760" alt="Vandido" loading="lazy" decoding="async"></a><a class="po" data-id="nuevarevista" href="?open=17" aria-label="View Nueva Revista"><span class="revista-front"><img src="img/p/nuevarevista/01.jpg" width="829" height="790" alt="Nueva Revista — Economía y Sociedad cover" loading="lazy" decoding="async"></span></a><a class="po" data-id="ucles" href="?open=15" aria-label="View Monasterio de Uclés"><img src="img/p/ucles/03.webp" width="1080" height="760" alt="Monasterio de Uclés" loading="lazy" decoding="async"></a><a class="po" data-id="quantum" href="?open=8" aria-label="View Quantum Realisation"><img src="img/p/quantum/01.webp" width="1080" height="760" alt="Quantum Realisation" loading="lazy" decoding="async"></a><a class="po" data-id="pocoyo" href="?open=0" aria-label="View Pocoyo"><img src="img/p/pocoyo/book/49.jpg" width="1237" height="1752" alt="Pocoyo" loading="lazy" decoding="async"></a><a class="po" data-id="dany" href="?open=14" aria-label="View Dany+"><img src="img/p/dany/03.webp" width="1080" height="760" alt="Dany+" loading="lazy" decoding="async"></a><a class="po" data-id="baia" href="?open=7" aria-label="View Baïa"><img src="img/p/baia/01.webp" width="1080" height="760" alt="Baïa" loading="lazy" decoding="async"></a><a class="po mondocar" href="https://www.instagram.com/mondocar_es/reel/DehtJWCJLDw/" target="_blank" rel="noopener" aria-label="Mondocar — MINI Cooper"><img src="img/p/mondocar/mini.jpg" width="1080" height="1920" alt="Mondocar — MINI Cooper" loading="lazy" decoding="async"></a><a class="po" data-id="proarte" href="?open=4" aria-label="View Proarte"><img src="img/p/proarte/05.webp" width="1800" height="1013" alt="Proarte" loading="lazy" decoding="async"></a><a class="po" data-id="pocoyo" href="?open=0" aria-label="View Pocoyo"><img src="img/p/pocoyo/book/72.jpg" width="1237" height="1752" alt="Pocoyo" loading="lazy" decoding="async"></a><a class="po" data-id="gruposounds" href="?open=10" aria-label="View Grupo Sounds"><img src="img/p/gruposounds/01.webp" width="1080" height="760" alt="Grupo Sounds" loading="lazy" decoding="async"></a><a class="po" data-id="argen" href="?open=5" aria-label="View Espacio Argén"><img src="img/p/argen/02.webp" width="1080" height="760" alt="Espacio Argén" loading="lazy" decoding="async"></a><a class="po" data-id="bonded" href="?open=11" aria-label="View Bonded"><img src="img/p/bonded/01.webp" width="1080" height="760" alt="Bonded" loading="lazy" decoding="async"></a><a class="po" data-id="pocoyo" href="?open=0" aria-label="View Pocoyo"><img src="img/p/pocoyo/book/65.jpg" width="1237" height="1752" alt="Pocoyo" loading="lazy" decoding="async"></a><a class="po" data-id="popeyes" href="?open=13" aria-label="View Popeyes"><img src="img/p/popeyes/06.webp" width="1080" height="760" alt="Popeyes" loading="lazy" decoding="async"></a><a class="po" data-id="virtualarena" href="?open=12" aria-label="View Virtual Arena"><img src="img/p/virtualarena/01.webp" width="1080" height="760" alt="Virtual Arena" loading="lazy" decoding="async"></a><a class="po" data-id="benedetto" href="?open=16" aria-label="View Benedetto"><img src="img/p/benedetto/01.webp" width="1080" height="760" alt="Benedetto" loading="lazy" decoding="async"></a><a class="po" data-id="pocoyo" href="?open=0" aria-label="View Pocoyo"><img src="img/p/pocoyo/book/55.jpg" width="1237" height="1752" alt="Pocoyo" loading="lazy" decoding="async"></a><a class="po" data-id="clarity" href="?open=1" aria-label="View The Clarity Protocol"><img src="img/p/clarity/03.webp" width="1080" height="760" alt="The Clarity Protocol" loading="lazy" decoding="async"></a><a class="po" data-id="ucles" href="?open=15" aria-label="View Monasterio de Uclés"><img src="img/p/ucles/04.webp" width="1080" height="760" alt="Monasterio de Uclés" loading="lazy" decoding="async"></a><a class="po" data-id="popeyes" href="?open=13" aria-label="View Popeyes"><img src="img/p/popeyes/04.webp" width="1080" height="760" alt="Popeyes packaging" loading="lazy" decoding="async"></a></div>
 </section>
@@ -1792,7 +1838,7 @@
     ticketEntryVersion++;ticketSettled=false;stampMotion?.cancel();impactMotion?.cancel();ticket.classList.remove('go','go2','stamp-ready','stamp-impact');welcomeSection.classList.remove('ticket-visible');
   },.2);
   const smartPoster=document.querySelector('.smart-feature');
-  repeatEntry(smartPoster.parentElement,()=>smartPoster.classList.add('poster-in','poster-visible'),()=>smartPoster.classList.remove('poster-in','poster-visible'),.12);
+  if(smartPoster)repeatEntry(smartPoster.parentElement,()=>smartPoster.classList.add('poster-in','poster-visible'),()=>smartPoster.classList.remove('poster-in','poster-visible'),.12);
   (()=>{
     const player=document.querySelector('.wm'),cassette=player?.querySelector('.big'),slot=player?.querySelector('.tape-window');if(!cassette||!slot)return;
     let entryMotion,entryVersion=0;
