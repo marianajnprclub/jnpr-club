@@ -254,18 +254,13 @@
   .chips button { all: unset; cursor: pointer; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 9px 16px; border-radius: 999px; border: 1px solid rgb(252 252 252 / .6); }
   .chips button.on { background: var(--w); color: var(--red); border-color: var(--w); }
 
-  /* Motion: a chrome TV; videos play behind its screen, shown whole */
-  .motion { position: relative; padding: clamp(80px, 12vh, 140px) var(--pad); background: var(--blue); color: var(--red); }
-  .motion h2 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(28px, 3.6vw, 60px); line-height: .98; }
-  .mchips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .mchips button { all: unset; cursor: pointer; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 9px 16px; border-radius: 999px; border: 1px solid var(--red); }
-  .mchips button.on { background: var(--red); color: var(--w); }
-  .motion button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
-  .motion h2 { margin-bottom: clamp(24px, 3vw, 44px); }
-  .mstage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, auto) minmax(0, 1fr); gap: clamp(28px, 5vw, 90px); align-items: end; }
-  .mstage .tv { grid-column: 2; }
-  .tv { position: relative; height: min(84vh, 860px); aspect-ratio: 1024 / 1536; max-width: 100%; }
-  .tv > img { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; filter: drop-shadow(0 30px 40px rgb(20 60 80 / .28)); }
+  /* Motion: chrome TV on orange + a 90s TV guide listing every video */
+  .motion { position: relative; padding: clamp(80px, 12vh, 140px) var(--pad); background: var(--red); color: var(--w); }
+  .motion h2 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(28px, 3.6vw, 60px); line-height: .98; margin-bottom: clamp(24px, 3vw, 44px); }
+  .motion button:focus-visible { outline: 2px solid var(--w); outline-offset: 3px; }
+  .mstage { display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); gap: clamp(28px, 4vw, 72px); align-items: stretch; }
+  .tv { position: relative; height: min(80vh, 780px); aspect-ratio: 1024 / 1536; max-width: 100%; align-self: center; }
+  .tv > img { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; filter: drop-shadow(0 30px 40px rgb(80 10 0 / .35)); }
   .tv .scr { position: absolute; left: 16.9%; top: 16.1%; width: 66.1%; height: 50.2%; border-radius: 7% / 6%; overflow: hidden; background: #10201a; z-index: 1; }
   .tv .scr video { width: 100%; height: 100%; object-fit: contain; display: block; }
   .tv .scr::after { content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -274,26 +269,26 @@
   .tv canvas.on { opacity: 1; }
   .tv .ch { position: absolute; top: 6%; right: 8%; z-index: 1; font-family: 'MW'; font-size: clamp(14px, 1.6vw, 22px); color: #7CFF9A; text-shadow: 0 0 8px rgb(124 255 154 / .8); pointer-events: none; }
   .tv .kb { all: unset; position: absolute; z-index: 3; top: 71.2%; width: 7.6%; aspect-ratio: 1; border-radius: 50%; cursor: pointer; }
-  .tv .kb:hover { box-shadow: 0 0 0 3px rgb(241 32 9 / .55); }
+  .tv .kb:hover { box-shadow: 0 0 0 3px rgb(252 252 252 / .7); }
   .tv .kb:active { transform: scale(.94); }
   .tv .kb.prev { left: 30.4%; } .tv .kb.play { left: 42.7%; } .tv .kb.next { left: 55.0%; } .tv .kb.snd { left: 69.1%; }
-  .tv .kb.snd[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--red); }
-  .minfo { display: grid; gap: 12px; align-content: end; min-width: 0; padding-bottom: 26%; }
-  .minfo .num { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
-  .minfo .who { font-family: 'MW'; text-transform: uppercase; font-size: clamp(22px, 2.2vw, 36px); line-height: 1; }
-  .marr { display: flex; gap: 8px; margin-top: 8px; }
-  .marr button { all: unset; cursor: pointer; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--red); font-size: 16px; }
-  .marr button:hover { background: var(--red); color: var(--w); }
-  .minfo .what { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
-  .mnote { background: var(--red); color: var(--w); padding: clamp(16px, 2vw, 26px); font-size: clamp(13px, 1vw, 15px); line-height: 1.5; max-width: 60ch; }
-  .mnote b { display: block; font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: 12px; letter-spacing: .1em; margin-bottom: 8px; }
-  .mnote[hidden] { display: none; }
-  .mhint { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: .75; }
-  .mlist { display: flex; flex-wrap: wrap; gap: 6px; max-height: 172px; overflow: auto; }
-  .mlist button { all: unset; cursor: pointer; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 7px 11px; border-radius: 999px; border: 1px solid rgb(241 32 9 / .45); }
-  .mlist button.on { background: var(--red); color: var(--w); border-color: var(--red); }
-  .mlist button[hidden] { display: none; }
-  @media (max-width: 860px) { .mstage { grid-template-columns: 1fr; justify-items: center; } .mstage .tv { grid-column: 1; height: auto; width: min(100%, 460px); } .minfo { width: min(100%, 460px); padding-bottom: 0; } }
+  .tv .kb.snd[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--w); }
+  .guide { display: flex; flex-direction: column; gap: clamp(18px, 2.4vw, 32px); min-width: 0; align-self: center; width: 100%; }
+  .now { display: grid; gap: 6px; }
+  .now .k { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; opacity: .85; }
+  .now b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(26px, 3vw, 48px); line-height: 1; }
+  .now i { font-style: normal; font-size: 13px; letter-spacing: .06em; }
+  .now .special { font-size: 12px; line-height: 1.45; max-width: 52ch; opacity: .9; }
+  .now .special[hidden] { display: none; }
+  .tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 10px; }
+  .tiles button { all: unset; cursor: pointer; position: relative; display: block; width: 100%; aspect-ratio: 9 / 16; border-radius: 6px; overflow: hidden; outline: 2px solid transparent; outline-offset: 2px; transition: transform .15s, outline-color .15s; }
+  .tiles img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.85); }
+  .tiles .c { position: absolute; left: 6px; top: 6px; font-family: 'MW'; font-size: 10px; color: var(--w); text-shadow: 0 1px 3px rgb(0 0 0 / .6); }
+  .tiles button:hover { transform: translateY(-3px); }
+  .tiles button:hover img { filter: none; }
+  .tiles button.on { outline-color: var(--w); }
+  .tiles button.on img { filter: none; }
+  @media (max-width: 860px) { .mstage { grid-template-columns: 1fr; justify-items: center; } .tv { height: auto; width: min(100%, 440px); } .guide { max-height: 60vh; } }
   .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(18px, 2vw, 32px); }
   /* la caja de discos: cada proyecto es una funda cuadrada; al pasar el mouse asoma el vinilo */
   .grid { gap: clamp(30px, 3.2vw, 52px) clamp(40px, 4.6vw, 76px); padding-right: 4%; }
@@ -1412,11 +1407,10 @@
     <div class="tv" id="tv"><div class="scr" id="scr"><video id="mvid" muted playsinline preload="none"></video><canvas id="mstatic" width="160" height="120" aria-hidden="true"></canvas><span class="ch" id="mch" aria-hidden="true">01</span></div>
       <img src="img/tv.webp" alt="" width="1024" height="1536">
       <button type="button" class="kb prev" id="mprev" aria-label="Previous video"></button><button type="button" class="kb play" id="mplay" aria-label="Pause"></button><button type="button" class="kb next" id="mnext" aria-label="Next video"></button><button type="button" class="kb snd" id="msnd" aria-pressed="false" aria-label="Sound on"></button></div>
-    <div class="minfo" aria-live="polite">
-      <p class="num" id="mnum">01 / 22</p>
-      <p class="who" id="mwho"></p>
-      <p class="what" id="mwhat"></p>
-      <div class="marr"><button type="button" id="mprev2" aria-label="Previous video">←</button><button type="button" id="mnext2" aria-label="Next video">→</button></div>
+    <div class="guide">
+      <div class="now" aria-live="polite"><span class="k" id="mnum">Now playing · CH 01</span><b id="mwho"></b><i id="mwhat"></i>
+        <p class="special" id="mspecial">Edited with AI on a motion system I built: preloaded effects and templates designed by people. Every cut still goes through a designer.</p></div>
+      <ul class="tiles" id="glist" aria-label="Channels"></ul>
     </div>
   </div>
 </section>
@@ -1844,7 +1838,7 @@
 <script>
 /* Motion section: chrome TV */
 (() => {
-  const TD7 = '@TD7 · Edited with AI on my own motion system', OK = '@Oktopus Ideas Lab';
+  const TD7 = '@TD7 · AI-edited', OK = '@Oktopus Ideas Lab';
   const MOTION = [
     ['mondocar', 'mondocar-manos', 'Mondocar', 'Se nos ha ido de las manos', TD7],
     ['mondocar', 'mondocar-planfavorito', 'Mondocar', 'Plan favorito', TD7],
@@ -1873,6 +1867,13 @@
   const v = $('mvid'), cv = $('mstatic'), cx = cv.getContext('2d');
   const pad = n => String(n + 1).padStart(2, '0');
   let cur = 0, inView = false, paused = false;
+  const glist = $('glist');
+  const rows = MOTION.map(([g, file, client, title], i) => {
+    const li = document.createElement('li'), b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('aria-label', `Channel ${pad(i)}: ${client}${title ? ', ' + title : ''}`); b.title = `${client}${title ? ' · ' + title : ''}`;
+    b.innerHTML = `<img loading="lazy" alt="" src="img/motion/${file}.webp"><span class="c">${pad(i)}</span>`;
+    b.onclick = () => tune(i); li.append(b); glist.append(li); return b;
+  });
   function noise() {
     const img = cx.createImageData(cv.width, cv.height);
     for (let k = 0; k < img.data.length; k += 4) { const n = Math.random() * 255; img.data[k] = img.data[k + 1] = img.data[k + 2] = n; img.data[k + 3] = 255; }
@@ -1885,12 +1886,14 @@
     v.src = `video/${file}.mp4`; v.loop = true;
     if (inView && !paused) v.play().catch(() => {});
     $('mch').textContent = pad(i);
-    $('mnum').textContent = `${pad(i)} / ${MOTION.length}`;
+    rows.forEach((b, k) => b.classList.toggle('on', k === i));
+    $('mnum').textContent = `Now playing · CH ${pad(i)}`;
     $('mwho').textContent = client;
     $('mwhat').textContent = [title, credit].filter(Boolean).join(' · ');
+    $('mspecial').hidden = g !== 'mondocar';
   }
   const step = d => tune((cur + d + MOTION.length) % MOTION.length);
-  $('mprev').onclick = $('mprev2').onclick = () => step(-1); $('mnext').onclick = $('mnext2').onclick = () => step(1);
+  $('mprev').onclick = () => step(-1); $('mnext').onclick = () => step(1);
   $('mplay').onclick = () => { paused = !paused; paused ? v.pause() : v.play().catch(() => {}); $('mplay').setAttribute('aria-label', paused ? 'Play' : 'Pause'); };
   $('msnd').onclick = () => { v.muted = !v.muted; $('msnd').setAttribute('aria-pressed', String(!v.muted)); $('msnd').setAttribute('aria-label', v.muted ? 'Sound on' : 'Sound off'); if (!paused) v.play().catch(() => {}); };
   let sx = null; const scr = $('scr');
