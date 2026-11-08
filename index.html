@@ -819,7 +819,7 @@
   .grid.flow.spine-loading .lp .vin { transform:none !important; }
   .grid.flow.spine-loading .lp .sl { transform:none !important; }
   .grid.flow.spine-loading .project-open,.grid.flow.spine-loading .gn { visibility:hidden !important; }
-  .services .poster-mount .smart-feature { background: url(img/smart-poster-paper.png) center / 100% 100% no-repeat !important;border:0 !important;box-shadow:none;padding:clamp(38px,5vw,70px); }
+  .services .poster-mount .smart-feature { background: url(img/smart-poster-paper.webp) center / 100% 100% no-repeat !important;border:0 !important;box-shadow:none;padding:clamp(38px,5vw,70px); }
   .services .poster-mount .smart-feature::before { display:none; }
   .poster-mount { background:#7ECAE4; }
   @keyframes posterStick { from {clip-path:inset(0 0 100% 0);transform:translateY(-8px);opacity:1;box-shadow:none} to {clip-path:inset(0);transform:none;opacity:1;box-shadow:none} }
@@ -1375,7 +1375,6 @@
     .chromecta::after { display: none !important; }
     .chromecta { background: var(--w) !important; color: var(--red) !important; height: 44px !important; aspect-ratio: auto !important; padding: 0 24px !important; border-radius: 999px !important; font-size: 11px !important; box-shadow: 0 6px 18px rgb(60 10 0 / .28) !important; filter: none !important; bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; transition: opacity .2s; }
     .chromecta.cta-off, body.case-open .chromecta { opacity: 0 !important; pointer-events: none !important; }
-    .services .wm .big, .services .wm .big.in, .services .wm .big.out, .services .wm .big.swap { animation: none !important; transition: none !important; transform: translate(-50%, -50%) !important; opacity: 1 !important; }
     .services .big .tl i { display: none !important; }
     .services .big .tl { justify-content: center !important; overflow: visible !important; }
   }
@@ -1486,6 +1485,22 @@
   .case.on { transform: none; transition: opacity .28s ease, transform .4s cubic-bezier(.22,1,.36,1), visibility 0s; }
   @media (max-width: 1100px) { .case { display: block; } .case .cinfo { min-height: 0; } }
   @media (prefers-reduced-motion: reduce) { .case { transform: none; transition: none; } }
+  /* Baked paper: same look as the soft-light layer, without blending on every frame */
+  .sleeve { background: var(--red) url(img/papel-rojo.webp) 0 0 / 627px; } .sleeve::before { display: none; }
+  .cinfo { background: var(--red) url(img/papel-rojo.webp) 0 0 / 627px; } .cinfo::before { display: none; }
+  .ml { background: var(--lab) url(img/papel-morado.webp) 0 0 / 627px; } .ml::before { display: none; }
+  @media (max-width: 760px) {
+    /* Hero fits one screen: the record comes out of the sleeve, label in view */
+    .hero { height: 100svh !important; min-height: 560px !important; display: flex !important; flex-direction: column; overflow: hidden; }
+    .hero .sleeve { flex: none; position: relative; z-index: 2; }
+    .hero .rec { flex: none; position: relative; z-index: 1; margin: -24vw auto 0 !important; }
+    /* Cassette: real slide on a clean layer, no heavy shadow */
+    .services .big { filter: none !important; will-change: transform; }
+    .services .wm .big { transition: none !important; }
+    .services .wm .big.in { animation: tapeLoad .55s cubic-bezier(.22,1,.36,1) both !important; }
+    .services .wm .big.out { animation: tapeUnload .22s ease-in forwards !important; }
+    .wm.tape-pending .big { opacity: 0 !important; }
+  }
 </style>
 </head>
 <body>
