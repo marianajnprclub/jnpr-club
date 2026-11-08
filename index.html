@@ -1389,7 +1389,6 @@
   }
 
   @media (max-width: 600px) {
-    .smartsec h2 img { display: none; }
     .smartsec h2 { font-size: 15.5vw; }
     .sbp { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
     .sbp li { padding: 16px 14px 18px !important; font-size: 13px !important; }
@@ -1403,6 +1402,46 @@
   }
   @media (max-width: 600px) {
     html .hero h1 .rb .w { width: auto !important; max-width: none !important; animation: none !important; overflow: visible !important; }
+  }
+
+  /* JNPR Labs: everything made with AI, purple */
+  .labs { --lab: #9B7EEA; --lab-d: #6B4BC9; --ink: #1F1140; background: var(--lab); color: var(--w); gap: clamp(64px, 9vw, 130px); }
+  .labs-head { display: grid; gap: 14px; justify-items: start; }
+  .labs h2 { font-size: 0; line-height: 0; display: block; }
+  .labs h2 img { width: min(100%, 620px); height: auto; margin: 0; vertical-align: top; }
+  .labs-tag { font-family: 'MW'; text-transform: uppercase; font-size: clamp(16px, 2vw, 30px); line-height: 1.1; }
+  .lab-ch { display: grid; gap: clamp(28px, 4vw, 56px); min-width: 0; }
+  .lab-big { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(44px, 7.4vw, 122px); line-height: .92; }
+  .lab-big span { display: block; }
+  .lab-big img { width: .8em; height: .8em; vertical-align: -.05em; margin-left: .12em; }
+  .lab-h { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(24px, 2.8vw, 44px); line-height: 1; }
+  .labs .sb-head { gap: 16px; }
+  .labs .sb-sub, .labs .hub-copy p, .reel-side p { color: var(--ink); }
+  .labs .hub-quote { color: var(--w); }
+  .labs .sbp li { background: var(--lab-d); }
+  .labs .sb-cta { background: var(--w) !important; color: var(--lab-d) !important; }
+  .labs .hub-shots img { box-shadow: 0 24px 50px rgb(40 20 100 / .3); }
+  .reels { grid-template-columns: minmax(0, auto) minmax(0, 1fr); align-items: center; gap: clamp(28px, 5vw, 80px); }
+  .reel-player { height: min(78vh, 720px); aspect-ratio: 9 / 16; max-width: 100%; border-radius: 14px; overflow: hidden; background: var(--lab-d); box-shadow: 0 24px 50px rgb(40 20 100 / .3); }
+  .reel-player video { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .reel-side { display: grid; gap: 20px; min-width: 0; font-size: clamp(14px, 1.1vw, 17px); line-height: 1.5; }
+  .reel-side p { max-width: 52ch; }
+  .rtiles { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+  @media (max-width: 1100px) { .rtiles { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  .labgrid { columns: 3 280px; column-gap: clamp(14px, 2vw, 28px); }
+  .labgrid figure { break-inside: avoid; margin: 0 0 clamp(20px, 2.6vw, 36px); display: grid; gap: 10px; }
+  .labgrid img { width: 100%; height: auto; display: block; border-radius: 8px; }
+  .labgrid figcaption { font-size: 13px; line-height: 1.4; color: var(--ink); }
+  .labgrid figcaption b { display: block; font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: 14px; color: var(--w); margin-bottom: 3px; }
+  .labs-also { font-size: clamp(14px, 1.2vw, 18px); line-height: 1.5; color: var(--ink); max-width: 70ch; }
+  .labs-also b { display: block; font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: 13px; color: var(--w); margin-bottom: 6px; }
+  @media (max-width: 860px) { .reels { grid-template-columns: 1fr; justify-items: center; } .reel-player { height: auto; width: min(100%, 340px); } .reel-side { width: 100%; } }
+  @media (max-width: 600px) {
+    header nav a[href="#motion"] { display: none !important; }
+    .lab-big img { display: none; }
+    .lab-big { font-size: 15vw; }
+    .labgrid { columns: 2 140px; }
+    .labgrid figcaption { font-size: 12px; }
   }
 </style>
 </head>
@@ -1419,7 +1458,7 @@
 </div></div><span class="hole"></span></div>
 
 <section class="sleeve">
-  <header><a class="logo" href="#" aria-label="JNPR® Club"></a><nav><a href="#work">Work</a><a href="#smart-branding">Smart Branding</a><a href="#motion">Motion</a><a href="#services">Services</a><a href="#contact">Contact</a><button type="button" id="sound-toggle" aria-pressed="false" aria-label="Enable sound effects"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><g class="sound-waves"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g><path class="sound-mute" d="m16 9 5 6m0-6-5 6"/></svg></button></nav></header>
+  <header><a class="logo" href="#" aria-label="JNPR® Club"></a><nav><a href="#work">Work</a><a href="#labs">JNPR Labs</a><a href="#motion">Motion</a><a href="#services">Services</a><a href="#contact">Contact</a><button type="button" id="sound-toggle" aria-pressed="false" aria-label="Enable sound effects"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><g class="sound-waves"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g><path class="sound-mute" d="m16 9 5 6m0-6-5 6"/></svg></button></nav></header>
   <main>
     <h1 aria-label="Where creativity meets (rebellion)*"><span class="ln"><span>Where creativity</span></span><span class="ln"><span>meets</span></span><span class="ln"><span><span class="rb">(<span class="w"><span class="lt" style="--k:0">r</span><span class="lt" style="--k:1">e</span><span class="lt" style="--k:2">b</span><span class="lt" style="--k:3">e</span><span class="lt" style="--k:4">l</span><span class="lt" style="--k:5">l</span><span class="lt" style="--k:6">i</span><span class="lt" style="--k:7">o</span><span class="lt" style="--k:8">n</span></span>)</span><span class="st" aria-hidden="true"><img id="ast" src="img/ast/chrome.webp" alt=""></span></span></span></h1>
     <div class="hero-preview-slot"><div class="peek" id="peek" aria-hidden="true"><div class="win" id="win" style="background-image:url(img/col/pocoyo.webp);background-position:50% 46%;background-size:cover"></div></div></div>
@@ -1468,32 +1507,58 @@
   <div class="fnav"><button type="button" id="fprev" aria-label="Previous record">←</button><span id="fcount">01 / 19</span><button type="button" id="fnext" aria-label="Next record">→</button></div>
 </section>
 
-<section class="smartsec" id="smart-branding">
-  <div class="sb-head">
-    <p class="sb-k">My method</p>
-    <h2 aria-label="Smart Branding"><span>Smart</span><span>Branding<img src="img/ast/chrome.webp" alt="" width="180" height="180"></span></h2>
-    <p class="sb-lede">A complete brand system. Built to stay consistent, adapt and keep working.</p>
-    <p class="sb-sub">AI can make a brand in five minutes. Smart Branding makes it work every single time, in every format, whoever makes the piece.</p>
+<section class="smartsec labs" id="labs">
+  <div class="labs-head">
+    <h2><img src="img/labs/logo-white.svg" alt="JNPR Labs" width="520" height="130"></h2>
+    <p class="labs-tag">Where I build with AI. Directed by people.</p>
   </div>
-  <ol class="sbp">
-    <li><b>Strategy</b>Who you are and what you say.</li>
-    <li><b>Brand System</b>The rules that hold every touchpoint together.</li>
-    <li><b>Brand Engine</b>Design that adapts itself to every format.</li>
-    <li><b>Smart Brand Hub</b>Your private brand home, always up to date.</li>
-  </ol>
-  <div class="hubshow">
-    <div class="hub-copy">
-      <p class="sb-k">Smart Brand Hub</p>
-      <h3>Your whole brand, in one place.</h3>
-      <p>An online space where the brand lives. Clients see their campaigns, review the content calendar and approve every piece before it goes out. Nothing is published without their OK.</p>
-      <p>Video is edited on an automated system with templates designed by people, so every reel needs only a few tweaks.</p>
-      <p class="hub-quote">“Everything you see here is designed by people.”</p>
-      <a class="cta sb-cta" href="#contact">Ask for your Brand Hub</a>
+
+  <div class="lab-ch" id="smart-branding">
+    <div class="sb-head">
+      <h3 class="lab-big" aria-label="Smart Branding"><span>Smart</span> <span>Branding<img src="img/ast/chrome.webp" alt="" width="180" height="180"></span></h3>
+      <p class="sb-lede">A complete brand system. Built to stay consistent, adapt and keep working.</p>
+      <p class="sb-sub">AI can make a brand in five minutes. Smart Branding makes it work every single time, in every format, whoever makes the piece.</p>
     </div>
-    <div class="hub-shots">
-      <img class="s1" src="img/hub/calendar.webp" alt="Brand Hub content calendar" width="1440" height="1007" loading="lazy">
-      <img class="s3" src="img/hub/mobile.webp" alt="Brand Hub on mobile" width="390" height="780" loading="lazy">
+    <ol class="sbp">
+      <li><b>Strategy</b>Who you are and what you say.</li>
+      <li><b>Brand System</b>The rules that hold every touchpoint together.</li>
+      <li><b>Brand Engine</b>Design that adapts itself to every format.</li>
+      <li><b>Smart Brand Hub</b>Your private brand home, always up to date.</li>
+    </ol>
+    <div class="hubshow">
+      <div class="hub-copy">
+        <h4 class="lab-h">Your whole brand, in one place.</h4>
+        <p>An online space where the brand lives. Clients see their campaigns, review the content calendar and approve every piece before it goes out. Nothing is published without their OK.</p>
+        <p class="hub-quote">“Everything you see here is designed by people.”</p>
+        <a class="cta sb-cta" href="#contact">Ask for your Brand Hub</a>
+      </div>
+      <div class="hub-shots">
+        <img class="s1" src="img/hub/calendar.webp" alt="Brand Hub content calendar" width="1440" height="1007" loading="lazy">
+        <img class="s3" src="img/hub/mobile.webp" alt="Brand Hub on mobile" width="390" height="780" loading="lazy">
+      </div>
     </div>
+  </div>
+
+  <div class="lab-ch reels">
+    <div class="reel-player"><video id="rvid" controls playsinline muted preload="none"></video></div>
+    <div class="reel-side">
+      <h3 class="lab-h">Reels edited with AI</h3>
+      <p>Mondocar's reels, edited on a motion system I built: preloaded effects and templates designed by people. Every cut still goes through a designer.</p>
+      <ul class="tiles rtiles" id="rtiles" aria-label="Mondocar reels"></ul>
+    </div>
+  </div>
+
+  <div class="lab-ch">
+    <h3 class="lab-h">Made and built with AI</h3>
+    <div class="labgrid">
+      <figure><img src="img/labs/telo.webp" alt="Telo, felt 3D character" loading="lazy"><figcaption><b>Telo</b>Character for TLOW, generated and art-directed with AI.</figcaption></figure>
+      <figure><img src="img/labs/tlow-web.webp" alt="TLOW website" loading="lazy"><figcaption><b>TLOW</b>A dog accessories brand: character, website and shop.</figcaption></figure>
+      <figure><img src="img/p/td7portfolio/01.webp" alt="TD7 portfolio" loading="lazy"><figcaption><b>TD7 Portfolio</b>Designed and built with Claude, with its own content admin.</figcaption></figure>
+      <figure><img src="img/p/clarity/02.webp" alt="The Clarity Protocol platform" loading="lazy"><figcaption><b>The Clarity Protocol</b>Platform and custom CMS, developed with AI.</figcaption></figure>
+      <figure><img src="img/p/mondocar/01.webp" alt="Mondocar campaign image" loading="lazy"><figcaption><b>Mondocar</b>Campaign images made with an AI flow.</figcaption></figure>
+      <figure><img src="img/col/pocoyo.webp" alt="Pocoyo astronaut plush" loading="lazy"><figcaption><b>Pocoyo</b>Product imagery for the Early Years guide. Pocoyo™ © Animaj</figcaption></figure>
+    </div>
+    <p class="labs-also"><b>Also in the lab</b>Websites out of Squarespace with their own editing panel · Figma plugins · Prompt Studio · Teams of AI agents</p>
   </div>
 </section>
 
@@ -1504,8 +1569,7 @@
       <img src="img/tv.webp" alt="" width="1024" height="1536">
       <button type="button" class="kb prev" id="mprev" aria-label="Previous video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14l-8-7zM11 5v14l-8-7z"/></svg></button><button type="button" class="kb play" id="mplay" aria-label="Pause"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></button><button type="button" class="kb next" id="mnext" aria-label="Next video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14l8-7zM13 5v14l8-7z"/></svg></button><button type="button" class="kb snd" id="msnd" aria-pressed="false" aria-label="Sound on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9z"/><path class="i-wave" d="M15 8.5a5 5 0 0 1 0 7M17.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="i-mute" d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
     <div class="guide">
-      <div class="now" aria-live="polite"><span class="k" id="mnum">Now playing · CH 01</span><b id="mwho"></b><i id="mwhat"></i>
-        <p class="special" id="mspecial">Edited with AI on a motion system I built: preloaded effects and templates designed by people. Every cut still goes through a designer.</p></div>
+      <div class="now" aria-live="polite"><span class="k" id="mnum">Now playing · CH 01</span><b id="mwho"></b><i id="mwhat"></i></div>
       <ul class="tiles" id="glist" aria-label="Channels"></ul>
     </div>
   </div>
@@ -1924,17 +1988,8 @@
 <script>
 /* Motion section: chrome TV */
 (() => {
-  const TD7 = '@TD7 · AI-edited', OK = '@Oktopus Ideas Lab';
+  const OK = '@Oktopus Ideas Lab';
   const MOTION = [
-    ['mondocar', 'mondocar-manos', 'Mondocar', 'Se nos ha ido de las manos', TD7],
-    ['mondocar', 'mondocar-planfavorito', 'Mondocar', 'Plan favorito', TD7],
-    ['mondocar', 'mondocar-scream', 'Mondocar', 'Scream', TD7],
-    ['mondocar', 'mondocar-halloween', 'Mondocar', 'Fantasmas', TD7],
-    ['mondocar', 'mondocar-truco', 'Mondocar', 'No hay truco, hay trato', TD7],
-    ['mondocar', 'mondocar-color', 'Mondocar', '¿Y si le damos color?', TD7],
-    ['mondocar', 'mondocar-minicooper', 'Mondocar', 'Mini Cooper', TD7],
-    ['mondocar', 'mondocar-faq', 'Mondocar', 'FAQ', TD7],
-    ['mondocar', 'mondocar-hottakes', 'Mondocar', 'Hot takes', TD7],
     ['more', 'oktopus-morris', 'Morris Club', '', OK],
     ['more', 'oktopus-morris-beach', 'Morris Club', 'Beach', OK],
     ['more', 'oktopus-fortuny-fashionweek', 'Fortuny', 'Fashion Week', OK],
@@ -1976,7 +2031,6 @@
     $('mnum').textContent = `Now playing · CH ${pad(i)}`;
     $('mwho').textContent = client;
     $('mwhat').textContent = [title, credit].filter(Boolean).join(' · ');
-    $('mspecial').hidden = g !== 'mondocar';
   }
   const step = d => tune((cur + d + MOTION.length) % MOTION.length);
   $('mprev').onclick = () => step(-1); $('mnext').onclick = () => step(1);
@@ -1992,6 +2046,15 @@
 <script>
 /* Mobile: the floating Contact steps aside once the contact section is on screen */
 (() => { const c = document.querySelector('.chromecta'), t = document.getElementById('contact'); if (c && t) new IntersectionObserver(([e]) => c.classList.toggle('cta-off', e.isIntersecting), { threshold: .2 }).observe(t); })();
+</script>
+<script>
+/* JNPR Labs: Mondocar reels */
+(() => {
+  const R=[['mondocar-manos','Se nos ha ido de las manos'],['mondocar-planfavorito','Plan favorito'],['mondocar-scream','Scream'],['mondocar-halloween','Fantasmas'],['mondocar-truco','No hay truco, hay trato'],['mondocar-color','¿Y si le damos color?'],['mondocar-minicooper','Mini Cooper'],['mondocar-faq','FAQ'],['mondocar-hottakes','Hot takes']], v=document.getElementById('rvid'), ul=document.getElementById('rtiles'); if(!v||!ul)return;
+  const set=(i,play)=>{ v.poster=`img/motion/p/${R[i][0]}.webp`; v.src=`video/${R[i][0]}.mp4`; bs.forEach((b,k)=>b.classList.toggle('on',k===i)); if(play)v.play().catch(()=>{}); };
+  const bs=R.map(([f,t],i)=>{ const li=document.createElement('li'),b=document.createElement('button'); b.type='button'; b.title=t; b.setAttribute('aria-label','Play reel: '+t); b.innerHTML=`<img loading="lazy" alt="" src="img/motion/${f}.webp">`; b.onclick=()=>set(i,true); li.append(b); ul.append(li); return b; });
+  set(0,false);
+})();
 </script>
 </body>
 </html>
