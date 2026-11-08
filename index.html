@@ -271,6 +271,13 @@
   .tv .kb { all: unset; position: absolute; z-index: 3; top: 71.2%; width: 7.6%; aspect-ratio: 1; border-radius: 50%; cursor: pointer; }
   .tv .kb:hover { box-shadow: 0 0 0 3px rgb(252 252 252 / .7); }
   .tv .kb:active { transform: scale(.94); }
+  .tv .kb { display: grid; place-items: center; color: #1d2226; }
+  .tv .kb svg { width: 52%; height: 52%; fill: currentColor; filter: drop-shadow(0 1px 0 rgb(255 255 255 / .75)); }
+  .tv .kb .i-play, .tv .kb.is-paused .i-pause { display: none; }
+  .tv .kb.is-paused .i-play { display: block; }
+  .tv .kb.snd .i-wave { display: none; }
+  .tv .kb.snd[aria-pressed="true"] .i-wave { display: block; }
+  .tv .kb.snd[aria-pressed="true"] .i-mute { display: none; }
   .tv .kb.prev { left: 30.4%; } .tv .kb.play { left: 42.7%; } .tv .kb.next { left: 55.0%; } .tv .kb.snd { left: 69.1%; }
   .tv .kb.snd[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--w); }
   .guide { display: flex; flex-direction: column; gap: clamp(18px, 2.4vw, 32px); min-width: 0; align-self: center; width: 100%; }
@@ -288,7 +295,7 @@
   .tiles button:hover img { filter: none; }
   .tiles button.on { outline-color: var(--w); }
   .tiles button.on img { filter: none; }
-  @media (max-width: 860px) { .mstage { grid-template-columns: 1fr; justify-items: center; } .tv { height: auto; width: min(100%, 440px); } .guide { max-height: 60vh; } }
+  @media (max-width: 860px) { .mstage { grid-template-columns: 1fr; justify-items: center; } .tv { height: auto; width: min(100%, 440px); } .guide { max-height: none; } }
   .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(18px, 2vw, 32px); }
   /* la caja de discos: cada proyecto es una funda cuadrada; al pasar el mouse asoma el vinilo */
   .grid { gap: clamp(30px, 3.2vw, 52px) clamp(40px, 4.6vw, 76px); padding-right: 4%; }
@@ -1362,6 +1369,39 @@
   .hub-shots .s3 { border-radius: 16px; }
   @media (max-width: 900px) { .sbp { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hubshow { grid-template-columns: 1fr; } }
   @media (max-width: 520px) { .sbp { grid-template-columns: 1fr; } }
+
+  /* Mobile pass 8 Nov: no floating layer over content, cassette label stays put, hero fits one screen */
+  @media (max-width: 760px) {
+    .chromecta, .chromecta::after { display: none !important; }
+    .services .wm .big, .services .wm .big.in, .services .wm .big.out, .services .wm .big.swap { animation: none !important; transition: none !important; transform: translate(-50%, -50%) !important; opacity: 1 !important; }
+    .services .big .tl i { display: none !important; }
+    .services .big .tl { justify-content: center !important; overflow: visible !important; }
+  }
+  @media (max-width: 600px) {
+    header nav a[href="#smart-branding"], header nav a[href="#services"] { display: none !important; }
+    header nav { gap: 16px !important; font-size: 10px !important; letter-spacing: .06em !important; }
+    .hero .sleeve h1 { font-size: 8.6vw !important; line-height: 1.02 !important; }
+    .hero .sleeve { min-height: 0 !important; }
+    .hero #tracks li:not(.side) { padding-block: 3px !important; }
+    .rec .lab span { display: none !important; }
+  }
+
+  @media (max-width: 600px) {
+    .smartsec h2 img { display: none; }
+    .smartsec h2 { font-size: 15.5vw; }
+    .sbp { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
+    .sbp li { padding: 16px 14px 18px !important; font-size: 13px !important; }
+    .sbp b { font-size: 14px !important; }
+    .hero .rb .w { padding-right: 0 !important; margin-right: 0 !important; }
+  }
+
+  @media (max-width: 760px) {
+    /* iOS paints mask + multiply as an opaque box */
+    .tape::before, .big::before, .services .big::before { mix-blend-mode: normal !important; }
+  }
+  @media (max-width: 600px) {
+    html .hero h1 .rb .w { width: auto !important; max-width: none !important; animation: none !important; overflow: visible !important; }
+  }
 </style>
 </head>
 <body>
@@ -1460,7 +1500,7 @@
   <div class="mstage">
     <div class="tv" id="tv"><div class="scr" id="scr"><video id="mvid" muted playsinline preload="none"></video><canvas id="mstatic" width="160" height="120" aria-hidden="true"></canvas><span class="ch" id="mch" aria-hidden="true">01</span></div>
       <img src="img/tv.webp" alt="" width="1024" height="1536">
-      <button type="button" class="kb prev" id="mprev" aria-label="Previous video"></button><button type="button" class="kb play" id="mplay" aria-label="Pause"></button><button type="button" class="kb next" id="mnext" aria-label="Next video"></button><button type="button" class="kb snd" id="msnd" aria-pressed="false" aria-label="Sound on"></button></div>
+      <button type="button" class="kb prev" id="mprev" aria-label="Previous video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14l-8-7zM11 5v14l-8-7z"/></svg></button><button type="button" class="kb play" id="mplay" aria-label="Pause"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></button><button type="button" class="kb next" id="mnext" aria-label="Next video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14l8-7zM13 5v14l8-7z"/></svg></button><button type="button" class="kb snd" id="msnd" aria-pressed="false" aria-label="Sound on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9z"/><path class="i-wave" d="M15 8.5a5 5 0 0 1 0 7M17.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="i-mute" d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
     <div class="guide">
       <div class="now" aria-live="polite"><span class="k" id="mnum">Now playing · CH 01</span><b id="mwho"></b><i id="mwhat"></i>
         <p class="special" id="mspecial">Edited with AI on a motion system I built: preloaded effects and templates designed by people. Every cut still goes through a designer.</p></div>
@@ -1929,7 +1969,7 @@
     cur = i; const [g, file, client, title, credit] = MOTION[i];
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduce) { cv.classList.add('on'); let f = 0; const t = setInterval(() => { noise(); if (++f > 6) { clearInterval(t); cv.classList.remove('on'); } }, 40); }
-    v.src = `video/${file}.mp4`; v.loop = true;
+    v.poster = `img/motion/p/${file}.webp`; v.src = `video/${file}.mp4`; v.loop = true;
     if (inView && !paused) v.play().catch(() => {});
     $('mch').textContent = pad(i);
     rows.forEach((b, k) => b.classList.toggle('on', k === i));
@@ -1940,7 +1980,7 @@
   }
   const step = d => tune((cur + d + MOTION.length) % MOTION.length);
   $('mprev').onclick = () => step(-1); $('mnext').onclick = () => step(1);
-  $('mplay').onclick = () => { paused = !paused; paused ? v.pause() : v.play().catch(() => {}); $('mplay').setAttribute('aria-label', paused ? 'Play' : 'Pause'); };
+  $('mplay').onclick = () => { paused = !paused; paused ? v.pause() : v.play().catch(() => {}); $('mplay').setAttribute('aria-label', paused ? 'Play' : 'Pause'); $('mplay').classList.toggle('is-paused', paused); };
   $('msnd').onclick = () => { v.muted = !v.muted; $('msnd').setAttribute('aria-pressed', String(!v.muted)); $('msnd').setAttribute('aria-label', v.muted ? 'Sound on' : 'Sound off'); if (!paused) v.play().catch(() => {}); };
   let sx = null; const scr = $('scr');
   scr.addEventListener('touchstart', e => sx = e.touches[0].clientX, { passive: true });
