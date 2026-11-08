@@ -4,6 +4,7 @@
 (() => {
   const MACHINES = {
     entry:    { intro: ['started'], started: [] },
+    side:     { A: ['B'], B: ['A'] },
     hero:     { idle: ['swapping'], swapping: ['idle'] },
     case:     { closed: ['opening'], opening: ['open', 'closed'], open: ['closed'] },
     cassette: { pending: ['loading', 'idle', 'ejecting'], loading: ['idle', 'pending', 'ejecting'], idle: ['ejecting', 'pending', 'loading'], ejecting: ['loading', 'idle', 'pending'] },
@@ -11,7 +12,7 @@
     labs:     { away: ['showing', 'blocked'], showing: ['away', 'blocked'], blocked: ['showing', 'away'] },
     sound:    { locked: ['on', 'muted'], on: ['muted', 'locked'], muted: ['on', 'locked'] },
   };
-  const INITIAL = { entry: 'intro', hero: 'idle', case: 'closed', cassette: 'pending', motion: 'away', labs: 'away', sound: 'locked' };
+  const INITIAL = { side: 'A', entry: 'intro', hero: 'idle', case: 'closed', cassette: 'pending', motion: 'away', labs: 'away', sound: 'locked' };
   const debug = new URLSearchParams(location.search).has('debug-state');
   const state = { ...INITIAL }, listeners = {}, invalid = [], root = document.documentElement;
   Object.entries(state).forEach(([k, v]) => { root.dataset[k] = v; });
