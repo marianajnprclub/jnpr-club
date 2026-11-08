@@ -5,7 +5,8 @@
     const root=document.documentElement,intro=document.getElementById('brand-intro'),mark=intro?.querySelector('.intro-brand'),cover=intro?.querySelector('.intro-cover');
     try{
       const urls=['img/jnpr-wordmark.svg','tex/pocoyo.webp','img/col/pocoyo.webp','img/ast/chrome.webp','img/walkman.webp','img/cassette.webp'];
-      await Promise.all([document.fonts.ready,...urls.map(src=>{const im=new Image();im.src=src;return im.decode().catch(()=>{});})]);
+      // Tope de 2,5 s: con mala conexión la intro nunca se queda atascada; lo que falte aparece al cargar.
+      await Promise.race([Promise.all([document.fonts.ready,...urls.map(src=>{const im=new Image();im.src=src;return im.decode().catch(()=>{});})]),new Promise(resolve=>setTimeout(resolve,2500))]);
       await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
       const word=document.querySelector('.rb .w');if(word){const width=word.scrollWidth+'px';word.style.setProperty('--rebel-width',width);word.closest('h1').style.setProperty('--rebel-width',width);}
       const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches||new URLSearchParams(location.search).has('still');
@@ -24,7 +25,7 @@
       }
     }finally{
       // Finish the surface/logo travel, then start all home animations on one frame.
-      root.classList.remove('brand-intro-active');root.classList.add('club-started');window.clubStarted=true;
+      root.classList.remove('brand-intro-active');root.classList.add('club-started');window.clubStarted=true;window.clubState?.set('entry','started');
       intro?.remove();
       dispatchEvent(new Event('club:entered'));
 

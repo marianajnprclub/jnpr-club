@@ -11,7 +11,7 @@
     media.addEventListener('playing',()=>{diagnostic('native-playing',{key});setTimeout(()=>{media.pause();media.removeAttribute('src');media.load();},duration);},{once:true});
     media.play().catch(error=>diagnostic('native-error',{key,error:String(error)}));
   }
-  function view(){const audible=wanted&&enabled&&context?.state==='running';button.setAttribute('aria-pressed',String(audible));button.setAttribute('aria-label',audible?'Mute sound effects':'Enable sound effects');button.title=audible?'Mute sound effects':'Enable sound effects';}
+  function view(){const audible=wanted&&enabled&&context?.state==='running';window.clubState?.set('sound',audible?'on':(context?'muted':'locked'));button.setAttribute('aria-pressed',String(audible));button.setAttribute('aria-label',audible?'Mute sound effects':'Enable sound effects');button.title=audible?'Mute sound effects':'Enable sound effects';}
   async function start(){const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return false;
     if(!context){context=new Audio();master=context.createGain();master.gain.value=wanted?.14:0;master.connect(context.destination);}
     if(!decoding)decoding=Promise.all(Object.keys(files).map(async k=>{const bytes=await raw[k];if(bytes)try{buffers[k]=await context.decodeAudioData(bytes.slice(0));}catch(error){diagnostic('decode-error',{file:k,error:String(error)});}}));
