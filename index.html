@@ -1382,8 +1382,6 @@
 
   /* Mobile pass 8 Nov: no floating layer over content, cassette label stays put, hero fits one screen */
   @media (max-width: 760px) {
-    .chromecta::after { display: none !important; }
-    .chromecta { background: var(--w) !important; color: var(--red) !important; height: 44px !important; aspect-ratio: auto !important; padding: 0 24px !important; border-radius: 999px !important; font-size: 11px !important; box-shadow: 0 6px 18px rgb(60 10 0 / .28) !important; filter: none !important; bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; transition: opacity .2s; }
     .chromecta.cta-off, body.case-open .chromecta { opacity: 0 !important; pointer-events: none !important; }
     .services .big .tl i { display: none !important; }
     .services .big .tl { justify-content: center !important; overflow: visible !important; }
@@ -1671,6 +1669,18 @@
   .rm-b.on { box-shadow: 0 0 0 3px var(--red), 0 0 16px 4px rgb(241 32 9 / .7); }
   .rm-b:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
   @media (max-width: 860px) { .motion .guide { flex-direction: column; align-items: center; width: 100%; } .motion .now { width: 100%; } .rm { height: auto; width: min(64vw, 280px); } }
+  /* 9 Nov · option A: Motion = TV + channel list; project opens with a short slide */
+  .motion .guide { flex-direction: column !important; align-items: stretch !important; justify-content: center !important; gap: 22px !important; }
+  .chl { display: flex; flex-direction: column; border-top: 1px solid rgb(252 252 252 / .35); max-height: min(52vh, 460px); overflow-y: auto; scrollbar-width: thin; }
+  .chl-b { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 2.6em 1fr; column-gap: 12px; align-items: baseline; padding: 12px 4px; border-bottom: 1px solid rgb(252 252 252 / .35); color: var(--w); cursor: pointer; opacity: .62; transition: opacity .2s; -webkit-tap-highlight-color: transparent; }
+  .chl-b span { font-size: 11px; letter-spacing: .1em; } .chl-b b { font-size: clamp(14px, 1.15vw, 17px); font-weight: inherit; text-transform: uppercase; letter-spacing: .04em; }
+  .chl-b i { grid-column: 2; font-style: normal; font-size: 11px; letter-spacing: .04em; opacity: .85; }
+  .chl-b:hover, .chl-b.on { opacity: 1; } .chl-b.on span::before { content: '● '; }
+  .chl-b:focus-visible { outline: 2px solid var(--w); outline-offset: -2px; }
+  @media (max-width: 860px) { .motion .tv { width: min(64vw, 280px) !important; } .motion .guide { width: 100%; gap: 14px !important; } .chl { flex-direction: row; max-height: none; overflow-x: auto; border-top: 0; gap: 8px; scroll-snap-type: x mandatory; padding-bottom: 6px; } .chl-b { flex: none; width: 42vw; grid-template-columns: 1fr; row-gap: 4px; border: 1px solid rgb(252 252 252 / .35); border-radius: 12px; padding: 10px 12px; scroll-snap-align: start; } .chl-b b { font-size: 13px; } .chl-b i { grid-column: 1; } }
+  .case .cinfo, .case .cgal { transition: transform .38s cubic-bezier(.2,.7,.2,1); }
+  .case:not(.on) .cinfo { transform: translateX(-28px); } .case:not(.on) .cgal { transform: translateX(28px); }
+  @media (prefers-reduced-motion: reduce) { .case .cinfo, .case .cgal { transition: none; transform: none !important; } }
 </style>
 </head>
 <body>
@@ -1780,7 +1790,7 @@
       <button type="button" class="kb prev" id="mprev" aria-label="Previous video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14l-8-7zM11 5v14l-8-7z"/></svg></button><button type="button" class="kb play" id="mplay" aria-label="Pause"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></button><button type="button" class="kb next" id="mnext" aria-label="Next video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14l8-7zM13 5v14l8-7z"/></svg></button><button type="button" class="kb snd" id="msnd" aria-pressed="false" aria-label="Sound on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9z"/><path class="i-wave" d="M15 8.5a5 5 0 0 1 0 7M17.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="i-mute" d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
     <div class="guide">
       <div class="now" aria-live="polite"><span class="k" id="mnum">Now playing · CH 01</span><b id="mwho"></b><i id="mwhat"></i></div>
-      <div class="rm" id="glist" role="group" aria-label="Channels"><img class="rm-img" src="img/remote.webp" alt="" width="514" height="1251" loading="lazy"><button type="button" class="rm-b rm-big" id="rprev" aria-label="Previous channel" title="Previous channel" style="left:29.77%;top:19.42%;width:35.80%"></button><button type="button" class="rm-b rm-big" id="rnext" aria-label="Next channel" title="Next channel" style="left:71.60%;top:19.42%;width:35.80%"></button></div>
+      <div class="chl" id="glist" role="group" aria-label="Channels"></div>
     </div>
   </div>
 </section>
@@ -1893,7 +1903,7 @@
     const sd = items[i] && items[i].querySelector('span').textContent[0]; if (sd && typeof setSide === 'function' && sd !== side) setSide(sd);                                   // cambiar de disco: entra a la funda, cambia la etiqueta, vuelve a salir
     if(document.body.classList.contains('case-open'))return;if (busy) { pending = i; return; } if (i === cur) return; setBusy(true); cur = i;const swapVersion=++heroSwapVersion;
     items.forEach((li, k) => li.classList.toggle('on', k === i));
-    if (still || matchMedia('(prefers-reduced-motion: reduce)').matches) { label(i).then(revealPeek); setBusy(false); return; }
+    if (true) { label(i).then(revealPeek); setBusy(false); return; } // calm: label crossfades, record stays put
     compactPeek();rec.classList.add('swap'); spinEl.getAnimations().forEach(a=>a.updatePlaybackRate(2.8));
     (async()=>{
       await motionSettled(rec);if(swapVersion!==heroSwapVersion)return;
@@ -1943,7 +1953,7 @@
   document.querySelector('.list').addEventListener('pointerleave',cycle);
 
   items.forEach((li, k) => {
-    li.addEventListener('pointerenter', e => { if(!window.clubStarted)return;const changed=k!==heroSelected;show(k);cycle();if(changed&&e.pointerType!=='touch')window.clubSound?.play('slide');});
+    li.addEventListener('pointerenter', e => { if(!window.clubStarted||e.pointerType==='touch')return;const changed=k!==heroSelected;show(k);cycle();if(changed&&e.pointerType!=='touch')window.clubSound?.play('slide');});
     
     li.addEventListener('click', () => { clearTimeout(auto);if(k===4||k===7){document.getElementById(k===4?'lab-wall':'lab-sb').scrollIntoView({behavior:'smooth'});return;}openCase(k<4?k:LAB_BASE+k-5,k<4); });
   });
@@ -2239,8 +2249,8 @@
   const glist = $('glist');
   const KEYS = ['left:24.51%;top:35.41%;width:19.46%', 'left:50.97%;top:35.41%;width:19.46%', 'left:77.43%;top:35.41%;width:19.46%', 'left:24.51%;top:46.20%;width:19.46%', 'left:50.97%;top:46.20%;width:19.46%', 'left:77.43%;top:46.20%;width:19.46%', 'left:24.51%;top:57.15%;width:19.46%', 'left:50.97%;top:57.15%;width:19.46%', 'left:77.43%;top:57.15%;width:19.46%', 'left:24.51%;top:67.95%;width:19.46%', 'left:50.97%;top:67.95%;width:19.46%', 'left:77.43%;top:67.95%;width:19.46%'];
   // 12 channel keys on the remote; channel 13 is reached with the big next key
-  const rows = MOTION.slice(0, KEYS.length).map(([g, file, client, title], i) => {
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'rm-b'; b.style.cssText = KEYS[i];
+  const rows = MOTION.map(([g, file, client, title], i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'chl-b'; b.innerHTML = `<span>${pad(i)}</span><b></b><i></i>`; b.querySelector('b').textContent = client; b.querySelector('i').textContent = title || '';
     b.setAttribute('aria-label', `Channel ${pad(i)}: ${client}${title ? ', ' + title : ''}`); b.title = `${pad(i)} · ${client}${title ? ' · ' + title : ''}`;
     b.onclick = () => tune(i); glist.append(b); return b;
   });
@@ -2262,7 +2272,7 @@
     $('mwhat').textContent = [title, credit].filter(Boolean).join(' · ');
   }
   const step = d => tune((cur + d + MOTION.length) % MOTION.length);
-  $('mprev').onclick = () => step(-1); $('mnext').onclick = () => step(1); $('rprev').onclick = () => step(-1); $('rnext').onclick = () => step(1);
+  $('mprev').onclick = () => step(-1); $('mnext').onclick = () => step(1); 
   $('mplay').onclick = () => { paused = !paused; sync(); $('mplay').setAttribute('aria-label', paused ? 'Play' : 'Pause'); $('mplay').classList.toggle('is-paused', paused); };
   $('msnd').onclick = () => { v.muted = !v.muted; $('msnd').setAttribute('aria-pressed', String(!v.muted)); $('msnd').setAttribute('aria-label', v.muted ? 'Sound on' : 'Sound off'); sync(); };
   let sx = null; const scr = $('scr');
