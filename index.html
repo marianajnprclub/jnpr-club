@@ -1898,7 +1898,7 @@
         <input class="fi" type="email" name="email" placeholder="Your email" autocomplete="email" required>
         <p class="consent">Your details are only used to reply to you.</p></fieldset>
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="nav"><button type="button" class="back" hidden>← Back</button><button type="button" class="next">Next →</button><button type="submit" class="send" hidden>Send →</button></div>
+      <div class="nav"><button type="button" class="back" hidden>← Back</button><button type="button" class="next">Next</button><button type="submit" class="send" hidden>Send</button></div>
     </form>
     <div class="done" hidden><p class="H">Thank you.</p><p>I’ll reply soon. — Mariana</p></div>
   </div>
@@ -2150,7 +2150,7 @@
     document.getElementById('ct').textContent = p.name;
     document.getElementById('cm').textContent = p.client + ' · ' + p.genres.join(' · ');
     document.getElementById('cx').innerHTML = p.text.map(t => `<p>${t}</p>`).join('') + (p.notice ? `<p class="draft">${p.notice}</p>` : '');
-    { const old=document.getElementById('ccta'); if(old) old.remove(); document.querySelectorAll('.case-bottom .clink').forEach(x=>x.remove()); (p.links||[]).slice().reverse().forEach(([t,u])=>{ const l=document.createElement('a'); l.className='cta live clink'; l.href=u; l.target='_blank'; l.rel='noopener'; l.textContent=t+' ↗'; document.querySelector('.case-bottom').prepend(l); }); if(p.cta){ const b=document.createElement('button'); b.type='button'; b.id='ccta'; b.className='cta'; b.textContent=p.cta.label+' →'; b.onclick=()=>window.openHire&&window.openHire(p.cta.need); document.querySelector('.case-bottom').prepend(b); } }
+    { const old=document.getElementById('ccta'); if(old) old.remove(); document.querySelectorAll('.case-bottom .clink').forEach(x=>x.remove()); (p.links||[]).slice().reverse().forEach(([t,u])=>{ const l=document.createElement('a'); l.className='cta live clink'; l.href=u; l.target='_blank'; l.rel='noopener'; l.textContent=t; document.querySelector('.case-bottom').prepend(l); }); if(p.cta){ const b=document.createElement('button'); b.type='button'; b.id='ccta'; b.className='cta'; b.textContent=p.cta.label; b.onclick=()=>window.openHire&&window.openHire(p.cta.need); document.querySelector('.case-bottom').prepend(b); } }
     const lv = document.getElementById('clive'); lv.hidden = !p.url; if (p.url) { lv.href = p.url; lv.target = '_blank'; lv.rel = 'noopener'; }
     const g = document.getElementById('cg'); g.classList.remove('magazine-mode');g.innerHTML = ''; g.scrollTop = 0;
     p.img.forEach(([src], j) => { let im; if (/\.mp4$/.test(src)) { im = document.createElement('video'); im.controls = true; im.playsInline = true; im.preload = 'none'; im.poster = src.replace('video/', 'img/motion/p/').replace('.mp4', '.webp'); im.src = src; } else { im = new Image(); im.src = src; im.alt = p.name; } if (j === 0) im.classList.add('on'); g.append(im); });
@@ -2510,7 +2510,7 @@
     sh.querySelector('.sh-x').onclick=close; sh.addEventListener('click',e=>{ if(e.target===sh) close(); }); addEventListener('keydown',e=>{ if(e.key==='Escape'&&!sh.hidden) close(); });
     f.addEventListener('submit',async e=>{ e.preventDefault(); if(!ok()||f.botcheck.checked) return;
       const d={ Need:val('need'), When:val('when')||'-', Company:f.company.value.trim()||'-', Note:f.note.value.trim()||'-', Name:f.name.value.trim(), Email:f.email.value.trim() };
-      send.textContent='Sending…'; try{ const r=await fetch('https://formsubmit.co/ajax/'+f.dataset.to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({_subject:'Working with you: '+d.Need,_replyto:d.Email,_template:'table',_captcha:'false',...d})}); const j=await r.json(); if(!(j.success===true||j.success==='true')) throw new Error(j.message||''); f.hidden=true; sh.querySelector('.done').hidden=false; }catch(err){ send.textContent='Send →'; alert((err&&err.message)||('Something went wrong. Please write to '+f.dataset.to)); } });
+      send.textContent='Sending…'; try{ const r=await fetch('https://formsubmit.co/ajax/'+f.dataset.to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({_subject:'Working with you: '+d.Need,_replyto:d.Email,_template:'table',_captcha:'false',...d})}); const j=await r.json(); if(!(j.success===true||j.success==='true')) throw new Error(j.message||''); f.hidden=true; sh.querySelector('.done').hidden=false; }catch(err){ send.textContent='Send'; alert((err&&err.message)||('Something went wrong. Please write to '+f.dataset.to)); } });
     document.querySelectorAll('a.chromecta, .contact-doors a.cta, .lead-cta a.cta:not(.lead-cv)').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); open(a.classList.contains('door-b')?'Website':''); }));
   } }
   /* Other sites always open in a new tab */
