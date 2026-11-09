@@ -1821,6 +1821,14 @@
   html[data-side="B"] .sleeve { background-color: #9B7EEA !important; background-image: none !important; }
   html[data-side="B"] .sleeve::before { background: url(img/papel-morado.webp) 0 0 / 627px !important; opacity: .3 !important; mix-blend-mode: normal !important; }
   .case { background-color: #FCFCFC; }
+  /* Carousels: visible, quiet controls next to the progress line */
+  .lp2-nav { grid-template-columns: 1fr auto auto auto !important; }
+  .lp2-nav button { position: static !important; width: 38px !important; height: 38px !important; clip: auto !important; overflow: visible !important; display: grid !important; place-items: center; border-radius: 999px !important; background: transparent !important; color: inherit !important; border: 1px solid currentColor; font-size: 0 !important; cursor: pointer; opacity: .85; transition: opacity .2s, background .2s; }
+  .lp2-nav button:hover { opacity: 1; }
+  .lp2-nav button::before { content: ''; width: 8px; height: 8px; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; transform: translateX(-2px) rotate(45deg); }
+  .lp2-nav button:first-of-type::before { transform: translateX(2px) rotate(-135deg); }
+  .lp2-nav button:first-of-type { order: 2; } .lp2-nav span { order: 1; } .lp2-nav button:last-of-type { order: 3; } .lp2-bar { order: 0; }
+  @media (hover: hover) { .lp2-imgs { cursor: e-resize; } }
 </style>
 </head>
 <body>
