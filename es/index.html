@@ -1913,9 +1913,21 @@ html, body, a, button { touch-action: manipulation; }</style>
   #lead .lead-stats > div { grid-template-columns: 1fr !important; gap: 4px !important; align-items: start !important; padding-block: 16px !important; }
   #lead .lead-stats b { font-size: 46px !important; line-height: 1 !important; }
   #lead .lead-stats span { font-size: 16px !important; line-height: 1.35 !important; }
-  #lead .lead-k { font-size: 12px !important; }
+  #lead .lead-k { font-size: 14px !important; }
   #lead .lead-p { font-size: 18px !important; }
 }
+</style>
+<style>/* 10 Nov: "I lead" with more life — chrome asterisk, stats as white cards that count up */
+#lead h2 .lead-ast { width: .8em !important; height: .8em !important; max-width: none !important; vertical-align: -.02em; margin-left: .12em; animation: lab-turn 26s linear infinite; filter: drop-shadow(0 4px 8px rgb(0 0 0 / .22)); }
+#lead .lead-stats { display: grid !important; gap: 14px !important; border: 0 !important; }
+#lead .lead-stats > div { background: #FCFCFC; border: 0 !important; border-radius: 22px; padding: clamp(18px, 1.8vw, 26px) clamp(20px, 2vw, 30px) !important; box-shadow: 0 30px 60px -30px rgb(31 17 64 / .35), 0 4px 14px rgb(31 17 64 / .06); display: grid !important; grid-template-columns: auto 1fr !important; align-items: center !important; gap: 4px 18px !important; transition: transform .35s cubic-bezier(.22,1,.36,1); }
+#lead .lead-stats > div:hover { transform: translateY(-3px); }
+#lead .lead-stats b { font-size: clamp(40px, 4.4vw, 72px) !important; line-height: 1 !important; font-variant-numeric: tabular-nums; }
+#lead .lead-stats span { font-size: clamp(14px, 1.05vw, 17px) !important; line-height: 1.35 !important; color: #1F1140; }
+#lead .lead-k { font-size: clamp(14px, 1.1vw, 17px) !important; letter-spacing: .1em !important; }
+@media (min-width: 761px) { #lead .lead-stats { grid-row: 2 / span 2 !important; align-self: start !important; margin-top: 0 !important; } #lead h2 { align-self: start; margin-top: 0 !important; } }
+@media (max-width: 760px) { #lead .lead-stats > div { grid-template-columns: 1fr !important; padding: 18px 20px !important; } }
+@media (prefers-reduced-motion: reduce) { #lead .lead-ast { animation: none; } }
 </style>
 </head>
 <body>
@@ -1986,7 +1998,7 @@ html, body, a, button { touch-action: manipulation; }</style>
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menú"><div class="mnav-top"><span class="tb-logo"></span><button type="button" class="mbtn" id="mclose" style="display:inline-flex">Cerrar</button></div><nav><a href="es/#work">Proyectos</a><a href="es/#labs">Lab IA</a><a href="es/#motion">Motion</a><a href="es/#services">Servicios</a><a href="es/#contact">Contacto</a><a href="cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang-sw" href="./" hreflang="en" lang="en">EN</a><!--lang--></nav></div>
 <section class="lead" id="lead" aria-label="Cómo lidero">
   <p class="lead-k">Abierta a puestos de directora creativa · Madrid o remoto</p>
-  <h2>Lidero equipos.<br>Construyo con IA.</h2>
+  <h2>Lidero equipos.<br>Construyo con IA.<img class="lead-ast" src="img/ast/chrome.webp" alt="" width="180" height="180" loading="lazy"></h2>
   <div class="lead-stats"><div><b>10+</b><span>años en marca y dirección de arte</span></div><div><b>5–10</b><span>personas en los equipos que he liderado</span></div><div><b>~2,000</b><span>imágenes IA de un flujo que construí</span></div></div>
   <p class="lead-p">Como directora creativa en Oktopus Ideas Lab (2022–2024) lideré un equipo multidisciplinar de diseño, web, audiovisual y editorial, para clientes como Morris Club, Fortuny, Vandido y Popeyes. Ahora también construyo con IA: imágenes para Pocoyo y Mondocar, y un equipo de IA que dirijo.</p>
   <div class="lead-cta"><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Working%20with%20you">Contrátame</a><a class="cta lead-cv" href="cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">Descargar CV ↓</a></div>
@@ -2637,5 +2649,10 @@ addEventListener('hashchange',()=>setTimeout(strip,0));addEventListener('load',(
 const play=()=>{ if(c.hidden||!document.body.classList.contains('case-open')) return; const t=h?h.textContent:''; if(t===last) return; last=t; c.classList.remove('c-anim'); void c.offsetWidth; c.classList.add('c-anim'); };
 new MutationObserver(()=>requestAnimationFrame(play)).observe(c,{subtree:true,childList:true,characterData:true});
 new MutationObserver(()=>{ if(!document.body.classList.contains('case-open')) last=''; else requestAnimationFrame(play); }).observe(document.body,{attributes:true,attributeFilter:['class']});})();</script>
+<script>/* "I lead" numbers count up the first time they are seen */
+(()=>{const bs=[...document.querySelectorAll('#lead .lead-stats b')]; if(!bs.length||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; io.unobserve(e.target); const b=e.target, fin=b.textContent, t0=performance.now();
+const step=t=>{ const k=Math.min(1,(t-t0)/1100), ease=1-Math.pow(1-k,3); b.textContent=fin.replace(/\d[\d,]*/g,m=>{ const n=+m.replace(/,/g,''), v=Math.round(n*ease); return m.includes(',')?v.toLocaleString('en-US'):String(v); }); if(k<1) requestAnimationFrame(step); else b.textContent=fin; }; requestAnimationFrame(step); }),{threshold:.6});
+bs.forEach(b=>io.observe(b));})();</script>
 </body>
 </html>
