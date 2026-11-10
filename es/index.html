@@ -1971,6 +1971,12 @@ html, body, a, button { touch-action: manipulation; }</style>
     .hero .sleeve > header nav .lang-sw { color: var(--w); font-family: 'MW'; font-size: 12px; letter-spacing: .1em; box-sizing: content-box; height: 38px; padding: 0 18px !important; text-decoration: none; }
   }
 </style>
+<style>/* 10/11/2026 · iPhone: Safari tints its bar from a fixed strip at the top, red on Brand, purple on Labs (matches the hero top, covered by the topbar and cases) */
+@media (max-width: 1100px) {
+  body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 4px; background: #F12009; z-index: 59; pointer-events: none; }
+  html[data-side="B"] body::before { background: #9B7EEA; }
+}
+</style>
 </head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
