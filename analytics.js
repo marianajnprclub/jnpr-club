@@ -40,11 +40,11 @@
 
   const b = document.createElement('div');
   b.className = 'cookie-note'; b.setAttribute('role', 'dialog'); b.setAttribute('aria-label', es ? 'Cookies' : 'Cookies');
-  b.innerHTML = `<p>${es ? 'Uso cookies de Google Analytics para saber qué se visita y mejorar la web. Solo si aceptas.' : 'I use Google Analytics cookies to see what gets visited and improve the site. Only if you accept.'}</p>
+  b.innerHTML = `<header><img src="/img/ast/chrome.webp" alt="" width="30" height="30"><b>${es ? '¿Galletas?' : 'Cookies?'}</b></header><p>${es ? 'Uso cookies de Google Analytics para saber qué se visita y mejorar la web. Solo si aceptas.' : 'I use Google Analytics cookies to see what gets visited and improve the site. Only if you accept.'}</p>
     <div><button type="button" data-c="no">${es ? 'Rechazar' : 'Decline'}</button><button type="button" data-c="yes">${es ? 'Aceptar' : 'Accept'}</button></div>`;
   const st = document.createElement('style');
-  st.textContent = `.cookie-note{position:fixed;left:16px;bottom:16px;z-index:9999;max-width:min(420px,calc(100vw - 32px));background:#FCFCFC;color:#222;border-radius:22px;padding:18px 20px;box-shadow:0 30px 60px -30px rgb(0 0 0/.35),0 6px 18px rgb(0 0 0/.08);font:14px/1.45 'MN',system-ui,sans-serif}
-.cookie-note p{margin:0 0 14px}.cookie-note div{display:flex;gap:10px}
+  st.textContent = `.cookie-note{position:fixed;left:16px;bottom:16px;z-index:9999;max-width:min(420px,calc(100vw - 32px));background:#FCFCFC;color:#222;border-radius:26px;padding:16px 20px 18px;box-shadow:0 30px 60px -30px rgb(0 0 0/.35),0 6px 18px rgb(0 0 0/.08);font:14px/1.45 'MN',system-ui,sans-serif}
+.cookie-note header{display:flex;align-items:center;gap:10px;margin-bottom:8px}.cookie-note header img{width:30px;height:auto;animation:ck-spin 9s linear infinite;filter:drop-shadow(0 3px 5px rgb(0 0 0/.22))}.cookie-note header b{font-family:'MW',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:15px;color:#F12009;font-weight:400}@keyframes ck-spin{to{transform:rotate(360deg)}}@media (prefers-reduced-motion:reduce){.cookie-note header img{animation:none}}.cookie-note{animation:ck-in .5s cubic-bezier(.2,1.4,.4,1) both}@keyframes ck-in{from{opacity:0;transform:translateY(16px) scale(.96)}}.cookie-note p{margin:0 0 14px}.cookie-note div{display:flex;gap:10px}
 .cookie-note button{all:unset;cursor:pointer;font-family:'MW',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:11px;padding:12px 18px;border-radius:99px;background:#F12009;color:#FCFCFC}
 .cookie-note button[data-c="no"]{background:#FCFCFC;color:#F12009;box-shadow:inset 0 0 0 1.5px #F12009}
 .cookie-note button:focus-visible{outline:2px solid #F12009;outline-offset:2px}`;
