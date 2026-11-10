@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tu web, ahora es tuya · Migración de webs en Madrid | JNPR® Labs</title>
+<meta name="description" content="¿Pagas Wix o Squarespace cada mes? Copio tu web tal cual, la pongo a tu nombre y la editas tú, sin cuotas. Desde 490 €, pago único. JNPR® Labs, Madrid.">
+<link rel="canonical" href="https://jnpr-club.com/webs/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jnpr-club.com/webs/">
+<meta property="og:title" content="Tu web de siempre, ahora es tuya · JNPR® Labs">
+<meta property="og:description" content="Copio tu web, la pongo a tu nombre y la editas tú. Sin cuotas mensuales. Desde 490 €.">
+<meta property="og:image" content="https://jnpr-club.com/mail/labs-webs/01_cabecera.png">
+<meta name="theme-color" content="#F12009">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Migración de webs de Wix y Squarespace","serviceType":"Diseño y migración web","provider":{"@id":"https://jnpr-club.com/#studio"},"areaServed":"ES","offers":[{"@type":"Offer","name":"W1 · Tu web propia","price":"490","priceCurrency":"EUR"},{"@type":"Offer","name":"W2 · Con reservas","price":"690","priceCurrency":"EUR"},{"@type":"Offer","name":"W3 · Con tienda","price":"890","priceCurrency":"EUR"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Pierdo mi dominio?","acceptedAnswer":{"@type":"Answer","text":"No. Tu dominio se queda contigo y lo conecto a tu web nueva."}},{"@type":"Question","name":"¿Necesito saber programar?","acceptedAnswer":{"@type":"Answer","text":"No. Tienes tu panel JNPR Labs para cambiar textos, fotos y precios, y ves cómo queda antes de publicar."}},{"@type":"Question","name":"¿Sigo pagando una cuota cada mes?","acceptedAnswer":{"@type":"Answer","text":"No. Es un pago único y el alojamiento es gratis. Solo pagas tu dominio, como ahora."}}]}]}</script>
+<style>
+@font-face { font-family: 'MW'; src: url('../fonts/PPMonumentWide-Regular.otf'); font-display: swap; }
+@font-face { font-family: 'MN'; src: url('../fonts/PPMonumentNormal-Regular.otf'); font-display: swap; }
+:root { --red: #F12009; --w: #FCFCFC; --blue: #7ECAE4; --ink: #1F1140; --pad: clamp(20px, 6vw, 96px); }
+* { box-sizing: border-box; }
+html { background: var(--red); }
+body { margin: 0; background: var(--w); color: var(--ink); font-family: 'MN', system-ui, sans-serif; font-size: clamp(16px, 1.15vw, 19px); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.k { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; color: var(--red); margin: 0 0 clamp(20px, 3vw, 36px); }
+.paper { background: var(--red) url(../img/papel-rojo.webp) center / 627px; color: var(--w); }
+/* Hero */
+.hero { min-height: 100svh; padding: 28px var(--pad) clamp(40px, 8vh, 90px); display: grid; grid-template-rows: auto 1fr auto; }
+.top { display: flex; justify-content: space-between; align-items: center; }
+.top img { height: clamp(26px, 2.6vw, 38px); width: auto; display: block; }
+.pill { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; border: 1.5px solid var(--w); border-radius: 99px; padding: 12px 20px; text-decoration: none; }
+.hero h1 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(40px, 8.4vw, 136px); line-height: .98; margin: clamp(40px, 10vh, 120px) 0 0; align-self: center; max-width: 13ch; }
+.hero h1 .nw { white-space: nowrap; }
+.hero h1 img { width: auto; height: .82em; vertical-align: -.06em; margin-left: .08em; animation: spin 14s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.hero-b { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: end; justify-content: space-between; }
+.hero-b p { margin: 0; max-width: 36ch; font-size: clamp(17px, 1.5vw, 22px); }
+.hero-b p b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .04em; display: block; margin-bottom: 6px; }
+.cta { display: inline-grid; place-items: center; background: url(../img/ast/pill-silver.webp) center / contain no-repeat; aspect-ratio: 1719 / 385; height: 64px; font-family: 'MW'; text-transform: uppercase; letter-spacing: .16em; font-size: 13px; color: #1b1b1b; text-decoration: none; filter: drop-shadow(0 10px 16px rgb(40 0 0 / .35)); text-shadow: 0 1px 0 rgb(255 255 255 / .55); transition: transform .2s; }
+.cta:hover { transform: translateY(-2px); } .cta:active { transform: translateY(1px); }
+section { padding: clamp(70px, 11vh, 140px) var(--pad); }
+h2 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(28px, 4vw, 60px); line-height: 1.02; margin: 0 0 clamp(32px, 5vw, 64px); max-width: 20ch; }
+/* Steps */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 22px); }
+.step { position: relative; background: var(--blue); border-radius: 28px; padding: clamp(24px, 2.4vw, 40px); padding-top: clamp(28px, 3vw, 44px); overflow: hidden; min-height: 300px; }
+.step::after { content: ''; position: absolute; top: -26px; right: -26px; width: 120px; height: 127px; background: url(../img/ast/chrome-blue.webp) center / contain no-repeat; }
+.step i { font-style: normal; font-family: 'MW'; font-size: clamp(52px, 5vw, 80px); line-height: 1; color: var(--w); display: block; margin-bottom: 40px; }
+.step b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .06em; font-size: 15px; display: block; margin-bottom: 10px; color: #0c1a2a; }
+.step p { margin: 0; color: #0c1a2a; }
+/* Price */
+.price { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.ticket { position: relative; aspect-ratio: 1842 / 598; background: url(../img/ticket.webp) center / 100% 100% no-repeat; color: var(--w); filter: drop-shadow(0 18px 24px rgb(120 10 0 / .22)); container-type: inline-size; }
+.ticket .main { position: absolute; left: 7%; top: 13%; bottom: 13%; width: 62%; display: flex; flex-direction: column; justify-content: space-between; }
+.ticket small { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: max(10px, 2.2cqi); }
+.ticket strong { font-family: 'MW'; font-weight: 400; font-size: 17cqi; line-height: .9; }
+.ticket .stub { position: absolute; right: 2%; top: 0; bottom: 0; width: 20%; display: grid; place-items: center; text-align: center; font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: max(10px, 2.2cqi); line-height: 1.7; }
+.plans { list-style: none; margin: 0; padding: 0; }
+.plans li { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; padding: 20px 0; border-top: 1px solid rgb(241 32 9 / .25); }
+.plans li:last-child { border-bottom: 1px solid rgb(241 32 9 / .25); }
+.plans b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .04em; color: var(--red); }
+.plans em { font-style: normal; font-family: 'MW'; color: var(--red); font-size: clamp(20px, 2vw, 30px); line-height: 1; grid-row: span 2; align-self: center; }
+.plans span { color: #4b4560; font-size: .95em; }
+.note { margin: 24px 0 0; color: #4b4560; font-size: .95em; }
+/* Work */
+.work { background: var(--red) url(../img/papel-rojo.webp) center / 627px; color: var(--w); }
+.work .k { color: var(--w); }
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 24px); }
+.shot { margin: 0; text-decoration: none; }
+.shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 14px; display: block; box-shadow: 0 20px 40px rgb(80 0 0 / .3); transition: transform .3s; }
+.shot:hover img { transform: translateY(-4px); }
+.shot figcaption { font-family: 'MW'; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; margin-top: 14px; }
+/* FAQ */
+.faq { max-width: 900px; }
+.faq details { border-top: 1px solid rgb(31 17 64 / .15); padding: 22px 0; }
+.faq details:last-child { border-bottom: 1px solid rgb(31 17 64 / .15); }
+.faq summary { font-family: 'MW'; text-transform: uppercase; letter-spacing: .04em; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--red); font-size: 1.4em; line-height: .8; transition: transform .25s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq p { margin: 14px 0 0; max-width: 60ch; color: #4b4560; }
+/* End */
+.end { text-align: center; padding-top: clamp(90px, 14vh, 170px); padding-bottom: clamp(90px, 14vh, 170px); }
+.end h2 { margin-left: auto; margin-right: auto; max-width: 16ch; }
+.end p { margin: -20px auto 40px; max-width: 40ch; }
+footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 22px var(--pad) calc(22px + env(safe-area-inset-bottom)); font-family: 'MW'; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; border-top: 1px solid rgb(252 252 252 / .3); }
+footer a { text-decoration: none; }
+@media (max-width: 960px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .price { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) {
+  .steps, .shots { grid-template-columns: minmax(0, 1fr); }
+  .step { min-height: 0; } .step i { margin-bottom: 28px; }
+  .hero-b { flex-direction: column; align-items: start; }
+  .cta { height: 58px; }
+  .ticket small { font-size: 8px; letter-spacing: .08em; white-space: nowrap; }
+  .ticket .stub { font-size: 7.5px; letter-spacing: .06em; }
+}
+@media (prefers-reduced-motion: reduce) { .hero h1 img { animation: none; } }
+</style>
+</head>
+<body>
+<header class="hero paper">
+  <div class="top"><a href="../" aria-label="JNPR® Club, inicio"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><a class="pill" href="../#labs">✱ Labs</a></div>
+  <h1>Tu web de siempre, ahora es <span class="nw">tuya<img src="../img/ast/chrome.webp" alt="" width="341" height="360"></span></h1>
+  <div class="hero-b">
+    <p><b>¿Pagas Wix o Squarespace cada mes?</b>Copio tu web tal cual, la pongo a tu nombre y la editas tú. Sin cuotas.</p>
+    <a class="cta" href="../?hire=web">Quiero mi web</a>
+  </div>
+</header>
+
+<section id="como">
+  <p class="k">Cómo funciona</p>
+  <h2>Cuatro pasos y es tuya</h2>
+  <div class="steps">
+    <div class="step"><i>01</i><b>Copio tu web tal cual</b><p>Tus textos, fotos y estilo, en código propio y más rápida. Si quieres, la mejoramos.</p></div>
+    <div class="step"><i>02</i><b>La pongo a tu nombre</b><p>Tu dominio, alojamiento gratis y todo en tu cuenta. Nadie te la puede quitar.</p></div>
+    <div class="step"><i>03</i><b>La editas tú</b><p>Tu panel JNPR Labs: cambias textos, fotos y precios y ves cómo queda antes de publicar.</p></div>
+    <div class="step"><i>04</i><b>Te la dejo lista</b><p>Dominio conectado, SEO, formación y una guía para que no dependas de nadie.</p></div>
+  </div>
+</section>
+
+<section id="precio" style="padding-top:0">
+  <p class="k">Cuánto cuesta</p>
+  <div class="price">
+    <div class="ticket" role="img" aria-label="W1, tu web propia: 490 euros, pago único, hasta 5 páginas. Tuya para siempre.">
+      <div class="main"><small>W1 · Tu web propia</small><strong>490€</strong><small>Pago único · 5 páginas</small></div>
+      <div class="stub">Tuya<br>para<br>siempre</div>
+    </div>
+    <div>
+      <ul class="plans">
+        <li><b>W2 · Con reservas</b><em>690€</em><span>Citas y reservas online</span></li>
+        <li><b>W3 · Con tienda</b><em>890€</em><span>Vende online, solo comisión por venta</span></li>
+        <li><b>W4 · Web nueva</b><em>+1.200€</em><span>Diseño desde cero, marca e idiomas</span></li>
+      </ul>
+      <p class="note">Mantenimiento opcional y extras a tu medida: te lo cuento en la propuesta.</p>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="trabajo">
+  <p class="k">Mira lo que he hecho</p>
+  <h2>Webs que ya son de sus dueños</h2>
+  <div class="shots">
+    <a class="shot" href="https://www.piamiriamcolour.com/" target="_blank" rel="noopener"><figure style="margin:0"><img src="../img/p/pia/live-d1.webp" alt="Web de Colours by Pia Miriam" loading="lazy"><figcaption>Colours by Pia Miriam ↗</figcaption></figure></a>
+    <a class="shot" href="../?open=vandido"><figure style="margin:0"><img src="../img/p/vandido/live-d1.webp" alt="Web de Vandido" loading="lazy"><figcaption>Vandido</figcaption></figure></a>
+    <a class="shot" href="../?open=fitz"><figure style="margin:0"><img src="../img/p/fitz/live-d1.webp" alt="Web de Fitz" loading="lazy"><figcaption>Fitz</figcaption></figure></a>
+  </div>
+</section>
+
+<section id="preguntas">
+  <p class="k">Preguntas</p>
+  <div class="faq">
+    <details open><summary>¿Pierdo mi dominio?</summary><p>No. Tu dominio se queda contigo y lo conecto a tu web nueva.</p></details>
+    <details><summary>¿Necesito saber programar?</summary><p>No. Tienes tu panel JNPR Labs para cambiar textos, fotos y precios, y ves cómo queda antes de publicar.</p></details>
+    <details><summary>¿Sigo pagando una cuota cada mes?</summary><p>No. Es un pago único y el alojamiento es gratis. Solo pagas tu dominio, como ahora.</p></details>
+    <details><summary>¿Quién está detrás?</summary><p>Mariana Ortega, directora creativa en Madrid con más de 10 años creando marcas como Real Madrid, Miravia y Pocoyo. Hablas directo con ella, de principio a fin.</p></details>
+  </div>
+</section>
+
+<section class="end paper">
+  <h2>Deja de pagar por tu propia web</h2>
+  <p>Cuéntame cuál es tu web y te digo cómo quedaría.</p>
+  <a class="cta" href="../?hire=web">Quiero mi web</a>
+</section>
+<footer class="paper"><a href="../">JNPR® Club</a><span>© 2026 JNPR® Labs · Madrid</span></footer>
+</body>
+</html>

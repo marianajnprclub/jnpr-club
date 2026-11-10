@@ -2541,7 +2541,7 @@
     const ok=()=>{ if(i===0&&!val('need')){ bad(steps[0].querySelector('.opts')); return false; }
       if(i===n-1){ if(!f.name.value.trim()){ bad(f.name); f.name.focus(); return false; } if(!/^\S+@\S+\.\S+$/.test(f.email.value)){ bad(f.email); f.email.focus(); return false; } } return true; };
     const open=need=>{ f.reset(); f.hidden=false; sh.querySelector('.done').hidden=true; if(need){ const r=f.querySelector(`[name="need"][value="${need}"]`); if(r) r.checked=true; } show(need?1:0); sh.hidden=false; document.body.classList.add('mnav-open'); };
-    const close=()=>{ sh.hidden=true; document.body.classList.remove('mnav-open'); }; window.openHire=open;
+    const close=()=>{ sh.hidden=true; document.body.classList.remove('mnav-open'); }; window.openHire=open; if(new URLSearchParams(location.search).get('hire')==='web') setTimeout(()=>open('Website'),700);
     next.onclick=()=>{ if(ok()) show(i+1); }; back.onclick=()=>show(i-1);
     f.addEventListener('change',e=>{ if(e.target.name==='need') setTimeout(()=>{ if(ok()) show(1); },220); });
     sh.querySelector('.sh-x').onclick=close; sh.addEventListener('click',e=>{ if(e.target===sh) close(); }); addEventListener('keydown',e=>{ if(e.key==='Escape'&&!sh.hidden) close(); });
