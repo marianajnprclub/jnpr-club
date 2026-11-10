@@ -1866,6 +1866,8 @@
   .tools-g h3 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: 12px; letter-spacing: .12em; color: #1F1140; margin: 0 0 12px; }
   .tools-g ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .tools-g li { font-family: 'MW'; text-transform: uppercase; font-size: clamp(13px, 1.1vw, 16px); letter-spacing: .03em; border: 1px solid currentColor; border-radius: 99px; padding: .5em 1em; line-height: 1; }
+  /* No A1/A2 track codes */
+  #tracks li > span:first-child, #ck { display: none !important; }
 </style>
 </head>
 <body>
@@ -2206,7 +2208,7 @@
   PROJECTS.forEach((p, k) => { if(p.id==='nuevarevista'||p.lab)return;const d = document.createElement('div'); d.className = 'lp'; d.tabIndex = 0; d.setAttribute('role','group'); d.setAttribute('aria-label', p.name); d.dataset.g = p.genres.join('|');
     const dir = p.img[0][0].replace(/[^/]+$/, ''),texture=p.texture||`tex/${p.id}.webp`;
     d.innerHTML = `<div class="crate"><div class="vin"><div class="vl" style="background-image:url(${texture})"></div></div>
-      <div class="sl" style="--img:url(${texture})"><i class="colbg" style="background-image:url(${p.img[0][0]})"></i><i class="paper"></i><span class="sl-k">JNPR® Club${p.track ? ' · ' + p.track : ''}</span><div class="art"><img class="duo" src="${p.cover||dir+'cover-duo.webp'}" alt="${p.name}" loading="lazy"><img class="col" src="${p.img[0][0]}" alt="" loading="lazy"></div><span class="sl-n">${p.name}</span></div><button type="button" class="project-open" aria-label="View ${p.name} project">View project</button></div>
+      <div class="sl" style="--img:url(${texture})"><i class="colbg" style="background-image:url(${p.img[0][0]})"></i><i class="paper"></i><span class="sl-k">JNPR® Club</span><div class="art"><img class="duo" src="${p.cover||dir+'cover-duo.webp'}" alt="${p.name}" loading="lazy"><img class="col" src="${p.img[0][0]}" alt="" loading="lazy"></div><span class="sl-n">${p.name}</span></div><button type="button" class="project-open" aria-label="View ${p.name} project">View project</button></div>
       <span class="gn">${p.genres.join(' · ')}</span>`;
     d.querySelector('.project-open').onclick = e => { e.stopPropagation(); if (!recordDragged) openCase(k); }; grid.append(d); });
   document.querySelectorAll('.chips button').forEach(b => b.onclick = () => { document.querySelectorAll('.chips button').forEach(x => x.classList.toggle('on', x === b));
