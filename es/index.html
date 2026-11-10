@@ -1985,7 +1985,6 @@ html, body, a, button { touch-action: manipulation; }</style>
 @media (max-width: 760px) {
   .club-eyebrow { white-space: normal !important; text-wrap: balance !important; font-size: 12px !important; padding-inline: 20px; }
   .service-copy p.k, ol#tracks small.play, .b-fine span { font-size: 11px !important; }
-  .chromecta.cta-busy { opacity: 0 !important; pointer-events: none !important; }
   .mbtn:not(#mclose) { order: 99; font-size: 0 !important; letter-spacing: 0 !important; width: 38px; padding: 0 !important; justify-content: center; border-radius: 50% !important;
     background: linear-gradient(currentColor,currentColor) center calc(50% - 5px) / 16px 1.5px no-repeat, linear-gradient(currentColor,currentColor) center / 16px 1.5px no-repeat, linear-gradient(currentColor,currentColor) center calc(50% + 5px) / 16px 1.5px no-repeat; }
   #services .wkeys .wk { font-size: 10.5px !important; line-height: 1 !important; padding: 0 12px !important; letter-spacing: 0 !important; }
@@ -2001,6 +2000,7 @@ html[data-side="B"] .hero-cta .hc-a { color: #9B7EEA; }
 .gn .gn-name { display: block; font-family: 'MW', system-ui, sans-serif; text-transform: uppercase; font-size: 20px; letter-spacing: .02em; font-weight: 400; margin-bottom: 4px; color: #FCFCFC; }
 .work .fnav { margin-top: 34px; }
 #project-gallery { scroll-margin-top: 150px; }
+.chromecta.cta-busy { opacity: 0 !important; pointer-events: none !important; }
 .chromecta { right: clamp(24px, 3vw, 48px) !important; bottom: calc(clamp(24px, 4vh, 44px) + env(safe-area-inset-bottom, 0px)) !important; }
 @media (max-width: 760px) { .gn .gn-name { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } }
 .fgrid { display: flex; justify-content: center; margin: 22px 0 0; }
@@ -2720,7 +2720,7 @@ html[data-side="B"] .hero-cta .hc-a { color: #9B7EEA; }
 })();
 </script>
 <script>/* 10/11/2026 · phones: floating Hire me steps aside while a row of buttons is on screen */
-(()=>{const c=document.querySelector('.chromecta');const rows=[...document.querySelectorAll('#services .wkeys, #glist')];if(!c||!rows.length||!('IntersectionObserver' in window))return;const on=new Set();
+(()=>{const c=document.querySelector('.chromecta');const rows=[...document.querySelectorAll('#services .wkeys, #glist, .hero-cta')];if(!c||!rows.length||!('IntersectionObserver' in window))return;const on=new Set();
 const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?on.add(e.target):on.delete(e.target));c.classList.toggle('cta-busy',on.size>0);});rows.forEach(r=>io.observe(r));
 })();</script>
 <script src="analytics.js" defer></script>
