@@ -1,20 +1,23 @@
 /* Google Analytics 4 with a cookie notice (Spain: analytics cookies need consent).
    Nothing loads until the visitor accepts. Paste the Measurement ID below to switch it on. */
 (() => {
-  const GA_ID = ''; // e.g. 'G-XXXXXXXXXX'
-  if (!GA_ID) return;
+  const GTM_ID = 'GTM-M5ZQJSB9'; // Google Tag Manager container (GA4 tag lives inside it)
+  const GA_ID = ''; // optional: direct GA4 'G-XXXXXXXXXX' if not using Tag Manager
+  if (!GTM_ID && !GA_ID) return;
   const KEY = 'jnpr-consent', es = (document.documentElement.lang || '').startsWith('es');
   let on = false;
   const load = () => {
     if (on) return; on = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { dataLayer.push(arguments); };
+    gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     gtag('js', new Date());
-    gtag('config', GA_ID, { anonymize_ip: true });
     const s = document.createElement('script'); s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID; document.head.appendChild(s);
+    if (GTM_ID) { dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' }); s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID; }
+    else { gtag('config', GA_ID); s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID; }
+    document.head.appendChild(s);
   };
-  const track = (name, params) => { if (on && window.gtag) gtag('event', name, params || {}); };
+  const track = (name, params) => { if (!on) return; if (GTM_ID) dataLayer.push(Object.assign({ event: name }, params || {})); else if (window.gtag) gtag('event', name, params || {}); };
   window.jnprTrack = track;
 
   // Clicks worth knowing about
