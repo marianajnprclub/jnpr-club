@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your website, finally yours · Website migration in Madrid | JNPR® Labs</title>
+<meta name="description" content="Paying Wix or Squarespace every month? I copy your site as it is, put it in your name and you edit it yourself. No monthly fees. From €490, one-off payment. JNPR® Labs, Madrid.">
+<link rel="canonical" href="https://jnpr-club.com/websites/">
+<link rel="alternate" hreflang="es" href="https://jnpr-club.com/webs/">
+<link rel="alternate" hreflang="en" href="https://jnpr-club.com/websites/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jnpr-club.com/websites/">
+<meta property="og:title" content="The site you know, now it’s yours · JNPR® Labs">
+<meta property="og:description" content="I copy your site, put it in your name and you edit it yourself. No monthly fees. From €490.">
+<meta property="og:image" content="https://jnpr-club.com/mail/labs-webs/01_cabecera.png">
+<meta name="theme-color" content="#F12009">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Wix and Squarespace website migration","serviceType":"Web design and migration","provider":{"@id":"https://jnpr-club.com/#studio"},"areaServed":"ES","offers":[{"@type":"Offer","name":"Your own site","price":"490","priceCurrency":"EUR"},{"@type":"Offer","name":"With bookings","price":"690","priceCurrency":"EUR"},{"@type":"Offer","name":"With a shop","price":"890","priceCurrency":"EUR"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I lose my domain?","acceptedAnswer":{"@type":"Answer","text":"No. Your domain stays yours and I connect it to your new site."}},{"@type":"Question","name":"Do I need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"No. You get your own JNPR Labs panel to change text, photos and prices, and you preview everything before it goes live."}},{"@type":"Question","name":"Do I keep paying a monthly fee?","acceptedAnswer":{"@type":"Answer","text":"No. It’s a one-off payment and hosting is free. You only pay for your domain, just like now."}}]}]}</script>
+<style>
+@font-face { font-family: 'MW'; src: url('../fonts/PPMonumentWide-Regular.otf'); font-display: swap; }
+@font-face { font-family: 'MN'; src: url('../fonts/PPMonumentNormal-Regular.otf'); font-display: swap; }
+:root { --red: #F12009; --w: #FCFCFC; --blue: #7ECAE4; --ink: #1F1140; --pad: clamp(20px, 6vw, 96px); }
+* { box-sizing: border-box; }
+html { background: var(--red); }
+body { margin: 0; background: var(--w); color: var(--ink); font-family: 'MN', system-ui, sans-serif; font-size: clamp(16px, 1.15vw, 19px); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.k { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; color: var(--red); margin: 0 0 clamp(20px, 3vw, 36px); }
+.paper { background: var(--red) url(../img/papel-rojo.webp) center / 627px; color: var(--w); }
+/* Hero */
+.hero { min-height: 100svh; padding: 28px var(--pad) clamp(40px, 8vh, 90px); display: grid; grid-template-rows: auto 1fr; gap: clamp(30px, 6vh, 70px); }
+.hero-grid { align-self: center; }
+.top { display: flex; justify-content: space-between; align-items: center; }
+.top img { height: clamp(26px, 2.6vw, 38px); width: auto; display: block; }
+.pill { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; border: 1.5px solid var(--w); border-radius: 99px; padding: 12px 20px; text-decoration: none; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.hero h1 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(40px, 5.6vw, 96px); line-height: .98; margin: 0 0 clamp(24px, 4vh, 44px); }
+.hero h1 .nw { white-space: nowrap; }
+.hero h1 img { width: auto; height: .82em; vertical-align: -.06em; margin-left: .08em; animation: spin 14s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.hero-txt p { margin: 0 0 clamp(24px, 4vh, 40px); max-width: 34ch; font-size: clamp(17px, 1.4vw, 21px); }
+.hero-txt p b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .04em; display: block; margin-bottom: 6px; }
+.hero-art { position: relative; aspect-ratio: 1 / .82; }
+.win { position: absolute; width: 74%; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px rgb(70 0 0 / .35), 0 0 0 1px rgb(255 255 255 / .4); padding-top: 22px; animation: float 7s ease-in-out infinite; }
+.win::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 22px; background: radial-gradient(circle at 14px 11px, #F12009 4px, transparent 4.5px), radial-gradient(circle at 28px 11px, #7ECAE4 4px, transparent 4.5px), radial-gradient(circle at 42px 11px, #d9d4e3 4px, transparent 4.5px), #f4f2f7; }
+.win img { display: block; width: 100%; height: auto; }
+.w1 { left: 0; top: 0; transform: rotate(-5deg); }
+.w2 { right: 0; top: 18%; transform: rotate(4deg); animation-delay: -2.3s; }
+.w3 { left: 12%; bottom: 0; transform: rotate(-1.5deg); animation-delay: -4.6s; }
+@keyframes float { 50% { translate: 0 -10px; } }
+.cta { display: inline-grid; place-items: center; background: url(../img/ast/pill-silver.webp) center / contain no-repeat; aspect-ratio: 1719 / 385; height: 64px; font-family: 'MW'; text-transform: uppercase; letter-spacing: .16em; font-size: 13px; color: #1b1b1b; text-decoration: none; filter: drop-shadow(0 10px 16px rgb(40 0 0 / .35)); text-shadow: 0 1px 0 rgb(255 255 255 / .55); transition: transform .2s; }
+.cta:hover { transform: translateY(-2px); } .cta:active { transform: translateY(1px); }
+section { padding: clamp(48px, 7vh, 90px) var(--pad); }
+#precio { padding-top: 0; }
+h2 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(28px, 4vw, 60px); line-height: 1.02; margin: 0 0 clamp(32px, 5vw, 64px); max-width: 20ch; }
+/* Steps */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 22px); }
+.step { position: relative; background: #FCFCFC; border-radius: 26px; padding: clamp(24px, 2.2vw, 36px); box-shadow: 0 30px 60px -30px rgb(31 17 64 / .35), 0 6px 18px rgb(31 17 64 / .06); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+.step:hover { transform: translateY(-6px); box-shadow: 0 44px 72px -32px rgb(31 17 64 / .42), 0 6px 18px rgb(31 17 64 / .06); }
+.step .top2 { display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(28px, 3vw, 44px); }
+.step i { font-style: normal; font-family: 'MW'; font-size: clamp(44px, 4vw, 64px); line-height: 1; color: var(--red); }
+.step .top2 img { width: 46px; height: auto; filter: drop-shadow(0 6px 8px rgb(0 0 0 / .22)); }
+.step b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .06em; font-size: 15px; display: block; margin-bottom: 10px; color: var(--red); }
+.step p { margin: 0; color: #4b4560; }
+/* Price */
+.plans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 22px); align-items: stretch; }
+.plan { position: relative; display: flex; flex-direction: column; background: #fff; border-radius: 26px; padding: clamp(24px, 2.2vw, 36px); box-shadow: 0 30px 60px -30px rgb(31 17 64 / .35), 0 6px 18px rgb(31 17 64 / .06); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+.plan:hover { transform: translateY(-6px); box-shadow: 0 44px 72px -32px rgb(31 17 64 / .42), 0 6px 18px rgb(31 17 64 / .06); }
+.plan .code { font-family: 'MW'; letter-spacing: .14em; font-size: 12px; color: var(--red); margin: 0 0 18px; }
+.plan h3 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .04em; font-size: clamp(15px, 1.2vw, 18px); margin: 0 0 22px; color: var(--red); }
+.plan.hot h3 { color: var(--w); }
+.plan .amt { font-family: 'MW'; font-size: clamp(40px, 3.6vw, 60px); line-height: 1; margin: 0; color: var(--red); white-space: nowrap; }
+.plan .amt small { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 8px; color: inherit; opacity: .8; }
+.plan .once { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 10px; margin: 10px 0 24px; color: #6b6480; }
+.plan ul { list-style: none; margin: 0 0 28px; padding: 18px 0 0; border-top: 1px solid rgb(31 17 64 / .1); display: grid; gap: 10px; flex: 1; align-content: start; }
+.plan li { padding-left: 22px; position: relative; color: #4b4560; font-size: .95em; }
+.plan li::before { content: '✱'; position: absolute; left: 0; color: var(--red); font-size: .9em; }
+.plan .go { align-self: start; font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 11px; text-decoration: none; color: var(--w); background: var(--red); border-radius: 99px; padding: 13px 22px; box-shadow: 0 8px 16px -8px rgb(241 32 9 / .6); transition: transform .2s; }
+.plan .go:hover { transform: translateY(-2px); }
+.plan.hot { background: var(--red) url(../img/papel-rojo.webp) center / 627px; color: var(--w); box-shadow: inset 0 1px 0 rgb(255 255 255 / .25), 0 34px 56px -24px rgb(160 20 0 / .6), 0 3px 8px rgb(160 20 0 / .15); }
+.plan.hot .code, .plan.hot .amt { color: var(--w); }
+.plan.hot .once, .plan.hot li { color: rgb(252 252 252 / .85); }
+.plan.hot li::before { color: var(--w); }
+.plan.hot ul { border-top-color: rgb(252 252 252 / .3); }
+.plan.hot .go { background: var(--w); color: var(--red); box-shadow: 0 8px 16px -8px rgb(80 0 0 / .5); }
+.note { margin: 28px 0 0; color: #4b4560; font-size: .95em; }
+/* Work */
+.work { background: var(--red) url(../img/papel-rojo.webp) center / 627px; color: var(--w); }
+.work .k { color: var(--w); }
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 24px); }
+.shot { margin: 0; text-decoration: none; }
+.shot img { width: 100%; height: auto; border-radius: 14px; display: block; box-shadow: 0 20px 40px rgb(80 0 0 / .3); transition: transform .3s; }
+.shot:hover img { transform: translateY(-4px); }
+.shot figcaption { font-family: 'MW'; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; margin-top: 14px; }
+/* FAQ */
+.faq { max-width: 900px; }
+.faq details { border-top: 1px solid rgb(31 17 64 / .15); padding: 22px 0; }
+.faq details:last-child { border-bottom: 1px solid rgb(31 17 64 / .15); }
+.faq summary { font-family: 'MW'; text-transform: uppercase; letter-spacing: .04em; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--red); font-size: 1.4em; line-height: .8; transition: transform .25s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq p { margin: 14px 0 0; max-width: 60ch; color: #4b4560; }
+/* End */
+.end { text-align: center; padding-top: clamp(64px, 10vh, 120px); padding-bottom: clamp(64px, 10vh, 120px); }
+.end h2 { margin-left: auto; margin-right: auto; max-width: 16ch; }
+.end p { margin: -20px auto 40px; max-width: 40ch; }
+footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 22px var(--pad) calc(22px + env(safe-area-inset-bottom)); font-family: 'MW'; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; border-top: 1px solid rgb(252 252 252 / .3); }
+footer a { text-decoration: none; }
+@media (max-width: 960px) { .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero-grid { grid-template-columns: minmax(0, 1fr); } .hero-art { max-width: 640px; width: 100%; margin: 0 auto; } .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .price { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) {
+  .steps, .shots, .plans { grid-template-columns: minmax(0, 1fr); }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); } .hero-art { width: 92%; margin: 10px auto 0; }
+  .cta { height: 58px; }
+}
+@media (prefers-reduced-motion: reduce) { .hero h1 img, .win { animation: none; } }
+</style>
+</head>
+<body>
+<header class="hero paper">
+  <div class="top"><a href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><a class="pill" href="../#labs">✱ Labs</a></div>
+  <div class="hero-grid">
+    <div class="hero-txt">
+      <h1>The site you know, now it’s <span class="nw">yours<img src="../img/ast/chrome.webp" alt="" width="341" height="360"></span></h1>
+      <p><b>Paying Wix or Squarespace every month?</b>I copy your site as it is, put it in your name and you edit it yourself. No monthly fees.</p>
+      <a class="cta" href="../?hire=web">Get my website</a>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="win w1"><img src="../img/p/td7portfolio/01.webp" alt=""></div>
+      <div class="win w2"><img src="../img/p/pia/live-d1.webp" alt=""></div>
+      <div class="win w3"><img src="../img/p/jnpr/live-d1.webp" alt=""></div>
+    </div>
+  </div>
+</header>
+
+<section id="como">
+  <p class="k">How it works</p>
+  <h2>Four steps and it’s yours</h2>
+  <div class="steps">
+    <div class="step"><div class="top2"><i>01</i><img src="../img/ast/chrome.webp" alt="" width="341" height="360"></div><b>I copy your site</b><p>Your words, photos and style, rebuilt in clean code and faster. Want to improve it? We can.</p></div>
+    <div class="step"><div class="top2"><i>02</i><img src="../img/ast/chrome.webp" alt="" width="341" height="360"></div><b>I put it in your name</b><p>Your domain, free hosting and everything in your own account. No one can take it away.</p></div>
+    <div class="step"><div class="top2"><i>03</i><img src="../img/ast/chrome.webp" alt="" width="341" height="360"></div><b>You edit it yourself</b><p>Your JNPR Labs panel: change text, photos and prices, and preview it before it goes live.</p></div>
+    <div class="step"><div class="top2"><i>04</i><img src="../img/ast/chrome.webp" alt="" width="341" height="360"></div><b>Ready to go</b><p>Domain connected, SEO, training and a guide, so you don’t depend on anyone.</p></div>
+  </div>
+</section>
+
+<section id="precio">
+  <p class="k">Pricing</p>
+  <h2>Pay once and it’s yours</h2>
+  <div class="plans">
+    <article class="plan hot">
+      <h3>Your own site</h3>
+      <p class="amt">€490</p><p class="once">One-off payment</p>
+      <ul><li>Your current site, copied as it is</li><li>Up to 5 pages</li><li>A panel to edit it yourself</li><li>Domain connected and SEO</li></ul>
+      <a class="go" href="../?hire=web">I want it</a>
+    </article>
+    <article class="plan">
+      <h3>With bookings</h3>
+      <p class="amt">€690</p><p class="once">One-off payment</p>
+      <ul><li>Everything in Your own site</li><li>Online appointments and bookings</li></ul>
+      <a class="go" href="../?hire=web">I want it</a>
+    </article>
+    <article class="plan">
+      <h3>With a shop</h3>
+      <p class="amt">€890</p><p class="once">One-off payment</p>
+      <ul><li>Everything in Your own site</li><li>Sell online</li><li>Only a small fee per sale</li></ul>
+      <a class="go" href="../?hire=web">I want it</a>
+    </article>
+    <article class="plan">
+      <h3>New website</h3>
+      <p class="amt"><small>from</small>€1,200</p><p class="once">One-off payment</p>
+      <ul><li>Designed from scratch</li><li>Branding</li><li>Multiple languages</li></ul>
+      <a class="go" href="../?hire=web">Let’s talk</a>
+    </article>
+  </div>
+  <p class="note">Optional maintenance and tailored extras: I’ll walk you through them in the proposal.</p>
+</section>
+
+<section class="work" id="trabajo">
+  <p class="k">See what I’ve built</p>
+  <h2>Websites that already belong to their owners</h2>
+  <div class="shots">
+    <a class="shot" href="https://jnpr-club.com/"><figure style="margin:0"><img src="../img/p/jnpr/live-d1.webp" alt="JNPR® Club website" loading="lazy"><figcaption>JNPR® Club · this site</figcaption></figure></a>
+    <a class="shot" href="https://www.piamiriamcolour.com/" target="_blank" rel="noopener"><figure style="margin:0"><img src="../img/p/pia/live-d1.webp" alt="Colours by Pia Miriam website" loading="lazy"><figcaption>Colours by Pia Miriam ↗</figcaption></figure></a>
+    <a class="shot" href="https://projects.thedigital7.com/" target="_blank" rel="noopener"><figure style="margin:0"><img src="../img/p/td7portfolio/01.webp" alt="The Digital 7 portfolio" loading="lazy"><figcaption>TD7 portfolio ↗</figcaption></figure></a>
+  </div>
+</section>
+
+<section id="preguntas">
+  <p class="k">Questions</p>
+  <div class="faq">
+    <details open><summary>Do I lose my domain?</summary><p>No. Your domain stays yours and I connect it to your new site.</p></details>
+    <details><summary>Do I need to know how to code?</summary><p>No. You get your own JNPR Labs panel to change text, photos and prices, and you preview everything before it goes live.</p></details>
+    <details><summary>Do I keep paying a monthly fee?</summary><p>No. It’s a one-off payment and hosting is free. You only pay for your domain, just like now.</p></details>
+    <details><summary>Who’s behind it?</summary><p>Mariana Ortega, a Madrid-based creative director with over 10 years building brands like Real Madrid, Miravia and Pocoyo. You work directly with her, from start to finish.</p></details>
+  </div>
+</section>
+
+<section class="end paper">
+  <h2>Stop paying for your own website</h2>
+  <p>Send me your site and I’ll show you how it would look.</p>
+  <a class="cta" href="../?hire=web">Get my website</a>
+</section>
+<footer class="paper"><a href="../">JNPR® Club</a><span>© 2026 JNPR® Labs · Madrid</span></footer>
+<script src="../analytics.js" defer></script>
+<script>/* clean address: in-page links still scroll, but the #section never stays in the URL */
+(()=>{const strip=()=>{if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);};
+addEventListener('hashchange',()=>setTimeout(strip,0));addEventListener('load',()=>setTimeout(strip,900));})();</script>
+</body>
+</html>
