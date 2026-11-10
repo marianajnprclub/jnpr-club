@@ -27,17 +27,31 @@ a { color: inherit; }
 .k { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; color: var(--red); margin: 0 0 clamp(20px, 3vw, 36px); }
 .paper { background: var(--red) url(../img/papel-rojo.webp) center / 627px; color: var(--w); }
 /* Hero */
-.hero { min-height: 100svh; padding: 28px var(--pad) clamp(40px, 8vh, 90px); display: grid; grid-template-rows: auto 1fr auto; }
+.hero { min-height: 100svh; padding: 28px var(--pad) clamp(40px, 8vh, 90px); display: grid; grid-template-rows: auto 1fr; gap: clamp(30px, 6vh, 70px); }
+.hero-grid { align-self: center; }
 .top { display: flex; justify-content: space-between; align-items: center; }
 .top img { height: clamp(26px, 2.6vw, 38px); width: auto; display: block; }
 .pill { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; border: 1.5px solid var(--w); border-radius: 99px; padding: 12px 20px; text-decoration: none; }
-.hero h1 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(40px, 8.4vw, 136px); line-height: .98; margin: clamp(40px, 10vh, 120px) 0 0; align-self: center; max-width: 13ch; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.hero h1 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(40px, 5.6vw, 96px); line-height: .98; margin: 0 0 clamp(24px, 4vh, 44px); }
 .hero h1 .nw { white-space: nowrap; }
 .hero h1 img { width: auto; height: .82em; vertical-align: -.06em; margin-left: .08em; animation: spin 14s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.hero-b { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: end; justify-content: space-between; }
-.hero-b p { margin: 0; max-width: 36ch; font-size: clamp(17px, 1.5vw, 22px); }
-.hero-b p b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .04em; display: block; margin-bottom: 6px; }
+.hero-txt p { margin: 0 0 clamp(24px, 4vh, 40px); max-width: 34ch; font-size: clamp(17px, 1.4vw, 21px); }
+.hero-txt p b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .04em; display: block; margin-bottom: 6px; }
+.hero-art { position: relative; aspect-ratio: 1 / .82; }
+.win { position: absolute; width: 74%; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px rgb(70 0 0 / .35), 0 0 0 1px rgb(255 255 255 / .4); padding-top: 22px; animation: float 7s ease-in-out infinite; }
+.win::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 22px; background: radial-gradient(circle at 14px 11px, #F12009 4px, transparent 4.5px), radial-gradient(circle at 28px 11px, #7ECAE4 4px, transparent 4.5px), radial-gradient(circle at 42px 11px, #d9d4e3 4px, transparent 4.5px), #f4f2f7; }
+.win img { display: block; width: 100%; height: auto; }
+.w1 { left: 0; top: 0; transform: rotate(-5deg); }
+.w2 { right: 0; top: 18%; transform: rotate(4deg); animation-delay: -2.3s; }
+.w3 { left: 12%; bottom: 0; transform: rotate(-1.5deg); animation-delay: -4.6s; }
+@keyframes float { 50% { translate: 0 -10px; } }
+.seal { position: absolute; right: -2%; bottom: -4%; width: clamp(120px, 12vw, 180px); aspect-ratio: 1; z-index: 2; }
+.seal svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 18s linear infinite; }
+.seal text { font-family: 'MW'; font-size: 15.5px; letter-spacing: .12em; fill: #FCFCFC; }
+.seal img { position: absolute; inset: 27%; width: 46%; height: auto; }
+.seal::before { content: ''; position: absolute; inset: 6%; border-radius: 50%; background: #1F1140; }
 .cta { display: inline-grid; place-items: center; background: url(../img/ast/pill-silver.webp) center / contain no-repeat; aspect-ratio: 1719 / 385; height: 64px; font-family: 'MW'; text-transform: uppercase; letter-spacing: .16em; font-size: 13px; color: #1b1b1b; text-decoration: none; filter: drop-shadow(0 10px 16px rgb(40 0 0 / .35)); text-shadow: 0 1px 0 rgb(255 255 255 / .55); transition: transform .2s; }
 .cta:hover { transform: translateY(-2px); } .cta:active { transform: translateY(1px); }
 section { padding: clamp(70px, 11vh, 140px) var(--pad); }
@@ -68,7 +82,7 @@ h2 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: 
 .work .k { color: var(--w); }
 .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 24px); }
 .shot { margin: 0; text-decoration: none; }
-.shot img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 14px; display: block; box-shadow: 0 20px 40px rgb(80 0 0 / .3); transition: transform .3s; }
+.shot img { width: 100%; height: auto; border-radius: 14px; display: block; box-shadow: 0 20px 40px rgb(80 0 0 / .3); transition: transform .3s; }
 .shot:hover img { transform: translateY(-4px); }
 .shot figcaption { font-family: 'MW'; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; margin-top: 14px; }
 /* FAQ */
@@ -86,25 +100,33 @@ h2 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: 
 .end p { margin: -20px auto 40px; max-width: 40ch; }
 footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 22px var(--pad) calc(22px + env(safe-area-inset-bottom)); font-family: 'MW'; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; border-top: 1px solid rgb(252 252 252 / .3); }
 footer a { text-decoration: none; }
-@media (max-width: 960px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .price { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 960px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } .hero-art { max-width: 640px; width: 100%; margin: 0 auto; } .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .price { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 600px) {
   .steps, .shots { grid-template-columns: minmax(0, 1fr); }
   .step { min-height: 0; } .step i { margin-bottom: 28px; }
-  .hero-b { flex-direction: column; align-items: start; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); } .hero-art { width: 92%; margin: 10px auto 0; }
   .cta { height: 58px; }
   .ticket small { font-size: 8px; letter-spacing: .08em; white-space: nowrap; }
   .ticket .stub { font-size: 7.5px; letter-spacing: .06em; }
 }
-@media (prefers-reduced-motion: reduce) { .hero h1 img { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hero h1 img, .win, .seal svg { animation: none; } }
 </style>
 </head>
 <body>
 <header class="hero paper">
   <div class="top"><a href="../" aria-label="JNPR® Club, inicio"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><a class="pill" href="../#labs">✱ Labs</a></div>
-  <h1>Tu web de siempre, ahora es <span class="nw">tuya<img src="../img/ast/chrome.webp" alt="" width="341" height="360"></span></h1>
-  <div class="hero-b">
-    <p><b>¿Pagas Wix o Squarespace cada mes?</b>Copio tu web tal cual, la pongo a tu nombre y la editas tú. Sin cuotas.</p>
-    <a class="cta" href="../?hire=web">Quiero mi web</a>
+  <div class="hero-grid">
+    <div class="hero-txt">
+      <h1>Tu web de siempre, ahora es <span class="nw">tuya<img src="../img/ast/chrome.webp" alt="" width="341" height="360"></span></h1>
+      <p><b>¿Pagas Wix o Squarespace cada mes?</b>Copio tu web tal cual, la pongo a tu nombre y la editas tú. Sin cuotas.</p>
+      <a class="cta" href="../?hire=web">Quiero mi web</a>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="win w1"><img src="../img/p/td7portfolio/01.webp" alt=""></div>
+      <div class="win w2"><img src="../img/p/pia/live-d1.webp" alt=""></div>
+      <div class="win w3"><img src="../img/p/jnpr/live-d1.webp" alt=""></div>
+      <div class="seal"><svg viewBox="0 0 200 200"><defs><path id="c" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#c">SIN CUOTAS ✱ TUYA PARA SIEMPRE ✱ DESDE 490 € ✱</textPath></text></svg><img src="../img/ast/chrome-blue.webp" alt=""></div>
+    </div>
   </div>
 </header>
 
@@ -141,9 +163,9 @@ footer a { text-decoration: none; }
   <p class="k">Mira lo que he hecho</p>
   <h2>Webs que ya son de sus dueños</h2>
   <div class="shots">
+    <a class="shot" href="https://jnpr-club.com/"><figure style="margin:0"><img src="../img/p/jnpr/live-d1.webp" alt="Web de JNPR® Club" loading="lazy"><figcaption>JNPR® Club · esta web</figcaption></figure></a>
     <a class="shot" href="https://www.piamiriamcolour.com/" target="_blank" rel="noopener"><figure style="margin:0"><img src="../img/p/pia/live-d1.webp" alt="Web de Colours by Pia Miriam" loading="lazy"><figcaption>Colours by Pia Miriam ↗</figcaption></figure></a>
-    <a class="shot" href="../?open=vandido"><figure style="margin:0"><img src="../img/p/vandido/live-d1.webp" alt="Web de Vandido" loading="lazy"><figcaption>Vandido</figcaption></figure></a>
-    <a class="shot" href="../?open=fitz"><figure style="margin:0"><img src="../img/p/fitz/live-d1.webp" alt="Web de Fitz" loading="lazy"><figcaption>Fitz</figcaption></figure></a>
+    <a class="shot" href="https://projects.thedigital7.com/" target="_blank" rel="noopener"><figure style="margin:0"><img src="../img/p/td7portfolio/01.webp" alt="Portafolio de The Digital 7" loading="lazy"><figcaption>Portafolio TD7 ↗</figcaption></figure></a>
   </div>
 </section>
 
