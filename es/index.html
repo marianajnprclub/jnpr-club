@@ -1986,6 +1986,8 @@ html, body, a, button { touch-action: manipulation; }</style>
   .club-eyebrow { white-space: normal !important; text-wrap: balance !important; font-size: 12px !important; padding-inline: 20px; }
   .service-copy p.k, ol#tracks small.play, .b-fine span { font-size: 11px !important; }
   .chromecta.cta-busy { opacity: 0 !important; pointer-events: none !important; }
+  .mbtn:not(#mclose) { order: 99; font-size: 0 !important; letter-spacing: 0 !important; width: 38px; padding: 0 !important; justify-content: center; border-radius: 50% !important;
+    background: linear-gradient(currentColor,currentColor) center calc(50% - 5px) / 16px 1.5px no-repeat, linear-gradient(currentColor,currentColor) center / 16px 1.5px no-repeat, linear-gradient(currentColor,currentColor) center calc(50% + 5px) / 16px 1.5px no-repeat; }
   #services .wkeys .wk { font-size: 10.5px !important; line-height: 1 !important; padding: 0 12px !important; letter-spacing: 0 !important; }
 }
 </style>
@@ -2373,8 +2375,9 @@ html, body, a, button { touch-action: manipulation; }</style>
   const go = n => { const L = vis().length; fi2 = ((n % L) + L) % L; flow(); };
   document.getElementById('fprev').onclick = () => go(fi2 - 1); document.getElementById('fnext').onclick = () => go(fi2 + 1);
   fl2.querySelectorAll('.lp').forEach(l => {
-    l.onclick = e => { if (recordDragged) return; const i = vis().indexOf(l); if (i !== fi2) { e.stopPropagation(); go(i); } else if(l.classList.contains('hover-ready'))l.classList.add('view-ready'); };
-    l.addEventListener('keydown', e => { if (e.target.closest('button') || !['Enter',' '].includes(e.key)) return; e.preventDefault(); const i = vis().indexOf(l); if (i !== fi2) go(i); else if(l.classList.contains('hover-ready'))l.classList.add('view-ready'); });
+    /* 10/11/2026 · the centred record opens its project on the first tap (it used to need three) */
+    l.onclick = e => { if (recordDragged) return; const i = vis().indexOf(l); if (i !== fi2) { e.stopPropagation(); go(i); } else l.querySelector('.project-open')?.click(); };
+    l.addEventListener('keydown', e => { if (e.target.closest('button') || !['Enter',' '].includes(e.key)) return; e.preventDefault(); const i = vis().indexOf(l); if (i !== fi2) go(i); else l.querySelector('.project-open')?.click(); });
   });
   let wl = 0; fl2.addEventListener('wheel', e => { const dlt = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0; if (!dlt) return; e.preventDefault(); const t = performance.now(); if (t - wl < 380) return; wl = t; go(fi2 + Math.sign(dlt)); }, { passive: false });
   let sx = null; fl2.addEventListener('pointerdown', e => { sx = e.clientX; recordDragged = false; }); addEventListener('pointerup', e => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 50) { recordDragged = true; go(fi2 - Math.sign(dx)); } });

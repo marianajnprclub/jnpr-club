@@ -48,7 +48,7 @@
 .cookie-note button{all:unset;cursor:pointer;font-family:'MW',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:11px;padding:12px 18px;border-radius:99px;background:#F12009;color:#FCFCFC}
 .cookie-note button[data-c="no"]{background:#FCFCFC;color:#F12009;box-shadow:inset 0 0 0 1.5px #F12009}
 .cookie-note button:focus-visible{outline:2px solid #F12009;outline-offset:2px}
-@media (max-width:760px){.cookie-note{left:12px;right:12px;bottom:12px;max-width:none;border-radius:20px;padding:12px 14px;font-size:12.5px;line-height:1.35;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.cookie-note header{display:none}.cookie-note p{margin:0}.cookie-note div{gap:6px}.cookie-note button{padding:11px 12px;font-size:10px;letter-spacing:.1em}}`;
+@media (max-width:760px){.cookie-note{left:12px;right:12px;bottom:12px;max-width:none;border-radius:22px;padding:16px 18px;font-size:13px;line-height:1.45}.cookie-note header{display:none}.cookie-note p{margin:0 0 14px}.cookie-note div{gap:10px}.cookie-note button{flex:1;text-align:center;padding:12px 0}}`;
   document.head.appendChild(st); document.body.appendChild(b);
   b.addEventListener('click', e => {
     const c = e.target.closest('button'); if (!c) return;
