@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jnpr-club.com/sitemap.xml
