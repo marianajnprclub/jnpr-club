@@ -1990,13 +1990,7 @@ html, body, a, button { touch-action: manipulation; }</style>
   #services .wkeys .wk { font-size: 10.5px !important; line-height: 1 !important; padding: 0 12px !important; letter-spacing: 0 !important; }
 }
 </style>
-<style>/* 10/11/2026 · UX option B: two clear actions in the hero, project name under the record, shortcut to the grid */
-.hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0 6px; }
-.hero-cta a { font-family: 'MW', system-ui, sans-serif; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; padding: 14px 20px; border-radius: 99px; text-decoration: none; display: inline-flex; align-items: center; transition: filter .2s; }
-.hero-cta a:hover { filter: brightness(1.06); }
-.hero-cta .hc-a { background: #FCFCFC; color: #F12009; }
-.hero-cta .hc-b { box-shadow: inset 0 0 0 1px currentColor; color: #FCFCFC; }
-html[data-side="B"] .hero-cta .hc-a { color: #9B7EEA; }
+<style>/* 10/11/2026 · UX option B: project name under the record, shortcut to the grid */
 .gn .gn-name { display: block; font-family: 'MW', system-ui, sans-serif; text-transform: uppercase; font-size: 20px; letter-spacing: .02em; font-weight: 400; margin-bottom: 4px; color: #FCFCFC; }
 .work .fnav { margin-top: 34px; }
 #project-gallery { scroll-margin-top: 150px; }
@@ -2024,7 +2018,6 @@ html[data-side="B"] .hero-cta .hc-a { color: #9B7EEA; }
   <main>
     <h1 aria-label="Donde la creatividad se une a la (rebeldía)*"><span class="ln"><span>Donde la creatividad</span></span><span class="ln"><span>se une a la</span></span><span class="ln"><span><span class="rb">(<span class="w"><span class="lt" style="--k:0">r</span><span class="lt" style="--k:1">e</span><span class="lt" style="--k:2">b</span><span class="lt" style="--k:3">e</span><span class="lt" style="--k:4">l</span><span class="lt" style="--k:5">d</span><span class="lt" style="--k:6">í</span><span class="lt" style="--k:7">a</span></span>)</span><span class="st" aria-hidden="true"><img id="ast" src="img/ast/chrome.webp" alt=""></span></span></span></h1>
     <p class="hero-role">Mariana Ortega · Directora creativa, marca e IA</p>
-    <div class="hero-cta"><a class="hc-a" href="es/#contact">Contrátame</a><a class="hc-b" href="/webs/">Consigue tu web</a></div>
     <div class="hero-preview-slot"><div class="peek" id="peek" aria-hidden="true"><div class="win" id="win" style="background-image:url(img/col/pocoyo.webp);background-position:50% 46%;background-size:cover"></div></div></div>
     <div class="list">
     <div class="sides" role="tablist"><button type="button" role="tab" data-s="A" class="on">Marca</button><button type="button" role="tab" data-s="B">✱ Lab IA</button></div>
@@ -2690,7 +2683,7 @@ html[data-side="B"] .hero-cta .hc-a { color: #9B7EEA; }
     f.addEventListener('submit',async e=>{ e.preventDefault(); if(!ok()||f.botcheck.checked) return;
       const d={ Need:val('need'), When:val('when')||'-', Company:f.company.value.trim()||'-', Note:f.note.value.trim()||'-', Name:f.name.value.trim(), Email:f.email.value.trim() };
       send.textContent='Sending…'; try{ const r=await fetch('https://formsubmit.co/ajax/'+f.dataset.to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({_subject:'Working with you: '+d.Need,_replyto:d.Email,_template:'table',_captcha:'false',...d})}); const j=await r.json(); if(!(j.success===true||j.success==='true')) throw new Error(j.message||''); f.hidden=true; sh.querySelector('.done').hidden=false; }catch(err){ send.textContent='Send'; alert((err&&err.message)||('Something went wrong. Please write to '+f.dataset.to)); } });
-    document.querySelectorAll('a.chromecta, .contact-doors a.cta, .lead-cta a.cta:not(.lead-cv), .hero-cta .hc-a').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); open(a.classList.contains('door-b')?'Website':''); }));
+    document.querySelectorAll('a.chromecta, .contact-doors a.cta, .lead-cta a.cta:not(.lead-cv)').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); open(a.classList.contains('door-b')?'Website':''); }));
   } }
   /* Other sites always open in a new tab */
   document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="http"]'); if(a&&a.host!==location.host&&!a.target){ a.target='_blank'; a.rel='noopener'; } },true);
@@ -2720,7 +2713,7 @@ html[data-side="B"] .hero-cta .hc-a { color: #9B7EEA; }
 })();
 </script>
 <script>/* 10/11/2026 · phones: floating Hire me steps aside while a row of buttons is on screen */
-(()=>{const c=document.querySelector('.chromecta');const rows=[...document.querySelectorAll('#services .wkeys, #glist, .hero-cta')];if(!c||!rows.length||!('IntersectionObserver' in window))return;const on=new Set();
+(()=>{const c=document.querySelector('.chromecta');const rows=[...document.querySelectorAll('#services .wkeys, #glist')];if(!c||!rows.length||!('IntersectionObserver' in window))return;const on=new Set();
 const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?on.add(e.target):on.delete(e.target));c.classList.toggle('cta-busy',on.size>0);});rows.forEach(r=>io.observe(r));
 })();</script>
 <script src="analytics.js" defer></script>
