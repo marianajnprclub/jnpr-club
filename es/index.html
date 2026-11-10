@@ -1991,6 +1991,20 @@ html, body, a, button { touch-action: manipulation; }</style>
   #services .wkeys .wk { font-size: 10.5px !important; line-height: 1 !important; padding: 0 12px !important; letter-spacing: 0 !important; }
 }
 </style>
+<style>/* 10/11/2026 · UX option B: two clear actions in the hero, project name under the record, shortcut to the grid */
+.hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0 6px; }
+.hero-cta a { font-family: 'MW', system-ui, sans-serif; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; padding: 14px 20px; border-radius: 99px; text-decoration: none; display: inline-flex; align-items: center; transition: filter .2s; }
+.hero-cta a:hover { filter: brightness(1.06); }
+.hero-cta .hc-a { background: #FCFCFC; color: #F12009; }
+.hero-cta .hc-b { box-shadow: inset 0 0 0 1px currentColor; color: #FCFCFC; }
+html[data-side="B"] .hero-cta .hc-a { color: #9B7EEA; }
+.gn .gn-name { display: block; font-family: 'MW', system-ui, sans-serif; text-transform: uppercase; font-size: 20px; letter-spacing: .02em; font-weight: 400; margin-bottom: 4px; color: #FCFCFC; }
+.work .fnav { margin-top: 34px; }
+#project-gallery { scroll-margin-top: 150px; }
+@media (max-width: 760px) { .gn .gn-name { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } }
+.fgrid { display: flex; justify-content: center; margin: 22px 0 0; }
+.fgrid a { font-family: 'MW', system-ui, sans-serif; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; color: #FCFCFC; box-shadow: inset 0 0 0 1px #FCFCFC; border-radius: 99px; padding: 14px 22px; text-decoration: none; }
+</style>
 </head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
@@ -2009,6 +2023,7 @@ html, body, a, button { touch-action: manipulation; }</style>
   <main>
     <h1 aria-label="Donde la creatividad se une a la (rebeldía)*"><span class="ln"><span>Donde la creatividad</span></span><span class="ln"><span>se une a la</span></span><span class="ln"><span><span class="rb">(<span class="w"><span class="lt" style="--k:0">r</span><span class="lt" style="--k:1">e</span><span class="lt" style="--k:2">b</span><span class="lt" style="--k:3">e</span><span class="lt" style="--k:4">l</span><span class="lt" style="--k:5">d</span><span class="lt" style="--k:6">í</span><span class="lt" style="--k:7">a</span></span>)</span><span class="st" aria-hidden="true"><img id="ast" src="img/ast/chrome.webp" alt=""></span></span></span></h1>
     <p class="hero-role">Mariana Ortega · Directora creativa, marca e IA</p>
+    <div class="hero-cta"><a class="hc-a" href="es/#contact">Contrátame</a><a class="hc-b" href="/webs/">Consigue tu web</a></div>
     <div class="hero-preview-slot"><div class="peek" id="peek" aria-hidden="true"><div class="win" id="win" style="background-image:url(img/col/pocoyo.webp);background-position:50% 46%;background-size:cover"></div></div></div>
     <div class="list">
     <div class="sides" role="tablist"><button type="button" role="tab" data-s="A" class="on">Marca</button><button type="button" role="tab" data-s="B">✱ Lab IA</button></div>
@@ -2090,6 +2105,7 @@ html, body, a, button { touch-action: manipulation; }</style>
     <div class="chips" role="group" aria-label="Filter"><button class="on" data-g="all">Todos</button><button data-g="Marca">Marca</button><button data-g="Diseño web">Diseño web</button><button data-g="Campañas y redes">Campañas y redes</button><button data-g="Editorial y packaging">Editorial y packaging</button></div></div>
   <div class="grid flow entry-wait" id="grid"></div>
   <div class="fnav"><button type="button" id="fprev" aria-label="Disco anterior">←</button><span id="fcount">01 / 19</span><button type="button" id="fnext" aria-label="Disco siguiente">→</button></div>
+  <div class="fgrid"><a href="es/#project-gallery">Ver los 23 en cuadrícula ↓</a></div>
 </section>
 
 <section class="clients a-only" id="clients">
@@ -2331,7 +2347,7 @@ html, body, a, button { touch-action: manipulation; }</style>
     const dir = p.img[0][0].replace(/[^/]+$/, ''),texture=p.texture||`tex/${p.id}.webp`;
     d.innerHTML = `<div class="crate"><div class="vin"><div class="vl" style="background-image:url(${texture})"></div></div>
       <div class="sl" style="--img:url(${texture})"><i class="colbg" style="background-image:url(${p.img[0][0]})"></i><i class="paper"></i><span class="sl-k">JNPR® Club</span><div class="art"><img class="duo" src="${p.cover||dir+'cover-duo.webp'}" alt="${p.name}" loading="lazy"><img class="col" src="${p.img[0][0]}" alt="" loading="lazy"></div><span class="sl-n">${p.name}</span></div><button type="button" class="project-open" aria-label="View ${p.name} project">View project</button></div>
-      <span class="gn">${p.genres.join(' · ')}</span>`;
+      <span class="gn"><b class="gn-name">${p.name}</b>${p.genres.join(' · ')}</span>`;
     d.querySelector('.project-open').onclick = e => { e.stopPropagation(); if (!recordDragged) openCase(k); }; grid.append(d); });
   document.querySelectorAll('.chips button').forEach(b => b.onclick = () => { document.querySelectorAll('.chips button').forEach(x => x.classList.toggle('on', x === b));
     document.querySelectorAll('.lp').forEach(l => l.classList.toggle('hide', b.dataset.g !== 'all' && !l.dataset.g.split('|').includes(b.dataset.g))); });
@@ -2673,7 +2689,7 @@ html, body, a, button { touch-action: manipulation; }</style>
     f.addEventListener('submit',async e=>{ e.preventDefault(); if(!ok()||f.botcheck.checked) return;
       const d={ Need:val('need'), When:val('when')||'-', Company:f.company.value.trim()||'-', Note:f.note.value.trim()||'-', Name:f.name.value.trim(), Email:f.email.value.trim() };
       send.textContent='Sending…'; try{ const r=await fetch('https://formsubmit.co/ajax/'+f.dataset.to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({_subject:'Working with you: '+d.Need,_replyto:d.Email,_template:'table',_captcha:'false',...d})}); const j=await r.json(); if(!(j.success===true||j.success==='true')) throw new Error(j.message||''); f.hidden=true; sh.querySelector('.done').hidden=false; }catch(err){ send.textContent='Send'; alert((err&&err.message)||('Something went wrong. Please write to '+f.dataset.to)); } });
-    document.querySelectorAll('a.chromecta, .contact-doors a.cta, .lead-cta a.cta:not(.lead-cv)').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); open(a.classList.contains('door-b')?'Website':''); }));
+    document.querySelectorAll('a.chromecta, .contact-doors a.cta, .lead-cta a.cta:not(.lead-cv), .hero-cta .hc-a').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); open(a.classList.contains('door-b')?'Website':''); }));
   } }
   /* Other sites always open in a new tab */
   document.addEventListener('click',e=>{ const a=e.target.closest('a[href^="http"]'); if(a&&a.host!==location.host&&!a.target){ a.target='_blank'; a.rel='noopener'; } },true);
