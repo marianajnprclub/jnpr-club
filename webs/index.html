@@ -52,26 +52,38 @@ a { color: inherit; }
 section { padding: clamp(70px, 11vh, 140px) var(--pad); }
 h2 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: clamp(28px, 4vw, 60px); line-height: 1.02; margin: 0 0 clamp(32px, 5vw, 64px); max-width: 20ch; }
 /* Steps */
+#como { background: var(--blue); }
+#como .k { color: #0c2c45; } #como h2 { color: #0c2c45; }
 .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 22px); }
-.step { position: relative; background: var(--blue); border-radius: 28px; padding: clamp(24px, 2.4vw, 40px); padding-top: clamp(28px, 3vw, 44px); overflow: hidden; min-height: 300px; }
-.step::after { content: ''; position: absolute; top: -26px; right: -26px; width: 120px; height: 127px; background: url(../img/ast/chrome-blue.webp) center / contain no-repeat; }
-.step i { font-style: normal; font-family: 'MW'; font-size: clamp(52px, 5vw, 80px); line-height: 1; color: var(--w); display: block; margin-bottom: 40px; }
-.step b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .06em; font-size: 15px; display: block; margin-bottom: 10px; color: #0c1a2a; }
-.step p { margin: 0; color: #0c1a2a; }
+.step { position: relative; background: #FCFCFC; border-radius: 26px; padding: clamp(24px, 2.2vw, 36px); box-shadow: 0 30px 50px -28px rgb(12 44 69 / .55), 0 2px 6px rgb(12 44 69 / .08); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+.step:hover { transform: translateY(-6px); box-shadow: 0 42px 64px -30px rgb(12 44 69 / .6), 0 2px 6px rgb(12 44 69 / .08); }
+.step .top2 { display: flex; justify-content: space-between; align-items: center; margin-bottom: clamp(28px, 3vw, 44px); }
+.step i { font-style: normal; font-family: 'MW'; font-size: clamp(44px, 4vw, 64px); line-height: 1; color: var(--red); }
+.step .top2 img { width: 46px; height: auto; filter: drop-shadow(0 6px 8px rgb(12 44 69 / .3)); }
+.step b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .06em; font-size: 15px; display: block; margin-bottom: 10px; color: var(--ink); }
+.step p { margin: 0; color: #4b4560; }
 /* Price */
-.price { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
-.ticket { position: relative; aspect-ratio: 1842 / 598; background: url(../img/ticket.webp) center / 100% 100% no-repeat; color: var(--w); filter: drop-shadow(0 18px 24px rgb(120 10 0 / .22)); container-type: inline-size; }
-.ticket .main { position: absolute; left: 7%; top: 13%; bottom: 13%; width: 62%; display: flex; flex-direction: column; justify-content: space-between; }
-.ticket small { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: max(10px, 2.2cqi); }
-.ticket strong { font-family: 'MW'; font-weight: 400; font-size: 17cqi; line-height: .9; }
-.ticket .stub { position: absolute; right: 2%; top: 0; bottom: 0; width: 20%; display: grid; place-items: center; text-align: center; font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: max(10px, 2.2cqi); line-height: 1.7; }
-.plans { list-style: none; margin: 0; padding: 0; }
-.plans li { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; padding: 20px 0; border-top: 1px solid rgb(241 32 9 / .25); }
-.plans li:last-child { border-bottom: 1px solid rgb(241 32 9 / .25); }
-.plans b { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .04em; color: var(--red); }
-.plans em { font-style: normal; font-family: 'MW'; color: var(--red); font-size: clamp(20px, 2vw, 30px); line-height: 1; grid-row: span 2; align-self: center; }
-.plans span { color: #4b4560; font-size: .95em; }
-.note { margin: 24px 0 0; color: #4b4560; font-size: .95em; }
+.plans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 22px); align-items: stretch; }
+.plan { position: relative; display: flex; flex-direction: column; background: #fff; border-radius: 26px; padding: clamp(24px, 2.2vw, 36px); box-shadow: 0 0 0 1px rgb(241 32 9 / .14), 0 26px 46px -24px rgb(120 20 0 / .35), 0 2px 6px rgb(120 20 0 / .06); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+.plan:hover { transform: translateY(-6px); box-shadow: 0 0 0 1px rgb(241 32 9 / .2), 0 38px 60px -26px rgb(120 20 0 / .45), 0 2px 6px rgb(120 20 0 / .06); }
+.plan .code { font-family: 'MW'; letter-spacing: .14em; font-size: 12px; color: var(--red); margin: 0 0 18px; }
+.plan h3 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; letter-spacing: .04em; font-size: clamp(15px, 1.2vw, 18px); margin: 0 0 22px; }
+.plan .amt { font-family: 'MW'; font-size: clamp(40px, 3.6vw, 60px); line-height: 1; margin: 0; color: var(--red); white-space: nowrap; }
+.plan .amt small { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 8px; color: inherit; opacity: .8; }
+.plan .once { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 10px; margin: 10px 0 24px; color: #6b6480; }
+.plan ul { list-style: none; margin: 0 0 28px; padding: 18px 0 0; border-top: 1px solid rgb(31 17 64 / .1); display: grid; gap: 10px; flex: 1; align-content: start; }
+.plan li { padding-left: 22px; position: relative; color: #4b4560; font-size: .95em; }
+.plan li::before { content: '✱'; position: absolute; left: 0; color: var(--red); font-size: .9em; }
+.plan .go { align-self: start; font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 11px; text-decoration: none; color: var(--red); border: 1.5px solid currentColor; border-radius: 99px; padding: 12px 20px; transition: background .2s, color .2s; }
+.plan .go:hover { background: var(--red); color: var(--w); }
+.plan.hot { background: var(--red) url(../img/papel-rojo.webp) center / 627px; color: var(--w); box-shadow: inset 0 1px 0 rgb(255 255 255 / .25), 0 34px 56px -24px rgb(160 20 0 / .6), 0 3px 8px rgb(160 20 0 / .15); }
+.plan.hot .code, .plan.hot .amt, .plan.hot .go { color: var(--w); }
+.plan.hot .once, .plan.hot li { color: rgb(252 252 252 / .85); }
+.plan.hot li::before { color: var(--w); }
+.plan.hot ul { border-top-color: rgb(252 252 252 / .3); }
+.plan.hot .go { background: var(--w); color: var(--red); border-color: var(--w); }
+.plan.hot .go:hover { background: transparent; color: var(--w); }
+.note { margin: 28px 0 0; color: #4b4560; font-size: .95em; }
 /* Work */
 .work { background: var(--red) url(../img/papel-rojo.webp) center / 627px; color: var(--w); }
 .work .k { color: var(--w); }
@@ -95,14 +107,11 @@ h2 { font-family: 'MW'; font-weight: 400; text-transform: uppercase; font-size: 
 .end p { margin: -20px auto 40px; max-width: 40ch; }
 footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 22px var(--pad) calc(22px + env(safe-area-inset-bottom)); font-family: 'MW'; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; border-top: 1px solid rgb(252 252 252 / .3); }
 footer a { text-decoration: none; }
-@media (max-width: 960px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } .hero-art { max-width: 640px; width: 100%; margin: 0 auto; } .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .price { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 960px) { .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero-grid { grid-template-columns: minmax(0, 1fr); } .hero-art { max-width: 640px; width: 100%; margin: 0 auto; } .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .price { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 600px) {
-  .steps, .shots { grid-template-columns: minmax(0, 1fr); }
-  .step { min-height: 0; } .step i { margin-bottom: 28px; }
+  .steps, .shots, .plans { grid-template-columns: minmax(0, 1fr); }
   .hero-grid { grid-template-columns: minmax(0, 1fr); } .hero-art { width: 92%; margin: 10px auto 0; }
   .cta { height: 58px; }
-  .ticket small { font-size: 8px; letter-spacing: .08em; white-space: nowrap; }
-  .ticket .stub { font-size: 7.5px; letter-spacing: .06em; }
 }
 @media (prefers-reduced-motion: reduce) { .hero h1 img, .win, </style>
 </head>
@@ -127,29 +136,43 @@ footer a { text-decoration: none; }
   <p class="k">Cómo funciona</p>
   <h2>Cuatro pasos y es tuya</h2>
   <div class="steps">
-    <div class="step"><i>01</i><b>Copio tu web tal cual</b><p>Tus textos, fotos y estilo, en código propio y más rápida. Si quieres, la mejoramos.</p></div>
-    <div class="step"><i>02</i><b>La pongo a tu nombre</b><p>Tu dominio, alojamiento gratis y todo en tu cuenta. Nadie te la puede quitar.</p></div>
-    <div class="step"><i>03</i><b>La editas tú</b><p>Tu panel JNPR Labs: cambias textos, fotos y precios y ves cómo queda antes de publicar.</p></div>
-    <div class="step"><i>04</i><b>Te la dejo lista</b><p>Dominio conectado, SEO, formación y una guía para que no dependas de nadie.</p></div>
+    <div class="step"><div class="top2"><i>01</i><img src="../img/ast/chrome-blue.webp" alt="" width="341" height="360"></div><b>Copio tu web tal cual</b><p>Tus textos, fotos y estilo, en código propio y más rápida. Si quieres, la mejoramos.</p></div>
+    <div class="step"><div class="top2"><i>02</i><img src="../img/ast/chrome-blue.webp" alt="" width="341" height="360"></div><b>La pongo a tu nombre</b><p>Tu dominio, alojamiento gratis y todo en tu cuenta. Nadie te la puede quitar.</p></div>
+    <div class="step"><div class="top2"><i>03</i><img src="../img/ast/chrome-blue.webp" alt="" width="341" height="360"></div><b>La editas tú</b><p>Tu panel JNPR Labs: cambias textos, fotos y precios y ves cómo queda antes de publicar.</p></div>
+    <div class="step"><div class="top2"><i>04</i><img src="../img/ast/chrome-blue.webp" alt="" width="341" height="360"></div><b>Te la dejo lista</b><p>Dominio conectado, SEO, formación y una guía para que no dependas de nadie.</p></div>
   </div>
 </section>
 
-<section id="precio" style="padding-top:0">
+<section id="precio">
   <p class="k">Cuánto cuesta</p>
-  <div class="price">
-    <div class="ticket" role="img" aria-label="W1, tu web propia: 490 euros, pago único, hasta 5 páginas. Tuya para siempre.">
-      <div class="main"><small>W1 · Tu web propia</small><strong>490€</strong><small>Pago único · 5 páginas</small></div>
-      <div class="stub">Tuya<br>para<br>siempre</div>
-    </div>
-    <div>
-      <ul class="plans">
-        <li><b>W2 · Con reservas</b><em>690€</em><span>Citas y reservas online</span></li>
-        <li><b>W3 · Con tienda</b><em>890€</em><span>Vende online, solo comisión por venta</span></li>
-        <li><b>W4 · Web nueva</b><em>+1.200€</em><span>Diseño desde cero, marca e idiomas</span></li>
-      </ul>
-      <p class="note">Mantenimiento opcional y extras a tu medida: te lo cuento en la propuesta.</p>
-    </div>
+  <h2>Un pago y es tuya</h2>
+  <div class="plans">
+    <article class="plan hot">
+      <p class="code">W1</p><h3>Tu web propia</h3>
+      <p class="amt">490€</p><p class="once">Pago único</p>
+      <ul><li>Tu web actual, copiada tal cual</li><li>Hasta 5 páginas</li><li>Panel para editarla tú</li><li>Dominio conectado y SEO</li></ul>
+      <a class="go" href="../?hire=web">La quiero</a>
+    </article>
+    <article class="plan">
+      <p class="code">W2</p><h3>Con reservas</h3>
+      <p class="amt">690€</p><p class="once">Pago único</p>
+      <ul><li>Todo lo de W1</li><li>Citas y reservas online</li></ul>
+      <a class="go" href="../?hire=web">La quiero</a>
+    </article>
+    <article class="plan">
+      <p class="code">W3</p><h3>Con tienda</h3>
+      <p class="amt">890€</p><p class="once">Pago único</p>
+      <ul><li>Todo lo de W1</li><li>Vende online</li><li>Solo comisión por venta</li></ul>
+      <a class="go" href="../?hire=web">La quiero</a>
+    </article>
+    <article class="plan">
+      <p class="code">W4</p><h3>Web nueva</h3>
+      <p class="amt"><small>desde</small>1.200€</p><p class="once">Pago único</p>
+      <ul><li>Diseño desde cero</li><li>Marca</li><li>Idiomas</li></ul>
+      <a class="go" href="../?hire=web">Hablemos</a>
+    </article>
   </div>
+  <p class="note">Mantenimiento opcional y extras a tu medida: te lo cuento en la propuesta.</p>
 </section>
 
 <section class="work" id="trabajo">
