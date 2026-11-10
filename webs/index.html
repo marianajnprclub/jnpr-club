@@ -47,11 +47,6 @@ a { color: inherit; }
 .w2 { right: 0; top: 18%; transform: rotate(4deg); animation-delay: -2.3s; }
 .w3 { left: 12%; bottom: 0; transform: rotate(-1.5deg); animation-delay: -4.6s; }
 @keyframes float { 50% { translate: 0 -10px; } }
-.seal { position: absolute; right: -2%; bottom: -4%; width: clamp(120px, 12vw, 180px); aspect-ratio: 1; z-index: 2; }
-.seal svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 18s linear infinite; }
-.seal text { font-family: 'MW'; font-size: 15.5px; letter-spacing: .12em; fill: #FCFCFC; }
-.seal img { position: absolute; inset: 27%; width: 46%; height: auto; }
-.seal::before { content: ''; position: absolute; inset: 6%; border-radius: 50%; background: #1F1140; }
 .cta { display: inline-grid; place-items: center; background: url(../img/ast/pill-silver.webp) center / contain no-repeat; aspect-ratio: 1719 / 385; height: 64px; font-family: 'MW'; text-transform: uppercase; letter-spacing: .16em; font-size: 13px; color: #1b1b1b; text-decoration: none; filter: drop-shadow(0 10px 16px rgb(40 0 0 / .35)); text-shadow: 0 1px 0 rgb(255 255 255 / .55); transition: transform .2s; }
 .cta:hover { transform: translateY(-2px); } .cta:active { transform: translateY(1px); }
 section { padding: clamp(70px, 11vh, 140px) var(--pad); }
@@ -109,8 +104,7 @@ footer a { text-decoration: none; }
   .ticket small { font-size: 8px; letter-spacing: .08em; white-space: nowrap; }
   .ticket .stub { font-size: 7.5px; letter-spacing: .06em; }
 }
-@media (prefers-reduced-motion: reduce) { .hero h1 img, .win, .seal svg { animation: none; } }
-</style>
+@media (prefers-reduced-motion: reduce) { .hero h1 img, .win, </style>
 </head>
 <body>
 <header class="hero paper">
@@ -125,7 +119,6 @@ footer a { text-decoration: none; }
       <div class="win w1"><img src="../img/p/td7portfolio/01.webp" alt=""></div>
       <div class="win w2"><img src="../img/p/pia/live-d1.webp" alt=""></div>
       <div class="win w3"><img src="../img/p/jnpr/live-d1.webp" alt=""></div>
-      <div class="seal"><svg viewBox="0 0 200 200"><defs><path id="c" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#c">SIN CUOTAS ✱ TUYA PARA SIEMPRE ✱ DESDE 490 € ✱</textPath></text></svg><img src="../img/ast/chrome-blue.webp" alt=""></div>
     </div>
   </div>
 </header>
