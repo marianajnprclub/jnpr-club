@@ -116,6 +116,10 @@ footer a { text-decoration: none; }
   .cta { height: 58px; }
 }
 @media (prefers-reduced-motion: reduce) { .hero h1 img, .win { animation: none; } }</style>
+<style>/* 10/11/2026: no black box when tapping or clicking buttons (keyboard focus still visible) */
+a,button,summary,[role=tab]{-webkit-tap-highlight-color:transparent}
+a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:focus-visible),[role=tab]:focus:not(:focus-visible){outline:none!important}
+</style>
 </head>
 <body>
 <header class="hero paper">
