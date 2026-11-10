@@ -43,11 +43,11 @@
   b.innerHTML = `<p>${es ? 'Uso cookies de Google Analytics para saber qué se visita y mejorar la web. Solo si aceptas.' : 'I use Google Analytics cookies to see what gets visited and improve the site. Only if you accept.'}</p>
     <div><button type="button" data-c="no">${es ? 'Rechazar' : 'Decline'}</button><button type="button" data-c="yes">${es ? 'Aceptar' : 'Accept'}</button></div>`;
   const st = document.createElement('style');
-  st.textContent = `.cookie-note{position:fixed;left:16px;bottom:16px;z-index:9999;max-width:min(420px,calc(100vw - 32px));background:#FCFCFC;color:#1F1140;border-radius:22px;padding:18px 20px;box-shadow:0 30px 60px -30px rgb(31 17 64/.5),0 6px 18px rgb(31 17 64/.12);font:14px/1.45 'MN',system-ui,sans-serif}
+  st.textContent = `.cookie-note{position:fixed;left:16px;bottom:16px;z-index:9999;max-width:min(420px,calc(100vw - 32px));background:#FCFCFC;color:#222;border-radius:22px;padding:18px 20px;box-shadow:0 30px 60px -30px rgb(0 0 0/.35),0 6px 18px rgb(0 0 0/.08);font:14px/1.45 'MN',system-ui,sans-serif}
 .cookie-note p{margin:0 0 14px}.cookie-note div{display:flex;gap:10px}
 .cookie-note button{all:unset;cursor:pointer;font-family:'MW',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:11px;padding:12px 18px;border-radius:99px;background:#F12009;color:#FCFCFC}
-.cookie-note button[data-c="no"]{background:#1F1140}
-.cookie-note button:focus-visible{outline:2px solid #1F1140;outline-offset:2px}`;
+.cookie-note button[data-c="no"]{background:#FCFCFC;color:#F12009;box-shadow:inset 0 0 0 1.5px #F12009}
+.cookie-note button:focus-visible{outline:2px solid #F12009;outline-offset:2px}`;
   document.head.appendChild(st); document.body.appendChild(b);
   b.addEventListener('click', e => {
     const c = e.target.closest('button'); if (!c) return;
