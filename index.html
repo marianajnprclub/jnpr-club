@@ -1870,6 +1870,9 @@
   #tracks li > span:first-child, #ck { display: none !important; }
   #tracks li { grid-template-columns: minmax(0, 1fr) auto !important; }
 </style>
+<style>/* 10 Nov: page background red so the phone's top bar never turns blue; the blue stays only behind the record */
+body { background: var(--red); } .hero { background: var(--blue); }
+.crow .s { color: var(--blue) !important; }</style>
 </head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
@@ -2582,5 +2585,8 @@
 })();
 </script>
 <script src="analytics.js" defer></script>
+<script>/* clean address: in-page links still scroll, but the #section never stays in the URL */
+(()=>{const strip=()=>{if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);};
+addEventListener('hashchange',()=>setTimeout(strip,0));addEventListener('load',()=>setTimeout(strip,900));})();</script>
 </body>
 </html>

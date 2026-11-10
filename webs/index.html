@@ -201,5 +201,8 @@ footer a { text-decoration: none; }
 </section>
 <footer class="paper"><a href="../">JNPR® Club</a><span>© 2026 JNPR® Labs · Madrid</span></footer>
 <script src="../analytics.js" defer></script>
+<script>/* clean address: in-page links still scroll, but the #section never stays in the URL */
+(()=>{const strip=()=>{if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);};
+addEventListener('hashchange',()=>setTimeout(strip,0));addEventListener('load',()=>setTimeout(strip,900));})();</script>
 </body>
 </html>
