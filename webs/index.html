@@ -50,6 +50,7 @@ a { color: inherit; }
 .w3 { left: 12%; bottom: 0; transform: rotate(-1.5deg); animation-delay: -4.6s; }
 @keyframes float { 50% { translate: 0 -10px; } }
 .cta { display: inline-grid; place-items: center; background: url(../img/ast/pill-silver.webp) center / contain no-repeat; aspect-ratio: 1719 / 385; height: 64px; font-family: 'MW'; text-transform: uppercase; letter-spacing: .16em; font-size: 13px; color: #1b1b1b; text-decoration: none; filter: drop-shadow(0 10px 16px rgb(40 0 0 / .35)); text-shadow: 0 1px 0 rgb(255 255 255 / .55); transition: transform .2s; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; } .end .cta-row { justify-content: center; }
 .cta:hover { transform: translateY(-2px); } .cta:active { transform: translateY(1px); }
 section { padding: clamp(48px, 7vh, 90px) var(--pad); }
 #precio { padding-top: 0; }
@@ -123,7 +124,7 @@ footer a { text-decoration: none; }
     <div class="hero-txt">
       <h1>Tu web de siempre, ahora es <span class="nw">tuya<img src="../img/ast/chrome.webp" alt="" width="341" height="360"></span></h1>
       <p><b>¿Pagas Wix o Squarespace cada mes?</b>Copio tu web tal cual, la pongo a tu nombre y la editas tú. Sin cuotas.</p>
-      <a class="cta" href="../es/?hire=web">Quiero mi web</a>
+      <div class="cta-row"><a class="cta" href="../es/?hire=web">Quiero mi web</a><a class="cta" href="https://wa.me/34666246479" target="_blank" rel="noopener">Por WhatsApp</a></div>
     </div>
     <div class="hero-art" aria-hidden="true">
       <div class="win w1"><img src="../img/p/td7portfolio/01.webp" alt=""></div>
@@ -199,7 +200,7 @@ footer a { text-decoration: none; }
 <section class="end paper">
   <h2>Deja de pagar por tu propia web</h2>
   <p>Cuéntame cuál es tu web y te digo cómo quedaría.</p>
-  <a class="cta" href="../es/?hire=web">Quiero mi web</a>
+  <div class="cta-row"><a class="cta" href="../es/?hire=web">Quiero mi web</a><a class="cta" href="https://wa.me/34666246479" target="_blank" rel="noopener">Por WhatsApp</a></div>
 </section>
 <footer class="paper"><a href="../">JNPR® Club</a><span>© 2026 JNPR® Labs · Madrid</span></footer>
 <script src="../analytics.js" defer></script>

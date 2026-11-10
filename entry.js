@@ -1,16 +1,18 @@
 (() => {
   window.clubStarted=false;
+  // A tap, scroll or key ends the intro at once.
+  let skipped=false;const skip=new Promise(resolve=>{const go=()=>{skipped=true;resolve();};['pointerdown','touchmove','wheel','keydown'].forEach(t=>addEventListener(t,go,{once:true,passive:true}));});
   addEventListener('DOMContentLoaded',async()=>{
     const home=!location.hash||location.hash==='#top';if(home)window.scrollTo({top:0,behavior:'instant'});
     const root=document.documentElement,intro=document.getElementById('brand-intro'),mark=intro?.querySelector('.intro-brand'),cover=intro?.querySelector('.intro-cover');
     try{
       const urls=['img/jnpr-wordmark.svg','tex/pocoyo.webp','img/col/pocoyo.webp','img/ast/chrome.webp','img/walkman.webp','img/cassette.webp'];
-      // Tope de 1,5 s: con mala conexión la intro nunca se queda atascada; lo que falte aparece al cargar.
-      await Promise.race([Promise.all([document.fonts.ready,...urls.map(src=>{const im=new Image();im.src=src;return im.decode().catch(()=>{});})]),new Promise(resolve=>setTimeout(resolve,1500))]);
-      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      // Tope de 0,5 s: la intro nunca espera a la red; lo que falte aparece al cargar.
+      await Promise.race([Promise.all([document.fonts.ready,...urls.map(src=>{const im=new Image();im.src=src;return im.decode().catch(()=>{});})]),new Promise(resolve=>setTimeout(resolve,500)),skip]);
+      await Promise.race([new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))),new Promise(resolve=>setTimeout(resolve,120)),skip]);
       const word=document.querySelector('.rb .w');if(word){const width=word.scrollWidth+'px';word.style.setProperty('--rebel-width',width);word.closest('h1').style.setProperty('--rebel-width',width);}
       const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches||new URLSearchParams(location.search).has('still');
-      if(mark&&!reduced&&home){
+      if(mark&&!reduced&&home&&!skipped){
         window.scrollTo({top:0,behavior:'instant'});
         const from=mark.getBoundingClientRect(),to=document.querySelector('.sleeve header .logo').getBoundingClientRect();
         Object.assign(mark.style,{left:from.left+'px',top:from.top+'px',width:from.width+'px',height:from.height+'px',transform:'none',transformOrigin:'0 0'});
@@ -21,7 +23,7 @@
           {transform:'translate(0,0) scale(1)',backgroundColor:'#FCFCFC'},
           {transform:`translate(${to.left-from.left}px,${to.top-from.top}px) scale(${to.width/from.width},${to.height/from.height})`,backgroundColor:'#FCFCFC'}
         ],{duration:480,easing:'cubic-bezier(.65,0,.25,1)',fill:'forwards'});
-        await Promise.all([move.finished.catch(()=>{}),coverMove?.finished.catch(()=>{}),textureMove?.finished.catch(()=>{})]);
+        await Promise.race([Promise.all([move.finished.catch(()=>{}),coverMove?.finished.catch(()=>{}),textureMove?.finished.catch(()=>{})]),skip,new Promise(resolve=>setTimeout(resolve,900))]);
       }
     }finally{
       // Finish the surface/logo travel, then start all home animations on one frame.
