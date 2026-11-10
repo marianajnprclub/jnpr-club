@@ -1907,6 +1907,16 @@ html, body, a, button { touch-action: manipulation; }</style>
 #case.c-anim .case-bottom { animation: c-up .75s .5s cubic-bezier(.22, 1, .36, 1) both; }
 @media (prefers-reduced-motion: reduce) { #case.c-anim * { animation: none !important; } }
 </style>
+<style>/* 10 Nov: "I lead" on phones — less empty space, stats readable */
+@media (max-width: 760px) {
+  #lead { padding-block: 64px 56px !important; gap: 22px 0 !important; }
+  #lead .lead-stats > div { grid-template-columns: 1fr !important; gap: 4px !important; align-items: start !important; padding-block: 16px !important; }
+  #lead .lead-stats b { font-size: 46px !important; line-height: 1 !important; }
+  #lead .lead-stats span { font-size: 16px !important; line-height: 1.35 !important; }
+  #lead .lead-k { font-size: 12px !important; }
+  #lead .lead-p { font-size: 18px !important; }
+}
+</style>
 </head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
