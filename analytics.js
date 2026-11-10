@@ -1,8 +1,8 @@
 /* Google Analytics 4 with a cookie notice (Spain: analytics cookies need consent).
    Nothing loads until the visitor accepts. Paste the Measurement ID below to switch it on. */
 (() => {
-  const GTM_ID = 'GTM-M5ZQJSB9'; // Google Tag Manager container (GA4 tag lives inside it)
-  const GA_ID = ''; // optional: direct GA4 'G-XXXXXXXXXX' if not using Tag Manager
+  const GTM_ID = ''; // optional: Tag Manager container (GTM-M5ZQJSB9 not found in her accounts)
+  const GA_ID = 'G-1FST6VRM2T'; // GA4 stream "JNPR Club web"
   if (!GTM_ID && !GA_ID) return;
   const KEY = 'jnpr-consent', es = (document.documentElement.lang || '').startsWith('es');
   let on = false;
