@@ -1977,6 +1977,18 @@ html, body, a, button { touch-action: manipulation; }</style>
   html[data-side="B"] body::before { background: #9B7EEA; }
 }
 </style>
+<style>/* 10/11/2026 · UX: bigger touch areas and readable small text on phones; floating Hire me steps aside over button rows */
+.kb::before { content: ""; position: absolute; inset: -60%; border-radius: 50%; }
+#sound-toggle { min-width: 44px; min-height: 44px; box-sizing: border-box; display: inline-grid; place-items: center; }
+#more-r { padding: 12px 0; }
+.door-mail { display: inline-block; padding: 12px 0; }
+@media (max-width: 760px) {
+  .club-eyebrow { white-space: normal !important; text-wrap: balance !important; font-size: 12px !important; padding-inline: 20px; }
+  .service-copy p.k, ol#tracks small.play, .b-fine span { font-size: 11px !important; }
+  .chromecta.cta-busy { opacity: 0 !important; pointer-events: none !important; }
+  #services .wkeys .wk { font-size: 10.5px !important; line-height: 1 !important; padding: 0 12px !important; letter-spacing: 0 !important; }
+}
+</style>
 </head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
@@ -2687,6 +2699,10 @@ html, body, a, button { touch-action: manipulation; }</style>
   clubState.subscribe('side',s=>{ if(s==='B') requestAnimationFrame(sync); });
 })();
 </script>
+<script>/* 10/11/2026 · phones: floating Hire me steps aside while a row of buttons is on screen */
+(()=>{const c=document.querySelector('.chromecta');const rows=[...document.querySelectorAll('#services .wkeys, #glist')];if(!c||!rows.length||!('IntersectionObserver' in window))return;const on=new Set();
+const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?on.add(e.target):on.delete(e.target));c.classList.toggle('cta-busy',on.size>0);});rows.forEach(r=>io.observe(r));
+})();</script>
 <script src="analytics.js" defer></script>
 <script>/* clean address: in-page links still scroll, but the #section never stays in the URL */
 (()=>{const strip=()=>{if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);};

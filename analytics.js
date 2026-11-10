@@ -47,7 +47,8 @@
 .cookie-note header{display:flex;align-items:center;gap:10px;margin-bottom:8px}.cookie-note header img{width:30px;height:auto;animation:ck-spin 9s linear infinite;filter:drop-shadow(0 3px 5px rgb(0 0 0/.22))}.cookie-note header b{font-family:'MW',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:15px;color:#F12009;font-weight:400}@keyframes ck-spin{to{transform:rotate(360deg)}}@media (prefers-reduced-motion:reduce){.cookie-note header img{animation:none}}.cookie-note{animation:ck-in .5s cubic-bezier(.2,1.4,.4,1) both}@keyframes ck-in{from{opacity:0;transform:translateY(16px) scale(.96)}}.cookie-note p{margin:0 0 14px}.cookie-note div{display:flex;gap:10px}
 .cookie-note button{all:unset;cursor:pointer;font-family:'MW',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:11px;padding:12px 18px;border-radius:99px;background:#F12009;color:#FCFCFC}
 .cookie-note button[data-c="no"]{background:#FCFCFC;color:#F12009;box-shadow:inset 0 0 0 1.5px #F12009}
-.cookie-note button:focus-visible{outline:2px solid #F12009;outline-offset:2px}`;
+.cookie-note button:focus-visible{outline:2px solid #F12009;outline-offset:2px}
+@media (max-width:760px){.cookie-note{left:12px;right:12px;bottom:12px;max-width:none;border-radius:20px;padding:12px 14px;font-size:12.5px;line-height:1.35;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.cookie-note header{display:none}.cookie-note p{margin:0}.cookie-note div{gap:6px}.cookie-note button{padding:11px 12px;font-size:10px;letter-spacing:.1em}}`;
   document.head.appendChild(st); document.body.appendChild(b);
   b.addEventListener('click', e => {
     const c = e.target.closest('button'); if (!c) return;
