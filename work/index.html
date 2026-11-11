@@ -26,14 +26,10 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .paper { background: var(--red) url(../img/papel-rojo.webp) center / 627px; }
 
 /* progress + top bar */
-.prog { position: fixed; inset: 0 0 auto; height: 4px; z-index: 30; background: var(--w); transform-origin: 0 50%; transform: scaleX(0); }
-.bar { position: fixed; inset: 0 0 auto; z-index: 20; display: flex; justify-content: space-between; align-items: center; padding: 18px var(--pad); pointer-events: none; mix-blend-mode: difference; }
-.bar > * { pointer-events: auto; }
-.bar img { height: clamp(22px, 2.2vw, 32px); display: block; filter: invert(1) brightness(2); }
-.pill { font: 12px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; color: #fff; border: 1.5px solid #fff; border-radius: 99px; padding: 11px 18px; text-decoration: none; }
+.prog { position: fixed; inset: 0 0 auto; height: 3px; z-index: 30; background: var(--w); transform-origin: 0 50%; transform: scaleX(0); }
 
 /* hero */
-.hero { min-height: 100svh; display: grid; grid-template-rows: 1fr auto auto; padding-top: 90px; overflow: hidden; position: relative; }
+.hero { min-height: calc(100svh - 64px); display: grid; grid-template-rows: 1fr auto auto; padding-top: 40px; overflow: hidden; position: relative; }
 .wall { display: grid; gap: 14px; align-content: center; transform: rotate(-6deg) scale(1.2); opacity: .95; }
 .wall .row { display: flex; gap: 12px; width: max-content; animation: run 60s linear infinite; }
 .wall .row:nth-child(2) { animation-direction: reverse; animation-duration: 75s; }
@@ -69,6 +65,11 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .pj.alt .g span { background: var(--red); color: var(--w); }
 .pj .note { margin: 0; padding: 0 var(--pad); font: 400 clamp(18px, 2vw, 30px)/1.2 'MW', system-ui; text-transform: uppercase; max-width: 30ch; }
 .pj .open { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 42px; aspect-ratio: 1719 / 385; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; text-decoration: none; white-space: nowrap; color: #1b1b1b; text-shadow: 0 1px 0 rgb(255 255 255 / .6); background: url(../img/ast/pill-silver.webp) center / contain no-repeat; filter: drop-shadow(0 10px 16px rgb(40 0 0 / .3)); transition: transform .2s; }
+.pj button.open { border: 0; padding: 0; cursor: pointer; }
+.pj .case { padding: 0 var(--pad); display: grid; gap: 14px; justify-items: start; max-width: 62ch; }
+.pj .case p { margin: 0; font: 400 clamp(16px, 1.4vw, 20px)/1.45 'MW', system-ui; }
+.pj .case .site { font: 11px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; text-decoration: none; border-radius: 99px; padding: 13px 18px; background: var(--w); color: var(--red); }
+.pj.alt .case .site { background: var(--red); color: var(--w); }
 .pj .open:hover { transform: scale(1.06) rotate(-2deg); }
 .strip { display: flex; gap: clamp(10px, 1.4vw, 20px); overflow-x: auto; scroll-snap-type: x mandatory; padding: 30px var(--pad) 90px; margin: -24px 0 -60px; scroll-padding: 0 var(--pad); scrollbar-width: none; align-items: center; }
 .strip::-webkit-scrollbar { display: none; }
@@ -79,9 +80,9 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .pj.full .strip video { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
 .strip video:fullscreen { object-fit: contain; background: #000; }
 .fs { all: unset; cursor: pointer; position: absolute; right: 14px; bottom: 14px; z-index: 2; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .12em; background: var(--w); color: var(--red); border-radius: 99px; padding: 12px 16px; }
-.swipe { display: none; align-self: start; margin: -8px var(--pad) 0; width: fit-content; gap: 8px; align-items: center; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; border-radius: 99px; padding: 10px 14px; background: var(--w); color: var(--red); }
-.swipe i { width: 18px; height: 2px; background: currentColor; border-radius: 2px; animation: nudge 1.2s ease-in-out infinite; }
-@keyframes nudge { 50% { transform: translateX(8px); } }
+.swipe { display: none; align-self: start; margin: -8px var(--pad) 0; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .16em; opacity: .85; }
+.swipe i { display: inline-block; font-style: normal; margin-left: 6px; animation: nudge 1.2s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateX(6px); } }
 .strip figure.vid::after { content: '▶ Video'; position: absolute; left: 14px; top: 14px; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; background: var(--red); color: var(--w); border-radius: 99px; padding: 8px 12px; }
 
 /* custom drag cursor (desktop) */
@@ -90,18 +91,17 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .cur.red { background: var(--red); color: var(--w); }
 @media (hover: hover) and (pointer: fine) { .strip { cursor: none; } }
 
-footer { min-height: 70svh; display: grid; align-content: center; gap: 30px; padding: 60px var(--pad) calc(30px + env(safe-area-inset-bottom)); text-align: center; }
-footer h3 { font: 400 clamp(48px, 11vw, 190px)/.85 'MW', system-ui; text-transform: uppercase; margin: 0; }
-footer .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-footer .row a { font: 12px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; text-decoration: none; border-radius: 99px; padding: 18px 26px; background: var(--w); color: var(--red); }
-footer .row a.line { background: var(--blue); color: var(--red); }
-@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 58svh; width: auto; max-width: 76vw; } .pj.full .strip figure { width: 80vw; height: 70svh; } .swipe { display: inline-flex; } .ttl h2 { font-size: 21vw; } .wall .row img { height: 19svh; } }
+@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 58svh; width: auto; max-width: 76vw; } .pj.full .strip figure { width: 80vw; height: 70svh; } .swipe { display: block; } .ttl h2 { font-size: 21vw; } .wall .row img { height: 19svh; } }
 @media (prefers-reduced-motion: reduce) { .wall .row, .ttl div, .ttl h2::after { animation: none; } .hero h1 span { animation: none; transform: none; opacity: 1; } }
 </style>
+<link rel="stylesheet" href="../site.css">
 </head>
 <body>
+<!--sh--><header class="sh" id="sh"><a class="sh-logo" href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menu</button><nav id="shnav"><a href="../work/" aria-current="page">Portfolio</a><a href="../#labs">AI Lab</a><a href="/websites/">Migrate your site</a><a href="/about/">About</a><a href="#contacto">Contact</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../portafolio/" hreflang="es">ES</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
+
+
+
 <div class="prog" id="prog"></div>
-<div class="bar"><a href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><a class="pill" href="../#work">← Home</a></div>
 <header class="hero paper">
   <div class="wall" id="wall" aria-hidden="true"><div class="row"></div><div class="row"></div><div class="row"></div></div>
   <h1><span>The</span><span>portfolio</span></h1>
@@ -109,7 +109,6 @@ footer .row a.line { background: var(--blue); color: var(--red); }
   <div class="chips" role="group" aria-label="Filter"><button class="on" data-g="all">All</button><button data-g="Brand">Brand</button><button data-g="Web Design">Web Design</button><button data-g="Campaigns & Social">Campaigns &amp; Social</button><button data-g="Editorial & Packaging">Editorial &amp; Packaging</button><button data-g="Motion">Motion</button></div>
 </header>
 <main id="m"></main>
-<footer class="paper"><h3>Let’s work<br>together.</h3><div class="row"><a href="mailto:mariana.jnprclub@gmail.com?subject=Working%20with%20you">Hire me</a><a class="line" href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">Download CV</a></div></footer>
 <div class="cur" id="cur" aria-hidden="true">Drag</div>
 <script>
 (async () => {
@@ -120,6 +119,7 @@ footer .row a.line { background: var(--blue); color: var(--red); }
   // Curated picks and the videos the home page plays elsewhere
   const NOTE = { pocoyo: 'I designed everything: the patterns on the clothes, every product and all the AI images.' };
   // Pocoyo: the AI photos of the products at the end of the guide, then the best guide pages
+  const SKIP = { vandido: ['02', '03'] };  // 02 repeats 01; 03 is the yellow laptop
   const PICKS = { pocoyo: ['guide-29', 'guide-39', 'guide-09'] };
   const FIRST = { pocoyo: ['p63_01', 'p65_01', 'p67_02', 'p71_01', 'p72_01', 'p73_01', 'p64_01', 'p68_01', 'p61_01'].map(n => `img/labs/ai/pcy-${n}.webp`) };
   const V = s => [`video/${s}.mp4`];
@@ -143,17 +143,26 @@ footer .row a.line { background: var(--blue); color: var(--red); }
   const m = document.getElementById('m');
   m.innerHTML = list.map((p, i) => {
     let imgs = p.img.map(x => x[0]).filter(s => !seen.has(s) && seen.add(s));
+    if (SKIP[p.id]) imgs = imgs.filter(s => !SKIP[p.id].some(n => s.endsWith('/' + n + '.webp')));
     if (PICKS[p.id]) imgs = PICKS[p.id].map(n => imgs.find(s => s.endsWith('/' + n + '.webp'))).filter(Boolean);
     if (FIRST[p.id]) imgs = [...FIRST[p.id], ...imgs];
     const t = Array(4).fill(`<h2>${esc(p.name)}</h2>`).join('');
     return `<section class="pj${i % 2 ? '' : ' alt'}${p.genres.includes('Motion') ? ' full' : ''}" data-g="${esc(p.genres.join('|'))}">
       <div class="ttl" aria-label="${esc(p.name)}"><div style="--t:${16 + p.name.length * 1.2}s">${t}${t}</div></div>
-      <div class="pj-h"><p class="g">${p.genres.map(g => `<span>${esc(g)}</span>`).join('')}</p>${p.k !== undefined ? `<a class="open" href="../?open=${p.k}">Read the case</a>` : ''}</div>
+      <div class="pj-h"><p class="g">${p.genres.map(g => `<span>${esc(g)}</span>`).join('')}</p>${p.text && p.text.length ? `<button type="button" class="open" aria-expanded="false" data-t="Close">Read the case</button>` : ''}</div>
+      ${p.text && p.text.length ? `<div class="case" hidden>${p.text.map(t => `<p>${esc(t)}</p>`).join('')}${p.url ? `<a class="site" href="${esc(p.url)}" target="_blank" rel="noopener">Visit the site</a>` : ''}</div>` : ''}
       ${NOTE[p.id] ? `<p class="note">${esc(NOTE[p.id])}</p>` : ''}
       <div class="strip">${imgs.map(s => `<figure${isV(s) ? ' class="vid"' : ''}>${media(s, p.name)}${isV(s) ? '<button type="button" class="fs">Full screen</button>' : ''}</figure>`).join('')}</div>
-      ${imgs.length > 1 ? '<span class="swipe">Swipe for more <i></i></span>' : ''}
+      ${imgs.length > 1 ? '<span class="swipe">Swipe <i>→</i></span>' : ''}
     </section>`;
   }).join('');
+
+  // Read the case: opens right here, no leaving the portfolio
+  m.querySelectorAll('.open').forEach(b => b.onclick = () => {
+    const c = b.closest('.pj').querySelector('.case'), o = c.hidden;
+    c.hidden = !o; b.setAttribute('aria-expanded', o);
+    [b.textContent, b.dataset.t] = [b.dataset.t, b.textContent];
+  });
 
   // Hero wall: a moving collage of the best stills
   const wallImgs = ['pocoyo/guide-29', 'miravia/01', 'clarity/01', 'pocoyo/guide-39', 'argen/01', 'quantum/01', 'camomilla/01', 'popeyes/01', 'pocoyo/guide-09', 'vandido/01', 'proarte/01', 'ucles/01'];
@@ -219,5 +228,9 @@ footer .row a.line { background: var(--blue); color: var(--red); }
 })();
 </script>
 <script src="../analytics.js" defer></script>
+
+
+
+<!--sf--><footer class="sf" id="contacto"><a class="sf-brand" href="../" aria-label="JNPR® Club, home"></a><p class="k">Looking for a Creative Director who builds with AI?</p><h2>Let’s work together.</h2><div class="sf-doors"><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Working%20with%20you">Hire me</a><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=My%20website">Get your site</a><a class="sf-in" href="https://www.linkedin.com/in/mariana-ortega-cardenas" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.83 2.67 4.83 6.13V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></div><a class="sf-mail" href="mailto:mariana.jnprclub@gmail.com">mariana.jnprclub@gmail.com</a><div class="sf-fine"><span>© 2026 JNPR® Club · Madrid</span><a href="../">jnpr-club.com</a></div></footer><!--/sf-->
 </body>
 </html>

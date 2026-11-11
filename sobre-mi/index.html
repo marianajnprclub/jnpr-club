@@ -26,9 +26,6 @@ html { background: #FA2401; }
 body { margin: 0; background: var(--w); color: var(--grey); font-family: 'MN', system-ui, sans-serif; font-size: clamp(16px, 1.25vw, 20px); line-height: 1.55; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 .paper { background: var(--red) url(../img/papel-rojo.webp) center / 627px; color: var(--w); }
-.top { display: flex; justify-content: space-between; align-items: center; }
-.top img { height: clamp(26px, 2.6vw, 38px); width: auto; display: block; }
-.pill { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; border: 1.5px solid var(--w); border-radius: 99px; padding: 12px 20px; text-decoration: none; }
 .hero { background: #FA2401; color: var(--w); padding: 28px var(--pad) 0; display: grid; gap: clamp(30px, 6vh, 64px); overflow: hidden; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: end; }
 .hero-txt { align-self: center; padding-bottom: clamp(24px, 6vh, 80px); }
@@ -44,8 +41,6 @@ a { color: inherit; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(28px, 4vw, 44px); }
 .btn { font-family: 'MW'; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; text-decoration: none; border-radius: 99px; padding: 16px 24px; background: var(--red); color: var(--w); }
 .btn.line { background: none; color: var(--red); box-shadow: inset 0 0 0 1.5px var(--red); }
-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 22px var(--pad) calc(22px + env(safe-area-inset-bottom)); font-family: 'MW'; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; }
-footer a { text-decoration: none; }
 @media (max-width: 760px) {
   .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .hero-txt { padding-bottom: 0; padding-top: 24px; }
@@ -57,10 +52,14 @@ footer a { text-decoration: none; }
 a,button,summary,[role=tab]{-webkit-tap-highlight-color:transparent}
 a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:focus-visible),[role=tab]:focus:not(:focus-visible){outline:none!important}
 </style>
+<link rel="stylesheet" href="../site.css">
 </head>
 <body>
+<!--sh--><header class="sh" id="sh"><a class="sh-logo" href="../es/" aria-label="JNPR® Club, inicio"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menú</button><nav id="shnav"><a href="../portafolio/">Portafolio</a><a href="../es/#labs">Lab IA</a><a href="/webs/">Migra tu web</a><a href="/sobre-mi/" aria-current="page">Sobre mí</a><a href="#contacto">Contacto</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../about/" hreflang="en">EN</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
+
+
+
 <header class="hero">
-  <div class="top"><a href="../" aria-label="JNPR® Club, inicio"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><a class="pill" href="../es/">← Inicio</a></div>
   <div class="hero-grid">
     <div class="hero-txt">
       <h1>Mariana Ortega<img src="../img/ast/chrome.webp" alt="" width="341" height="360"></h1>
@@ -77,7 +76,10 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:
   <p>Cada proyecto es una colaboración directa: nada se pierde entre quien tiene la visión y quien la ejecuta.</p>
   <div class="cta-row"><a class="btn" href="mailto:mariana.jnprclub@gmail.com?subject=Trabajar%20contigo">Contrátame</a><a class="btn line" href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">Descargar CV</a></div>
 </main>
-<footer class="paper"><a href="../es/">JNPR® Club</a><span>© 2026 JNPR® Club · Madrid</span></footer>
 <script src="../analytics.js" defer></script>
+
+
+
+<!--sf--><footer class="sf" id="contacto"><a class="sf-brand" href="../es/" aria-label="JNPR® Club, inicio"></a><p class="k">¿Buscas una directora creativa que construye con IA?</p><h2>Trabajemos juntos.</h2><div class="sf-doors"><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Trabajar%20contigo">Contrátame</a><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Mi%20web">Consigue tu web</a><a class="sf-in" href="https://www.linkedin.com/in/mariana-ortega-cardenas" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.83 2.67 4.83 6.13V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></div><a class="sf-mail" href="mailto:mariana.jnprclub@gmail.com">mariana.jnprclub@gmail.com</a><div class="sf-fine"><span>© 2026 JNPR® Club · Madrid</span><a href="../es/">jnpr-club.com</a></div></footer><!--/sf-->
 </body>
 </html>
