@@ -2059,6 +2059,21 @@ img[src*="labs/ai/pcy20"], img[src*="labs/ai/pcy24"], img[src*="labs/ai/pcy25"],
 html[data-side="B"] .webban { color: #9B7EEA; }
 html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
 </style>
+<style>
+/* 11/11/26: videos and pieces fill the little screens (no empty background); full screen opens the swipe viewer (vv.js) */
+.tv .scr video { width: 100% !important; height: 100% !important; margin: 0 !important; object-fit: cover !important; }
+.ml-scr > img, .ml-scr > video { inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+.ml-scr > .ml-tri, .ml-scr > .ml-pair { inset: 0 !important; width: 100% !important; height: 100% !important; padding: 0 !important; gap: 0 !important; }
+.ml-tri img, .ml-tri video, .ml-pair img { object-fit: cover !important; height: 100% !important; }
+.scrfs { all: unset; position: absolute; z-index: 4; cursor: pointer; font: 9px 'MW', system-ui, sans-serif; text-transform: uppercase; letter-spacing: .12em; background: #FCFCFC; color: #F12009; border-radius: 99px; padding: 9px 12px; box-shadow: 0 8px 18px -8px rgb(40 0 0 / .5); transform: translate(-100%, -100%); white-space: nowrap; }
+.scrfs:hover { transform: translate(-100%, -100%) scale(1.06); }
+.ml-mach .scrfs { color: #9B7EEA; }
+@media (max-width: 860px) { .scrfs { font-size: 8px; padding: 6px 9px; } }
+/* The portfolio banner: the moving collage is the section, no extra red padding around it */
+#gallery.pf-ban { padding: 0 !important; }
+.pf-ban a { min-height: min(86svh, 820px) !important; }
+</style>
+<script src="vv.js" defer></script>
 </head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
@@ -2187,7 +2202,7 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
   <h2 class="motion-title">Motion<img src="img/ast/chrome.webp" alt="" width="180" height="180" loading="lazy"></h2>
   <div class="mstage">
     <div class="tv" id="tv"><div class="scr" id="scr"><video id="mvid" muted playsinline preload="none"></video><canvas id="mstatic" width="160" height="120" aria-hidden="true"></canvas><span class="ch" id="mch" aria-hidden="true">01</span></div>
-      <img src="img/tv.webp" alt="" width="1024" height="1536">
+      <img src="img/tv.webp" alt="" width="1024" height="1536"><button type="button" class="scrfs" id="tvfs" style="left:80%;top:63.5%">Pantalla completa</button>
       <button type="button" class="kb prev" id="mprev" aria-label="Vídeo anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14l-8-7zM11 5v14l-8-7z"/></svg></button><button type="button" class="kb play" id="mplay" aria-label="Pause"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></button><button type="button" class="kb next" id="mnext" aria-label="Vídeo siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14l8-7zM13 5v14l8-7z"/></svg></button><button type="button" class="kb snd" id="msnd" aria-pressed="false" aria-label="Con sonido"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9z"/><path class="i-wave" d="M15 8.5a5 5 0 0 1 0 7M17.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="i-mute" d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
     <div class="guide">
       <div class="now" aria-live="polite"><span class="k" id="mnum">Sonando · CH 01</span><b id="mwho"></b><i id="mwhat"></i></div>
@@ -2212,7 +2227,7 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
   <div class="ml-mach" id="mlmach">
     <div class="ml-scr" id="mlscr" style="left:12.86%;top:7.92%;width:74.28%;height:50.39%"></div>
     <img class="ml-img" src="img/labs/machine.webp?v=2" alt="" width="863" height="1036">
-    <div class="ml-bez" style="left:12.86%;top:7.92%;width:74.28%;height:50.39%"></div>
+    <div class="ml-bez" style="left:12.86%;top:7.92%;width:74.28%;height:50.39%"></div><button type="button" class="scrfs" id="mlfs" style="left:84.5%;top:55.5%">Pantalla completa</button>
     <button type="button" class="ml-b" data-n="01" data-i="0" aria-label="Imágenes IA" title="Imágenes IA" style="left:23.81%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="02" data-i="1" aria-label="Campañas" title="Campañas" style="left:37.11%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="03" data-i="2" aria-label="Reels" title="Reels" style="left:50.40%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="04" data-i="3" aria-label="Webs" title="Webs" style="left:63.70%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="05" data-i="4" aria-label="Smart Branding" title="Smart Branding" style="left:77.00%;top:70.17%;width:8.69%"></button>
     <div class="ml-paper" id="mlpaper" style="left:19.93%;width:60.50%;top:83.42%"></div>
   </div>
@@ -2684,6 +2699,7 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
   scr.addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1); sx = null; });
   new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { threshold: .35 }).observe($('tv'));
   tune(0);
+  $('tvfs').onclick = () => { v.pause(); VV.open(MOTION.map(([, f]) => ({ v: `video/${f}.mp4`, s: `img/motion/p/${f}.webp` })), cur, sync); };
 })();
 </script>
 <script>
@@ -2713,6 +2729,7 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
   new IntersectionObserver(([e])=>{ seen=e.isIntersecting; sync(); },{threshold:.35}).observe(sec);
   clubState.subscribe('case',sync); document.addEventListener('visibilitychange',sync);
   pick(g);
+  document.getElementById('mlfs').onclick = () => { clearTimeout(t); run++; [...scr.querySelectorAll('video')].forEach(v => v.pause()); const d = D[g]; VV.open(d.map(x => ({ s: x.s, v: x.v, c: x.c })), (i - 1 + d.length) % d.length, sync); };
   /* AI projects: one image at a time, whole */
   /* Labs: each project is a horizontal strip of whole images (swipe on phones, drag or arrows with a mouse). */
   document.querySelectorAll('.lp2-car').forEach(c=>{ const tr=c.querySelector('.lp2-imgs'), it=[...tr.children]; it.forEach(e=>e.classList.add('on')); tr.querySelectorAll('video').forEach(v=>new IntersectionObserver(([e])=>{ if(e.isIntersecting) v.play().catch(()=>{}); else v.pause(); },{threshold:.5}).observe(v)); let nav=c.querySelector('.lp2-nav'); if(!nav){ nav=document.createElement('div'); nav.className='fnav lp2-nav'; nav.innerHTML='<button type="button" aria-label="Imagen anterior">←</button><span></span><button type="button" aria-label="Next image">→</button>'; c.append(nav); } const [p,n]=nav.querySelectorAll('button'), bar=document.createElement('i'); nav.querySelector('span').textContent=''; bar.className='lp2-bar'; bar.innerHTML='<b></b>'; nav.prepend(bar); const fill=bar.firstChild;

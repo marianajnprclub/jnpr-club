@@ -78,7 +78,6 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .strip img, .strip video { height: clamp(300px, 58svh, 760px); width: auto; max-width: 92vw; object-fit: contain; display: block; user-select: none; -webkit-user-drag: none; }
 .pj.full .strip figure { width: calc(100vw - 2 * var(--pad)); height: 78svh; }
 .pj.full .strip video { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
-.strip video:fullscreen { object-fit: contain; background: #000; }
 .fs { all: unset; cursor: pointer; position: absolute; right: 14px; bottom: 14px; z-index: 2; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .12em; background: var(--w); color: var(--red); border-radius: 99px; padding: 12px 16px; }
 .swipe { display: none; align-self: start; margin: -8px var(--pad) 0; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .16em; opacity: .85; }
 .swipe i { display: inline-block; font-style: normal; margin-left: 6px; animation: nudge 1.2s ease-in-out infinite; }
@@ -95,10 +94,10 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 @media (prefers-reduced-motion: reduce) { .wall .row, .ttl div, .ttl h2::after { animation: none; } .hero h1 span { animation: none; transform: none; opacity: 1; } }
 </style>
 <link rel="stylesheet" href="../site.css">
+<script src="../vv.js" defer></script>
 </head>
 <body>
 <!--sh--><header class="sh" id="sh"><a class="sh-logo" href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menu</button><nav id="shnav"><a href="../work/" aria-current="page">Portfolio</a><a href="../#labs">AI Lab</a><a href="/websites/">Migrate your site</a><a href="/about/">About</a><a href="#contacto">Contact</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../portafolio/" hreflang="es">ES</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
-
 
 
 <div class="prog" id="prog"></div>
@@ -106,7 +105,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
   <div class="wall" id="wall" aria-hidden="true"><div class="row"></div><div class="row"></div><div class="row"></div></div>
   <h1><span>The</span><span>portfolio</span></h1>
   <p>Brand, web, campaigns, motion and editorial</p>
-  <div class="chips" role="group" aria-label="Filter"><button class="on" data-g="all">All</button><button data-g="Brand">Brand</button><button data-g="Web Design">Web Design</button><button data-g="Campaigns & Social">Campaigns &amp; Social</button><button data-g="Editorial & Packaging">Editorial &amp; Packaging</button><button data-g="Motion">Motion</button></div>
+  <div class="chips" role="group" aria-label="Filter"><button class="on" data-g="all">All</button><button data-g="Brand">Brand</button><button data-g="Web Design">Web Design</button><button data-g="Campaigns & Social">Campaigns &amp; Social</button><button data-g="Editorial & Packaging">Editorial &amp; Packaging</button><button data-g="Motion">Motion</button><button data-g="AI">AI</button></div>
 </header>
 <main id="m"></main>
 <div class="cur" id="cur" aria-hidden="true">Drag</div>
@@ -119,7 +118,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
   // Curated picks and the videos the home page plays elsewhere
   const NOTE = { pocoyo: 'I designed everything: the patterns on the clothes, every product and all the AI images.' };
   // Pocoyo: the AI photos of the products at the end of the guide, then the best guide pages
-  const SKIP = { vandido: ['02', '03'] };  // 02 repeats 01; 03 is the yellow laptop
+  const SKIP = { vandido: ['02', '03', '04'] };  // 02 repeats 01; 03 is Fitz and 04 is Bonded (each has its own section)
   const PICKS = { pocoyo: ['guide-29', 'guide-39', 'guide-09'] };
   const FIRST = { pocoyo: ['p63_01', 'p65_01', 'p67_02', 'p71_01', 'p72_01', 'p73_01', 'p64_01', 'p68_01', 'p61_01'].map(n => `img/labs/ai/pcy-${n}.webp`) };
   const V = s => [`video/${s}.mp4`];
@@ -128,9 +127,18 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
     { id: 'motion', name: 'Motion', genres: ['Motion', 'Campaigns & Social'],
       img: ['oktopus-morris', 'oktopus-fortuny-fashionweek', 'oktopus-casapacha', 'oktopus-morris-beach', 'oktopus-chamanes', 'oktopus-soulempire', 'oktopus-morris-marbella', 'oktopus-chamanes-2', 'oktopus-flow-catalog---easter-eggs', 'oktopus-morris-lineup-junio1', 'oktopus-lineup-julio1', 'oktopus-morris-dinner1'].map(V) },
   ];
+  const AIG = 'AI';
+  // AI projects: read from the home's AI section, so texts and images stay in sync (EN and ES)
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const ai = [...doc.querySelectorAll('#lab-wall article')].map(a => ({
+    id: 'ai-' + a.querySelector('h3').textContent, name: a.querySelector('h3').textContent.trim(), genres: [AIG], ai: true,
+    note: a.querySelector('.lp2-c')?.textContent.trim(),
+    text: [...a.querySelectorAll('.lp2-text p:not(.lp2-c)')].map(p => p.textContent.trim()).filter(Boolean),
+    img: [...a.querySelectorAll('img, video')].map(e => [e.getAttribute('src')]).filter(x => x[0]) }));
   const list = [];
   P.forEach(p => {
-    if (p.id === 'lab-reels') list.push({ ...p, name: 'AI Reels', genres: ['Motion', 'Campaigns & Social'] });
+    if (p.id === 'lab-reels') list.push({ ...p, name: 'AI Reels', genres: ['Motion', AIG] });
+    else if (p.id === 'lab-web') list.push({ ...p, name: 'Websites you own', genres: ['Web Design', AIG], text: p.text.map(t => t.replace(/<[^>]+>/g, '')) });
     else if (!p.lab) list.push(p);
     if (p.id === 'miravia') list.push(...extra);  // motion lands early, right after the first big campaign
   });
@@ -141,6 +149,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
     : `<img src="../${src}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
   const seen = new Set();
   const m = document.getElementById('m');
+  list.push(...ai);
   m.innerHTML = list.map((p, i) => {
     let imgs = p.img.map(x => x[0]).filter(s => !seen.has(s) && seen.add(s));
     if (SKIP[p.id]) imgs = imgs.filter(s => !SKIP[p.id].some(n => s.endsWith('/' + n + '.webp')));
@@ -151,7 +160,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
       <div class="ttl" aria-label="${esc(p.name)}"><div style="--t:${16 + p.name.length * 1.2}s">${t}${t}</div></div>
       <div class="pj-h"><p class="g">${p.genres.map(g => `<span>${esc(g)}</span>`).join('')}</p>${p.text && p.text.length ? `<button type="button" class="open" aria-expanded="false" data-t="Close">Read the case</button>` : ''}</div>
       ${p.text && p.text.length ? `<div class="case" hidden>${p.text.map(t => `<p>${esc(t)}</p>`).join('')}${p.url ? `<a class="site" href="${esc(p.url)}" target="_blank" rel="noopener">Visit the site</a>` : ''}</div>` : ''}
-      ${NOTE[p.id] ? `<p class="note">${esc(NOTE[p.id])}</p>` : ''}
+      ${NOTE[p.id] || p.note ? `<p class="note">${esc(NOTE[p.id] || p.note)}</p>` : ''}
       <div class="strip">${imgs.map(s => `<figure${isV(s) ? ' class="vid"' : ''}>${media(s, p.name)}${isV(s) ? '<button type="button" class="fs">Full screen</button>' : ''}</figure>`).join('')}</div>
       ${imgs.length > 1 ? '<span class="swipe">Swipe <i>→</i></span>' : ''}
     </section>`;
@@ -200,16 +209,12 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
     s.addEventListener('click', e => { if (moved) e.preventDefault(); }, true);
   });
 
-  // Full screen: shows the whole video, with sound
+  // Full screen: every video of the section, swipe between them, with sound (vv.js)
   m.addEventListener('click', e => {
     const b = e.target.closest('.fs'); if (!b) return;
-    const v = b.parentElement.querySelector('video'); if (!v.src) v.src = v.dataset.src;
-    v.muted = false; v.play().catch(() => {});
-    if (v.requestFullscreen) v.requestFullscreen().catch(() => {}); else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
+    const sec = b.closest('.pj'), all = [...sec.querySelectorAll('.strip .fs')];
+    VV.open(all.map(x => ({ v: x.parentElement.querySelector('video').dataset.src })), all.indexOf(b));
   });
-  const mute = e => { const v = e.target; if (v.tagName === 'VIDEO' && !document.fullscreenElement) v.muted = true; };
-  document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement) document.querySelectorAll('.strip video').forEach(v => v.muted = true); });
-  m.addEventListener('webkitendfullscreen', mute, true);
 
   // Scroll progress
   const prog = document.getElementById('prog');
@@ -228,7 +233,6 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 })();
 </script>
 <script src="../analytics.js" defer></script>
-
 
 
 <!--sf--><footer class="sf" id="contacto"><a class="sf-brand" href="../" aria-label="JNPR® Club, home"></a><p class="k">Looking for a Creative Director who builds with AI?</p><h2>Let’s work together.</h2><div class="sf-doors"><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Working%20with%20you">Hire me</a><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=My%20website">Get your site</a><a class="sf-in" href="https://www.linkedin.com/in/mariana-ortega-cardenas" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.83 2.67 4.83 6.13V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></div><a class="sf-mail" href="mailto:mariana.jnprclub@gmail.com">mariana.jnprclub@gmail.com</a><div class="sf-fine"><span>© 2026 JNPR® Club · Madrid</span><a href="../">jnpr-club.com</a></div></footer><!--/sf-->
