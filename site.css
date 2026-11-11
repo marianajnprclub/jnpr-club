@@ -9,9 +9,10 @@
 .sh nav a:hover, .sh nav a[aria-current] { opacity: .7; }
 .sh .lang { border: 1.5px solid currentColor; border-radius: 99px; padding: 8px 12px; }
 .sh-btn { all: unset; display: none; cursor: pointer; font: 11px 'MW', system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; border-radius: 99px; padding: 11px 16px; background: #FCFCFC; color: #F12009; }
-@media (max-width: 860px) {
-  .sh-btn { display: inline-block; }
-  .sh-back { display: grid; }
+/* Same hamburger menu on desktop and phone */
+.sh-btn { display: inline-block; }
+@media (max-width: 860px) { .sh-back { display: grid; } }
+@media (min-width: 0px) {
   .sh nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 0; padding: 8px clamp(16px, 4vw, 64px) 24px; background: #F12009; }
   .sh.open nav { display: flex; }
   .sh nav a { font-size: 22px; letter-spacing: .02em; padding: 12px 0; }
@@ -28,3 +29,6 @@
 .sf-mail { color: inherit; font-size: 13px; }
 .sf-fine { width: 100%; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 18px; border-top: 1px solid rgb(241 32 9 / .3); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 .sf-fine a { color: inherit; text-decoration: none; }
+/* Hamburger icon, same as the home */
+.sh-btn { font-size: 0 !important; width: 40px; height: 40px; padding: 0 !important; box-sizing: border-box; border-radius: 50% !important; border: 1px solid #FCFCFC; color: #FCFCFC !important;
+  background: linear-gradient(currentColor, currentColor) center calc(50% - 5px) / 16px 1.5px no-repeat, linear-gradient(currentColor, currentColor) center / 16px 1.5px no-repeat, linear-gradient(currentColor, currentColor) center calc(50% + 5px) / 16px 1.5px no-repeat !important; }

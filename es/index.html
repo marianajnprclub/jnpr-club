@@ -2062,18 +2062,35 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
 </style>
 <style>
 /* 11/11/26: videos and pieces fill the little screens (no empty background); full screen opens the swipe viewer (vv.js) */
-.tv .scr video { width: 100% !important; height: 100% !important; margin: 0 !important; object-fit: cover !important; }
-.ml-scr > img, .ml-scr > video { inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
+.tv .scr video { width: 100% !important; height: 100% !important; margin: 0 !important; object-fit: cover !important; object-position: 50% 22% !important; }
+/* AI screen: the whole piece, never cropped (faces, cars); a blurred copy of the same piece fills the rest */
+.ml-scr::before { content: ''; position: absolute; inset: -12%; background: var(--mlbg, none) center / cover; filter: blur(26px) saturate(1.25); transition: background-image .45s; }
+.ml-scr > img, .ml-scr > video { inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: contain !important; }
 .ml-scr > .ml-tri, .ml-scr > .ml-pair { inset: 0 !important; width: 100% !important; height: 100% !important; padding: 0 !important; gap: 0 !important; }
 .ml-tri img, .ml-tri video, .ml-pair img { object-fit: cover !important; height: 100% !important; }
 .scrfs { all: unset; position: absolute; z-index: 4; left: 50% !important; top: calc(100% + 18px) !important; transform: translateX(-50%); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; height: 42px; aspect-ratio: 1719 / 385; font: 10px 'MW', system-ui, sans-serif; text-transform: uppercase; letter-spacing: .14em; white-space: nowrap; color: #1b1b1b; text-shadow: 0 1px 0 rgb(255 255 255 / .6); background: url(img/ast/pill-silver.webp) center / contain no-repeat; filter: drop-shadow(0 10px 16px rgb(40 0 0 / .3)); transition: transform .2s; }
 .scrfs:hover { transform: translateX(-50%) scale(1.04); }
 .motion .tv { margin-bottom: 40px; }
-.ml-mach { margin-bottom: 70px; }
+.ml-mach { margin-bottom: 120px; }
+#mlfs { top: var(--fst, calc(100% + 18px)) !important; }
 .tv .scrfs { top: calc(90% + 8px) !important; }
 @media (max-width: 860px) {
   .motion .tv { width: min(92vw, 420px) !important; margin: -6% 0 30px; }
   .motion .mstage { gap: 18px; }
+}
+/* Welcome desktop: the ticket sits beside Welcome to the club, About me under the title */
+@media (min-width: 861px) {
+  #welcome.club { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; align-items: center !important; row-gap: 18px !important; }
+  #welcome > .welcome-img { grid-column: 1 !important; grid-row: 1 !important; justify-self: start !important; align-self: end !important; width: 100% !important; text-align: left !important; }
+  #welcome > .tmach { grid-column: 2 !important; grid-row: 1 / span 2 !important; width: 100% !important; max-width: 640px !important; justify-self: center !important; margin: 0 !important; }
+  #welcome .wel-more { grid-column: 1 !important; grid-row: 2 !important; justify-self: start !important; align-self: start !important; }
+}
+/* Smart Branding desktop: the four cards stacked on the left, the Hub screens on the right */
+@media (min-width: 861px) {
+  .lab-sb { grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr) !important; align-items: center !important; column-gap: clamp(32px, 5vw, 90px) !important; }
+  .lab-sb #sb2list { grid-template-columns: minmax(0, 1fr) !important; gap: 10px !important; }
+  .lab-sb #sb2list button { padding: 14px 18px 16px !important; }
+  .lab-sb .sb2-screen { width: 100% !important; }
 }
 /* Motion desktop: TV and channel list sit together in the middle, no empty right side */
 @media (min-width: 861px) { .motion .mstage { grid-template-columns: auto minmax(0, 620px) !important; justify-content: center; column-gap: clamp(40px, 6vw, 110px) !important; } }
@@ -2083,7 +2100,21 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
 #gallery.pf-ban { padding: 0 !important; }
 .pf-ban a { min-height: min(86svh, 820px) !important; }
 </style>
-<script src="vv.js?v=1111c" defer></script>
+<script src="vv.js?v=1111d" defer></script>
+<style>/* 11/11/26: desktop uses the same hamburger menu as the phone (the bar had too many things) */
+@media (min-width: 761px) {
+  header nav > a, .topbar nav { display: none !important; }
+  header nav { margin-left: auto !important; }
+  .mbtn { display: inline-flex; }
+  header .mbtn { margin-left: 0; }
+  .lang-m { display: inline-flex !important; margin-left: auto; margin-right: 8px; align-self: center; color: var(--w); font-family: 'MW'; font-size: 12px; letter-spacing: .1em; box-sizing: content-box; height: 38px; padding: 0 18px !important; text-decoration: none; }
+  .topbar, .hero .sleeve > header { align-items: center; }
+  .topbar > .mbtn { margin-left: 0 !important; }
+  .hero .lang-m { display: none !important; }
+  .hero .sleeve > header nav .lang-sw { color: var(--w); font-family: 'MW'; font-size: 12px; letter-spacing: .1em; box-sizing: content-box; height: 38px; padding: 0 18px !important; text-decoration: none; }
+  .mbtn:not(#mclose) { order: 99; font-size: 0 !important; letter-spacing: 0 !important; width: 38px; padding: 0 !important; justify-content: center; border-radius: 50% !important; background: linear-gradient(currentColor,currentColor) center calc(50% - 5px) / 16px 1.5px no-repeat, linear-gradient(currentColor,currentColor) center / 16px 1.5px no-repeat, linear-gradient(currentColor,currentColor) center calc(50% + 5px) / 16px 1.5px no-repeat; }
+}
+</style>
 </head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
@@ -2237,9 +2268,9 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
   <div class="ml-mach" id="mlmach">
     <div class="ml-scr" id="mlscr" style="left:12.86%;top:7.92%;width:74.28%;height:50.39%"></div>
     <img class="ml-img" src="img/labs/machine.webp?v=2" alt="" width="863" height="1036">
-    <div class="ml-bez" style="left:12.86%;top:7.92%;width:74.28%;height:50.39%"></div><button type="button" class="scrfs" id="mlfs" style="left:84.5%;top:55.5%">Pantalla completa</button>
+    <div class="ml-bez" style="left:12.86%;top:7.92%;width:74.28%;height:50.39%"></div>
     <button type="button" class="ml-b" data-n="01" data-i="0" aria-label="Imágenes IA" title="Imágenes IA" style="left:23.81%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="02" data-i="1" aria-label="Campañas" title="Campañas" style="left:37.11%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="03" data-i="2" aria-label="Reels" title="Reels" style="left:50.40%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="04" data-i="3" aria-label="Webs" title="Webs" style="left:63.70%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="05" data-i="4" aria-label="Smart Branding" title="Smart Branding" style="left:77.00%;top:70.17%;width:8.69%"></button>
-    <div class="ml-paper" id="mlpaper" style="left:19.93%;width:60.50%;top:83.42%"></div>
+    <button type="button" class="scrfs" id="mlfs">Pantalla completa</button><div class="ml-paper" id="mlpaper" style="left:19.93%;width:60.50%;top:83.42%"></div>
   </div>
 </section>
 
@@ -2725,7 +2756,7 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
   let g=+(new URLSearchParams(location.search).get('l')||0), i=0, t, seen=false, run=0;
   const live=()=>seen&&clubState.get('case')==='closed'&&!document.hidden;
   const sync=()=>{ clearTimeout(t); run++; clubState.set('labs',!seen?'away':live()?'showing':'blocked'); if(live()) next(); else [...scr.querySelectorAll('video')].forEach(v=>v.pause()); };
-  const show=n=>{ const o=[...scr.children]; scr.append(n); requestAnimationFrame(()=>requestAnimationFrame(()=>n.classList.add('in'))); o.forEach(e=>{ e.classList.remove('in'); if(e.pause) e.pause(); setTimeout(()=>e.remove(),480); }); };
+  const show=n=>{ const im=n.tagName==='IMG'?n:n.querySelector('img'); if(im) scr.style.setProperty('--mlbg',`url("${im.getAttribute('src')}")`); const o=[...scr.children]; scr.append(n); requestAnimationFrame(()=>requestAnimationFrame(()=>n.classList.add('in'))); o.forEach(e=>{ e.classList.remove('in'); if(e.pause) e.pause(); setTimeout(()=>e.remove(),480); }); };
   const next=()=>{ clearTimeout(t); const tok=++run, later=()=>{ if(tok===run) t=setTimeout(next,2600); }; const d=D[g]; 
     const x=d[i%d.length]; i++;
     if(g===2){ const w=document.createElement('div'); w.className='ml-tri'; const pl=d[(i-2+d.length)%d.length], nx=d[i%d.length], im=z=>{ const e=new Image(); e.src=z.s; e.alt=z.c; return e; }; w.append(im(pl));
@@ -2739,6 +2770,8 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
   new IntersectionObserver(([e])=>{ seen=e.isIntersecting; sync(); },{threshold:.35}).observe(sec);
   clubState.subscribe('case',sync); document.addEventListener('visibilitychange',sync);
   pick(g);
+  /* Full screen sits under the paper that comes out of the machine, never on top of it */
+  { const fb=document.getElementById('mlfs'), mach=document.getElementById('mlmach'), place=()=>{ const b=Math.max(paper.offsetTop+paper.offsetHeight, mach.clientHeight); fb.style.setProperty('--fst', (b+18)+'px'); mach.style.marginBottom=(b-mach.clientHeight+80)+'px'; }; const ro=new ResizeObserver(place); ro.observe(paper); ro.observe(mach); addEventListener('resize',place,{passive:true}); new IntersectionObserver(place).observe(mach); new MutationObserver(place).observe(paper,{childList:true,subtree:true,characterData:true}); place(); }
   document.getElementById('mlfs').onclick = () => { clearTimeout(t); run++; [...scr.querySelectorAll('video')].forEach(v => v.pause()); const d = D[g]; VV.open(d.map(x => ({ s: x.s, v: x.v, c: x.c })), (i - 1 + d.length) % d.length, sync, P[g].t); };
   /* AI projects: one image at a time, whole */
   /* Labs: each project is a horizontal strip of whole images (swipe on phones, drag or arrows with a mouse). */

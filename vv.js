@@ -13,7 +13,7 @@
 .vv-top button[hidden]{display:none}
 .vv-t{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior:contain;min-height:0}.vv-t::-webkit-scrollbar{display:none}
 .vv-s{flex:none;width:100%;height:100%;scroll-snap-align:center;display:grid;place-items:center;padding:0 clamp(16px,4vw,64px);box-sizing:border-box;position:relative}
-.vv-s>video,.vv-s>img{max-width:100%;max-height:100%;width:auto;height:auto;border-radius:18px;box-shadow:0 40px 70px -30px rgb(60 5 0 / .7);display:block}
+.vv-s>video,.vv-s>img{max-width:calc(100vw - 2 * clamp(16px,4vw,64px));max-height:calc(100dvh - 200px - env(safe-area-inset-top) - env(safe-area-inset-bottom));width:auto;height:auto;border-radius:18px;box-shadow:0 40px 70px -30px rgb(60 5 0 / .7);display:block}
 .vv .vv-go{position:absolute;inset:0;margin:auto;width:84px;height:84px;border-radius:50%;background:#FCFCFC;color:#F12009;display:grid;place-items:center;font:10px 'MW',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.12em}
 .vv-bar{flex:1;height:2px;background:rgb(252 252 252 / .35);position:relative;overflow:hidden}.vv-bar b{position:absolute;top:0;bottom:0;left:0;background:#FCFCFC;transition:width .3s}
 .vv-n{font:11px 'MW',system-ui,sans-serif;letter-spacing:.12em;margin-right:6px}
@@ -35,7 +35,7 @@
     addEventListener('popstate', () => { if (!vv.hidden) { pushed = false; close(); } });
     bp.onclick = () => go(-1); bn.onclick = () => go(1);
     mb.onclick = () => { mute = !mute; const v = cur(); if (v) { v.muted = mute; if (v.paused) start(v); } mb.textContent = mute ? T.u : T.m; };
-    track.addEventListener('click', e => { const g = e.target.closest('.vv-go'); if (g) { mute = false; mb.textContent = T.m; start(g.parentElement.querySelector('video')); } });
+    track.addEventListener('click', e => { const g = e.target.closest('.vv-go'); if (g) start(g.parentElement.querySelector('video')); });
     addEventListener('keydown', e => { if (vv.hidden) return; if (e.key === 'Escape') exit(); if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); });
   };
   const at = () => Math.round(track.scrollLeft / track.clientWidth);
@@ -47,7 +47,7 @@
     bp.disabled = k === 0; bn.disabled = k === items.length - 1;
     mb.hidden = !items[k] || !items[k].v;
   };
-  // Starts with sound; if the browser refuses, starts muted; if that fails too, a Play button stays
+  // Always starts muted (never surprise a client with sound); if even that fails, a Play button stays
   const start = v => {
     if (!v) return; const b = v.parentElement.querySelector('.vv-go');
     if (!v.getAttribute('src')) v.src = v.dataset.src;
@@ -70,7 +70,7 @@
     if (!vv) build();
     done = onClose;
     const h = vv.querySelector('.vv-h'); h.textContent = title || ''; if (title) { const a = new Image(); a.src = '/img/ast/chrome.webp'; a.alt = ''; h.append(a); }
-    if (!pushed) { history.pushState({ vv: 1 }, ''); pushed = true; } items = list; mute = false; mb.textContent = T.m;
+    if (!pushed) { history.pushState({ vv: 1 }, ''); pushed = true; } items = list; mute = true; mb.textContent = T.u;
     const esc = s => String(s).replace(/"/g, '&quot;');
     track.innerHTML = items.map(x => x.v
       ? `<div class="vv-s"><video data-src="${esc(x.v)}" loop playsinline preload="none"${x.s ? ` poster="${esc(x.s)}"` : ''}></video><button type="button" class="vv-go">${T.play}</button></div>`
@@ -78,6 +78,6 @@
     document.querySelectorAll('video').forEach(v => { if (!vv.contains(v)) v.pause(); });
     vv.hidden = false; document.documentElement.style.overflow = 'hidden';
     track.scrollLeft = i * track.clientWidth; ui();
-    start(track.children[i]?.querySelector('video'));  // inside the tap, so sound is allowed
+    start(track.children[i]?.querySelector('video'));  // muted; Sound on is one tap away
   } };
 })();
