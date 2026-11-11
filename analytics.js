@@ -56,6 +56,7 @@
     const c = e.target.closest('button'); if (!c) return;
     try { localStorage.setItem(KEY, c.dataset.c); } catch (err) {}
     if (c.dataset.c === 'yes') load();
+    else document.cookie.split(';').map(x => x.split('=')[0].trim()).filter(n => /^_ga/.test(n)).forEach(n => { ['', '; domain=' + location.hostname.replace(/^www\./, ''), '; domain=.' + location.hostname.replace(/^www\./, '')].forEach(d => { document.cookie = n + '=; Max-Age=0; path=/' + d; }); }); // 11/11: declining removes Analytics cookies
     b.remove();
   });
   }
