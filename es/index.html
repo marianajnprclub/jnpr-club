@@ -2065,10 +2065,10 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
 .ml-scr > img, .ml-scr > video { inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
 .ml-scr > .ml-tri, .ml-scr > .ml-pair { inset: 0 !important; width: 100% !important; height: 100% !important; padding: 0 !important; gap: 0 !important; }
 .ml-tri img, .ml-tri video, .ml-pair img { object-fit: cover !important; height: 100% !important; }
-.scrfs { all: unset; position: absolute; z-index: 4; cursor: pointer; font: 9px 'MW', system-ui, sans-serif; text-transform: uppercase; letter-spacing: .12em; background: #FCFCFC; color: #F12009; border-radius: 99px; padding: 9px 12px; box-shadow: 0 8px 18px -8px rgb(40 0 0 / .5); transform: translate(-100%, -100%); white-space: nowrap; }
-.scrfs:hover { transform: translate(-100%, -100%) scale(1.06); }
-.ml-mach .scrfs { color: #9B7EEA; }
-@media (max-width: 860px) { .scrfs { font-size: 8px; padding: 6px 9px; } }
+.scrfs { all: unset; position: absolute; z-index: 4; left: 50% !important; top: calc(100% + 18px) !important; transform: translateX(-50%); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; height: 42px; aspect-ratio: 1719 / 385; font: 10px 'MW', system-ui, sans-serif; text-transform: uppercase; letter-spacing: .14em; white-space: nowrap; color: #1b1b1b; text-shadow: 0 1px 0 rgb(255 255 255 / .6); background: url(img/ast/pill-silver.webp) center / contain no-repeat; filter: drop-shadow(0 10px 16px rgb(40 0 0 / .3)); transition: transform .2s; }
+.scrfs:hover { transform: translateX(-50%) scale(1.06) rotate(-2deg); }
+.motion .tv { margin-bottom: 70px; }
+.ml-mach { margin-bottom: 70px; }
 /* The portfolio banner: the moving collage is the section, no extra red padding around it */
 #gallery.pf-ban { padding: 0 !important; }
 .pf-ban a { min-height: min(86svh, 820px) !important; }
@@ -2782,7 +2782,7 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
 })();
 </script>
 <script>/* 10/11/2026 · phones: floating Hire me steps aside while a row of buttons is on screen */
-(()=>{const c=document.querySelector('.chromecta');const rows=[...document.querySelectorAll('#services .wkeys, #glist, #more-r, .fgrid, .pf-go')];if(!c||!rows.length||!('IntersectionObserver' in window))return;const on=new Set();
+(()=>{const c=document.querySelector('.chromecta');const rows=[...document.querySelectorAll('#services .wkeys, #glist, #more-r, .fgrid, .pf-go, .scrfs')];if(!c||!rows.length||!('IntersectionObserver' in window))return;const on=new Set();
 const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?on.add(e.target):on.delete(e.target));c.classList.toggle('cta-busy',on.size>0);});rows.forEach(r=>io.observe(r));
 })();</script>
 <script src="analytics.js" defer></script>
