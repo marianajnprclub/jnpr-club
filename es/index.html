@@ -2092,6 +2092,9 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
   .lab-sb #sb2list button { padding: 14px 18px 16px !important; }
   .lab-sb .sb2-screen { width: 100% !important; }
 }
+/* No white gap between Welcome and I lead (desktop and phone) */
+#welcome { padding-bottom: 20px !important; min-height: 0 !important; }
+#lead { padding-top: 28px !important; min-height: 0 !important; }
 /* Motion desktop: TV and channel list sit together in the middle, no empty right side */
 @media (min-width: 861px) { .motion .mstage { grid-template-columns: auto minmax(0, 620px) !important; justify-content: center; column-gap: clamp(40px, 6vw, 110px) !important; } }
 /* I lead: the cards start at the height of the title on desktop */
