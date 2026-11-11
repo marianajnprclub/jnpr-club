@@ -35,8 +35,11 @@
   if (done) new MutationObserver(() => { if (!done.hidden) track('form_sent', { page: location.pathname }); }).observe(done, { attributes: true, attributeFilter: ['hidden'] });
 
   let saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
-  if (saved === 'yes') { load(); return; }
-  if (saved === 'no') return;
+  window.jnprCookies = () => { document.querySelector('.cookie-note')?.remove(); note(); }; // 11/11: footer link reopens the choice
+  if (saved === 'yes') load();
+  if (saved) return;
+  note();
+  function note() {
 
   const b = document.createElement('div');
   b.className = 'cookie-note'; b.setAttribute('role', 'dialog'); b.setAttribute('aria-label', es ? 'Cookies' : 'Cookies');
@@ -55,4 +58,5 @@
     if (c.dataset.c === 'yes') load();
     b.remove();
   });
+  }
 })();
