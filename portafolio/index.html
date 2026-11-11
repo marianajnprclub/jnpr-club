@@ -54,16 +54,16 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 @media (max-width: 760px) { .chips { justify-content: flex-start; } }
 
 /* one project = one screen, alternating blue / red */
-.pj { min-height: 100svh; padding: clamp(70px, 10vh, 110px) 0 clamp(40px, 7vh, 70px); display: grid; align-content: center; gap: clamp(14px, 3vh, 26px); position: relative; overflow: hidden; }
+.pj { padding: clamp(48px, 8vh, 90px) 0 clamp(36px, 6vh, 70px); display: grid; gap: clamp(14px, 2.5vh, 24px); position: relative; overflow: hidden; }
 .pj[hidden] { display: none; }
 .pj.alt { background: var(--blue); color: var(--red); }
 .ttl { overflow: hidden; white-space: nowrap; }
 .ttl div { display: inline-flex; width: max-content; animation: run var(--t, 22s) linear infinite; }
 .ttl h2 { font: 400 clamp(60px, 11vw, 200px)/.95 'MW', system-ui; text-transform: uppercase; margin: 0; padding-right: .35em; }
-.ttl h2:nth-child(even) { color: transparent; -webkit-text-stroke: 1.5px currentColor; }
 .ttl h2::after { content: ''; display: inline-block; width: .62em; height: .62em; vertical-align: .08em; margin-left: .35em; background: url(../img/ast/chrome.webp) center / contain no-repeat; animation: spin 9s linear infinite; }
 @keyframes spin { to { rotate: 360deg; } }
-.pj-h { padding: 0 var(--pad); display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+.pj-h { padding: 0 var(--pad); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.pj-h .g { display: contents; }
 .pj .g { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
 .pj .g span { font: 11px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; border-radius: 99px; padding: 11px 16px; background: var(--blue); color: var(--red); }
 .pj.alt .g span { background: var(--red); color: var(--w); }
@@ -73,14 +73,15 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .strip { display: flex; gap: clamp(10px, 1.4vw, 20px); overflow-x: auto; scroll-snap-type: x mandatory; padding: 30px var(--pad) 90px; margin: -24px 0 -60px; scroll-padding: 0 var(--pad); scrollbar-width: none; align-items: center; }
 .strip::-webkit-scrollbar { display: none; }
 .strip.drag { scroll-snap-type: none; }
-.strip figure { margin: 0; flex: none; scroll-snap-align: start; border-radius: 22px; overflow: hidden; box-shadow: 0 34px 60px -30px rgb(80 10 0 / .6); opacity: 0; transform: translateX(80px) rotate(3deg) scale(.92); transition: opacity .8s, transform 1s cubic-bezier(.2, .8, .2, 1); position: relative; }
-.strip figure.in { opacity: 1; transform: none; }
-.strip figure:hover { transform: scale(1.02) rotate(-.6deg); transition-duration: .4s; }
+.strip figure { margin: 0; flex: none; scroll-snap-align: start; border-radius: 22px; overflow: hidden; box-shadow: 0 34px 60px -30px rgb(80 10 0 / .6); position: relative; }
 .strip img, .strip video { height: clamp(300px, 58svh, 760px); width: auto; max-width: 92vw; object-fit: contain; display: block; user-select: none; -webkit-user-drag: none; }
 .pj.full .strip figure { width: calc(100vw - 2 * var(--pad)); height: 78svh; }
 .pj.full .strip video { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
 .strip video:fullscreen { object-fit: contain; background: #000; }
 .fs { all: unset; cursor: pointer; position: absolute; right: 14px; bottom: 14px; z-index: 2; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .12em; background: var(--w); color: var(--red); border-radius: 99px; padding: 12px 16px; }
+.swipe { display: none; align-self: start; margin: -8px var(--pad) 0; width: fit-content; gap: 8px; align-items: center; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; border-radius: 99px; padding: 10px 14px; background: var(--w); color: var(--red); }
+.swipe i { width: 18px; height: 2px; background: currentColor; border-radius: 2px; animation: nudge 1.2s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateX(8px); } }
 .strip figure.vid::after { content: '▶ Video'; position: absolute; left: 14px; top: 14px; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; background: var(--red); color: var(--w); border-radius: 99px; padding: 8px 12px; }
 
 /* custom drag cursor (desktop) */
@@ -94,8 +95,8 @@ footer h3 { font: 400 clamp(48px, 11vw, 190px)/.85 'MW', system-ui; text-transfo
 footer .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 footer .row a { font: 12px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; text-decoration: none; border-radius: 99px; padding: 18px 26px; background: var(--w); color: var(--red); }
 footer .row a.line { background: var(--blue); color: var(--red); }
-@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 62svh; width: auto; max-width: 84vw; } .ttl h2 { font-size: 21vw; } .wall .row img { height: 19svh; } }
-@media (prefers-reduced-motion: reduce) { .wall .row, .ttl div, .ttl h2::after { animation: none; } .hero h1 span, .strip figure { animation: none; transform: none; opacity: 1; transition: none; } }
+@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 58svh; width: auto; max-width: 76vw; } .pj.full .strip figure { width: 80vw; height: 70svh; } .swipe { display: inline-flex; } .ttl h2 { font-size: 21vw; } .wall .row img { height: 19svh; } }
+@media (prefers-reduced-motion: reduce) { .wall .row, .ttl div, .ttl h2::after { animation: none; } .hero h1 span { animation: none; transform: none; opacity: 1; } }
 </style>
 </head>
 <body>
@@ -124,7 +125,7 @@ footer .row a.line { background: var(--blue); color: var(--red); }
   const V = s => [`video/${s}.mp4`];
   if (byId.benedetto) byId.benedetto.img.unshift(V('oktopus-benedetto5'));
   const extra = [
-    { id: 'motion', name: 'Motion', genres: ['Motion', 'Campañas y redes'], sub: 'Morris Club · Fortuny · Casa Pacha · Chamanes · Soul Empire · Flow Catalog',
+    { id: 'motion', name: 'Motion', genres: ['Motion', 'Campañas y redes'],
       img: ['oktopus-morris', 'oktopus-fortuny-fashionweek', 'oktopus-casapacha', 'oktopus-morris-beach', 'oktopus-chamanes', 'oktopus-soulempire', 'oktopus-morris-marbella', 'oktopus-chamanes-2', 'oktopus-flow-catalog---easter-eggs', 'oktopus-morris-lineup-junio1', 'oktopus-lineup-julio1', 'oktopus-morris-dinner1'].map(V) },
   ];
   const list = [];
@@ -147,9 +148,10 @@ footer .row a.line { background: var(--blue); color: var(--red); }
     const t = Array(4).fill(`<h2>${esc(p.name)}</h2>`).join('');
     return `<section class="pj${i % 2 ? '' : ' alt'}${p.genres.includes('Motion') ? ' full' : ''}" data-g="${esc(p.genres.join('|'))}">
       <div class="ttl" aria-label="${esc(p.name)}"><div style="--t:${16 + p.name.length * 1.2}s">${t}${t}</div></div>
-      <div class="pj-h"><p class="g">${(p.sub ? [p.sub] : p.genres).map(g => `<span>${esc(g)}</span>`).join('')}</p>${p.k !== undefined ? `<a class="open" href="../es/?open=${p.k}">Ver el caso</a>` : ''}</div>
+      <div class="pj-h"><p class="g">${p.genres.map(g => `<span>${esc(g)}</span>`).join('')}</p>${p.k !== undefined ? `<a class="open" href="../es/?open=${p.k}">Ver el caso</a>` : ''}</div>
       ${NOTE[p.id] ? `<p class="note">${esc(NOTE[p.id])}</p>` : ''}
       <div class="strip">${imgs.map(s => `<figure${isV(s) ? ' class="vid"' : ''}>${media(s, p.name)}${isV(s) ? '<button type="button" class="fs">Pantalla completa</button>' : ''}</figure>`).join('')}</div>
+      ${imgs.length > 1 ? '<span class="swipe">Desliza para ver más <i></i></span>' : ''}
     </section>`;
   }).join('');
 
@@ -165,11 +167,16 @@ footer .row a.line { background: var(--blue); color: var(--red); }
   const io = new IntersectionObserver(es => es.forEach(e => {
     const v = e.target.querySelector('video');
     if (e.isIntersecting) {
-      e.target.classList.add('in');
       if (v) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); }
     } else if (v) v.pause();
   }), { rootMargin: '0px 300px 0px 300px', threshold: .15 });
   document.querySelectorAll('.strip figure').forEach(f => io.observe(f));
+
+  // Phone: each strip nudges once so it's clear it scrolls sideways
+  if (matchMedia('(pointer: coarse)').matches) {
+    const nio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; nio.unobserve(e.target); const s = e.target; s.scrollTo({ left: 90, behavior: 'smooth' }); setTimeout(() => s.scrollTo({ left: 0, behavior: 'smooth' }), 700); }), { threshold: .6 });
+    document.querySelectorAll('.strip').forEach(s => nio.observe(s));
+  }
 
   // Drag to scroll + custom cursor on desktop
   const cur = document.getElementById('cur');
