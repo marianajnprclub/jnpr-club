@@ -79,9 +79,15 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .pj.full .strip figure { width: calc(100vw - 2 * var(--pad)); height: 78svh; }
 .pj.full .strip video { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
 .fs { all: unset; cursor: pointer; position: absolute; right: 14px; bottom: 14px; z-index: 2; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .12em; background: var(--w); color: var(--red); border-radius: 99px; padding: 12px 16px; }
-.swipe { display: none; align-self: start; margin: -8px var(--pad) 0; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .16em; opacity: .85; }
-.swipe i { display: inline-block; font-style: normal; margin-left: 6px; animation: nudge 1.2s ease-in-out infinite; }
-@keyframes nudge { 50% { transform: translateX(6px); } }
+.snav { display: flex; align-items: center; gap: 6px; padding: 0 var(--pad); margin-top: 6px; }
+.sbar { flex: 1; height: 2px; position: relative; overflow: hidden; background: rgb(252 252 252 / .35); }
+.pj.alt .sbar { background: rgb(241 32 9 / .25); }
+.sbar b { position: absolute; top: 0; bottom: 0; left: 0; width: 0; background: currentColor; transition: width .3s; }
+.sn { font: 11px 'MW', system-ui; letter-spacing: .12em; margin: 0 6px 0 10px; }
+.sc { all: unset; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: inherit; }
+.sc::before { content: ''; width: 11px; height: 11px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: translateX(-2px) rotate(45deg); }
+.sc.prev::before { transform: translateX(2px) rotate(-135deg); }
+.sc[disabled] { opacity: .35; cursor: default; }
 .strip figure.vid::after { content: '▶ Video'; position: absolute; left: 14px; top: 14px; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; background: var(--red); color: var(--w); border-radius: 99px; padding: 8px 12px; }
 
 /* custom drag cursor (desktop) */
@@ -90,7 +96,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .cur.red { background: var(--red); color: var(--w); }
 @media (hover: hover) and (pointer: fine) { .strip { cursor: none; } }
 
-@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 58svh; width: auto; max-width: 76vw; } .pj.full .strip figure { width: 80vw; height: 70svh; } .swipe { display: block; } .ttl h2 { font-size: 21vw; } .wall .row img { height: 19svh; } }
+@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 62svh; width: auto; max-width: calc(100vw - 2 * var(--pad)); } .pj.full .strip figure { width: calc(100vw - 2 * var(--pad)); height: 70svh; } .ttl h2 { font-size: 21vw; } .wall .row img { height: 19svh; } }
 @media (prefers-reduced-motion: reduce) { .wall .row, .ttl div, .ttl h2::after { animation: none; } .hero h1 span { animation: none; transform: none; opacity: 1; } }
 </style>
 <link rel="stylesheet" href="../site.css">
@@ -144,8 +150,9 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
   });
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const isV = s => /\.mp4$/.test(s);
+  const poster = s => s.replace('video/', 'img/motion/p/').replace('.mp4', '.webp');
   const media = (src, alt) => isV(src)
-    ? `<video data-src="../${src}" muted loop playsinline preload="none" aria-label="${esc(alt)}"></video>`
+    ? `<video data-src="../${src}" poster="../${poster(src)}" muted loop playsinline preload="none" aria-label="${esc(alt)}"></video>`
     : `<img src="../${src}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
   const seen = new Set();
   const m = document.getElementById('m');
@@ -159,10 +166,10 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
     return `<section class="pj${i % 2 ? '' : ' alt'}${p.genres.includes('Motion') ? ' full' : ''}" data-g="${esc(p.genres.join('|'))}">
       <div class="ttl" aria-label="${esc(p.name)}"><div style="--t:${16 + p.name.length * 1.2}s">${t}${t}</div></div>
       <div class="pj-h"><p class="g">${p.genres.map(g => `<span>${esc(g)}</span>`).join('')}</p>${p.text && p.text.length ? `<button type="button" class="open" aria-expanded="false" data-t="Cerrar">Ver el caso</button>` : ''}</div>
-      ${p.text && p.text.length ? `<div class="case" hidden>${p.text.map(t => `<p>${esc(t)}</p>`).join('')}${p.url ? `<a class="site" href="${esc(p.url)}" target="_blank" rel="noopener">Ver la web</a>` : ''}</div>` : ''}
+      ${p.text && p.text.length ? `<div class="case" hidden><p>${esc(p.text[0])}</p>${p.url ? `<a class="site" href="${esc(p.url)}" target="_blank" rel="noopener">Ver la web</a>` : ''}</div>` : ''}
       ${NOTE[p.id] || p.note ? `<p class="note">${esc(NOTE[p.id] || p.note)}</p>` : ''}
       <div class="strip">${imgs.map(s => `<figure${isV(s) ? ' class="vid"' : ''}>${media(s, p.name)}${isV(s) ? '<button type="button" class="fs">Pantalla completa</button>' : ''}</figure>`).join('')}</div>
-      ${imgs.length > 1 ? '<span class="swipe">Desliza <i>→</i></span>' : ''}
+      ${imgs.length > 1 ? `<div class="snav"><i class="sbar"><b></b></i><span class="sn">01 / ${String(imgs.length).padStart(2, '0')}</span><button type="button" class="sc prev" aria-label="Anterior" disabled></button><button type="button" class="sc next" aria-label="Siguiente"></button></div>` : ''}
     </section>`;
   }).join('');
 
@@ -213,7 +220,18 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
   m.addEventListener('click', e => {
     const b = e.target.closest('.fs'); if (!b) return;
     const sec = b.closest('.pj'), all = [...sec.querySelectorAll('.strip .fs')];
-    VV.open(all.map(x => ({ v: x.parentElement.querySelector('video').dataset.src })), all.indexOf(b));
+    VV.open(all.map(x => { const v = x.parentElement.querySelector('video'); return { v: v.dataset.src, s: v.getAttribute('poster') }; }), all.indexOf(b), null, sec.querySelector('.ttl').getAttribute('aria-label'));
+  });
+
+  // Slider nav, same as JNPR Labs: progress line, 01 / 07, chevrons
+  document.querySelectorAll('.pj').forEach(sec => {
+    const st = sec.querySelector('.strip'), nv = sec.querySelector('.snav'); if (!nv) return;
+    const fs = [...st.children], n = fs.length, z = x => String(x).padStart(2, '0');
+    const idx = () => { const x = st.scrollLeft + 2; let k = 0; fs.forEach((f, j) => { if (f.offsetLeft - st.offsetLeft - parseFloat(getComputedStyle(st).paddingLeft) <= x) k = j; }); return st.scrollLeft + st.clientWidth >= st.scrollWidth - 4 ? n - 1 : k; };
+    const up = () => { const k = idx(); nv.querySelector('.sn').textContent = z(k + 1) + ' / ' + z(n); nv.querySelector('.sbar b').style.width = ((k + 1) / n * 100) + '%'; nv.querySelector('.prev').disabled = k === 0; nv.querySelector('.next').disabled = k === n - 1; };
+    const to = d => { const k = Math.max(0, Math.min(n - 1, idx() + d)); st.scrollTo({ left: fs[k].offsetLeft - st.offsetLeft - parseFloat(getComputedStyle(st).paddingLeft), behavior: 'smooth' }); };
+    nv.querySelector('.prev').onclick = () => to(-1); nv.querySelector('.next').onclick = () => to(1);
+    st.addEventListener('scroll', up, { passive: true }); addEventListener('resize', up, { passive: true }); up();
   });
 
   // Scroll progress
