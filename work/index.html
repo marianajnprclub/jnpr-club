@@ -50,7 +50,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 @media (max-width: 760px) { .chips { justify-content: flex-start; } }
 
 /* one project = one screen, alternating blue / red */
-.pj { padding: clamp(48px, 8vh, 90px) 0 clamp(36px, 6vh, 70px); display: grid; gap: clamp(14px, 2.5vh, 24px); position: relative; overflow: hidden; }
+.pj { padding: clamp(36px, 6vh, 64px) 0 clamp(24px, 4vh, 44px); display: grid; gap: clamp(10px, 1.8vh, 18px); position: relative; overflow: hidden; }
 .pj[hidden] { display: none; }
 .pj.alt { background: var(--blue); color: var(--red); }
 .ttl { overflow: hidden; white-space: nowrap; }
@@ -58,22 +58,24 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .ttl h2 { font: 400 clamp(60px, 11vw, 200px)/.95 'MW', system-ui; text-transform: uppercase; margin: 0; padding-right: .35em; }
 .ttl h2::after { content: ''; display: inline-block; width: .62em; height: .62em; vertical-align: .08em; margin-left: .35em; background: url(../img/ast/chrome.webp) center / contain no-repeat; animation: spin 9s linear infinite; }
 @keyframes spin { to { rotate: 360deg; } }
-.pj-h { padding: 0 var(--pad); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.pj-h .g { display: contents; }
+.pj-h { padding: 0 var(--pad); display: grid; justify-items: start; gap: 14px; }
+.pj-h .g { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; margin: 0; }
 .pj .g { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
-.pj .g span { font: 11px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; border-radius: 99px; padding: 11px 16px; background: var(--blue); color: var(--red); }
-.pj.alt .g span { background: var(--red); color: var(--w); }
+.pj .g span { font: 12px 'MW', system-ui; text-transform: uppercase; letter-spacing: .16em; }
+.pj .g span + span::before { content: ''; display: inline-block; width: 12px; height: 12px; margin: 0 10px 0 12px; vertical-align: -1px; background: url(../img/ast/chrome.webp) center / contain no-repeat; }
 .pj .note { margin: 0; padding: 0 var(--pad); font: 400 clamp(18px, 2vw, 30px)/1.2 'MW', system-ui; text-transform: uppercase; max-width: 30ch; }
 .pj .open { position: relative; display: inline-flex; align-items: center; justify-content: center; height: 42px; aspect-ratio: 1719 / 385; font: 10px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; text-decoration: none; white-space: nowrap; color: #1b1b1b; text-shadow: 0 1px 0 rgb(255 255 255 / .6); background: url(../img/ast/pill-silver.webp) center / contain no-repeat; filter: drop-shadow(0 10px 16px rgb(40 0 0 / .3)); transition: transform .2s; }
 .pj button.open { border: 0; padding: 0; cursor: pointer; }
 .pj .case { padding: 0 var(--pad); display: grid; gap: 14px; justify-items: start; max-width: 62ch; }
+.pj .case[hidden] { display: none; }
 .pj .case p { margin: 0; font: 400 clamp(16px, 1.4vw, 20px)/1.45 'MW', system-ui; }
 .pj .case .site { font: 11px 'MW', system-ui; text-transform: uppercase; letter-spacing: .14em; text-decoration: none; border-radius: 99px; padding: 13px 18px; background: var(--w); color: var(--red); }
 .pj.alt .case .site { background: var(--red); color: var(--w); }
-.pj .open:hover { transform: scale(1.06) rotate(-2deg); }
-.strip { display: flex; gap: clamp(10px, 1.4vw, 20px); overflow-x: auto; scroll-snap-type: x mandatory; padding: 30px var(--pad) 90px; margin: -24px 0 -60px; scroll-padding: 0 var(--pad); scrollbar-width: none; align-items: center; }
+.pj .open:hover { transform: scale(1.04); }
+.strip { display: flex; gap: clamp(10px, 1.4vw, 20px); overflow-x: auto; scroll-snap-type: x mandatory; padding: 30px var(--pad) 90px; margin: -24px 0 -60px; scroll-padding: 0 var(--pad); scrollbar-width: none; align-items: flex-start; }
 .strip::-webkit-scrollbar { display: none; }
 .strip.drag { scroll-snap-type: none; }
+@media (max-width: 760px) { .strip { overflow-y: hidden; transition: height .35s ease; } }
 .strip figure { margin: 0; flex: none; scroll-snap-align: start; border-radius: 22px; overflow: hidden; box-shadow: 0 34px 60px -30px rgb(80 10 0 / .6); position: relative; }
 .strip img, .strip video { height: clamp(300px, 58svh, 760px); width: auto; max-width: 92vw; object-fit: contain; display: block; user-select: none; -webkit-user-drag: none; }
 .pj.full .strip figure { width: calc(100vw - 2 * var(--pad)); height: 78svh; }
@@ -96,14 +98,14 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .cur.red { background: var(--red); color: var(--w); }
 @media (hover: hover) and (pointer: fine) { .strip { cursor: none; } }
 
-@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 62svh; width: auto; max-width: calc(100vw - 2 * var(--pad)); } .pj.full .strip figure { width: calc(100vw - 2 * var(--pad)); height: 70svh; } .ttl h2 { font-size: 21vw; } .wall .row img { height: 19svh; } }
+@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 62svh; width: auto; max-width: calc(100vw - 2 * var(--pad)); } .pj.full .strip figure { width: calc(100vw - 2 * var(--pad)); height: 70svh; } .ttl h2 { font-size: 14vw; } .wall .row img { height: 19svh; } }
 @media (prefers-reduced-motion: reduce) { .wall .row, .ttl div, .ttl h2::after { animation: none; } .hero h1 span { animation: none; transform: none; opacity: 1; } }
 </style>
-<link rel="stylesheet" href="../site.css">
-<script src="../vv.js" defer></script>
+<link rel="stylesheet" href="../site.css?v=1111c">
+<script src="../vv.js?v=1111c" defer></script>
 </head>
 <body>
-<!--sh--><header class="sh" id="sh"><a class="sh-logo" href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menu</button><nav id="shnav"><a href="../work/" aria-current="page">Portfolio</a><a href="../#labs">AI Lab</a><a href="/websites/">Migrate your site</a><a href="/about/">About</a><a href="#contacto">Contact</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../portafolio/" hreflang="es">ES</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
+<!--sh--><header class="sh" id="sh"><a class="sh-back" href="../" aria-label="Back" onclick="if(document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false}"></a><a class="sh-logo" href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menu</button><nav id="shnav"><a href="../work/" aria-current="page">Portfolio</a><a href="../#labs">AI Lab</a><a href="/websites/">Migrate your site</a><a href="/about/">About</a><a href="#contacto">Contact</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../portafolio/" hreflang="es">ES</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
 
 
 <div class="prog" id="prog"></div>
@@ -228,6 +230,10 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
     const st = sec.querySelector('.strip'), nv = sec.querySelector('.snav'); if (!nv) return;
     const fs = [...st.children], n = fs.length, z = x => String(x).padStart(2, '0');
     const idx = () => { const x = st.scrollLeft + 2; let k = 0; fs.forEach((f, j) => { if (f.offsetLeft - st.offsetLeft - parseFloat(getComputedStyle(st).paddingLeft) <= x) k = j; }); return st.scrollLeft + st.clientWidth >= st.scrollWidth - 4 ? n - 1 : k; };
+    // Phone: the strip takes the height of the piece on screen, so short pieces don't leave a hole
+    const fit = () => { if (!matchMedia('(max-width: 760px)').matches) { st.style.height = ''; return; } const cs = getComputedStyle(st); st.style.height = (fs[idx()].offsetHeight + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom)) + 'px'; };
+    let ft; st.addEventListener('scroll', () => { clearTimeout(ft); ft = setTimeout(fit, 90); }, { passive: true });
+    st.addEventListener('load', fit, true); addEventListener('resize', fit, { passive: true }); fit();
     const up = () => { const k = idx(); nv.querySelector('.sn').textContent = z(k + 1) + ' / ' + z(n); nv.querySelector('.sbar b').style.width = ((k + 1) / n * 100) + '%'; nv.querySelector('.prev').disabled = k === 0; nv.querySelector('.next').disabled = k === n - 1; };
     const to = d => { const k = Math.max(0, Math.min(n - 1, idx() + d)); st.scrollTo({ left: fs[k].offsetLeft - st.offsetLeft - parseFloat(getComputedStyle(st).paddingLeft), behavior: 'smooth' }); };
     nv.querySelector('.prev').onclick = () => to(-1); nv.querySelector('.next').onclick = () => to(1);
@@ -250,7 +256,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
   });
 })();
 </script>
-<script src="../analytics.js" defer></script>
+<script src="../analytics.js?v=1111c" defer></script>
 
 
 <!--sf--><footer class="sf" id="contacto"><a class="sf-brand" href="../" aria-label="JNPR® Club, home"></a><p class="k">Looking for a Creative Director who builds with AI?</p><h2>Let’s work together.</h2><div class="sf-doors"><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Working%20with%20you">Hire me</a><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=My%20website">Get your site</a><a class="sf-in" href="https://www.linkedin.com/in/mariana-ortega-cardenas" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.83 2.67 4.83 6.13V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></div><a class="sf-mail" href="mailto:mariana.jnprclub@gmail.com">mariana.jnprclub@gmail.com</a><div class="sf-fine"><span>© 2026 JNPR® Club · Madrid</span><a href="../">jnpr-club.com</a></div></footer><!--/sf-->
