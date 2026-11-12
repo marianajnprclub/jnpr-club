@@ -5,7 +5,7 @@
   const es = document.documentElement.lang === 'es';
   const T = es ? { x: 'Cerrar', m: 'Silenciar', u: 'Activar sonido', p: 'Anterior', n: 'Siguiente', play: 'Reproducir' }
                : { x: 'Close', m: 'Mute', u: 'Sound on', p: 'Previous', n: 'Next', play: 'Play' };
-  const css = `.vv{position:fixed;inset:0;z-index:2147483000;touch-action:manipulation;background:#F12009 url(/img/papel-rojo.webp) center/627px;color:#FCFCFC;display:grid;grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr)}.vv>*{min-width:0}.vv[hidden]{display:none}
+  const css = `.vv{position:fixed;inset:0;z-index:2147483000;touch-action:manipulation;background:#F12009 url(/img/papel-rojo.webp) center/627px;color:#FCFCFC;display:grid;grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr)}.vv>*{min-width:0}.vv.vv-lab{background:#9B7EEA url(/img/papel-morado.webp) center/627px}.vv.vv-lab .vv-top button{color:#9B7EEA}@media(max-width:600px){.vv-h{white-space:normal!important;font-size:18px!important;line-height:1.15!important}}.vv .vv-x{width:44px;height:44px;padding:0!important;border-radius:50%;display:grid;place-items:center;flex:none}.vv[hidden]{display:none}
 .vv-top,.vv-bot{display:flex;align-items:center;gap:12px;padding:calc(14px + env(safe-area-inset-top)) clamp(16px,4vw,64px) 14px}
 .vv-top{justify-content:flex-end}.vv-h{margin-right:auto;font:400 clamp(20px,3vw,40px)/1 'MW',system-ui,sans-serif;text-transform:uppercase;display:flex;align-items:center;gap:.3em;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.vv-h img{width:.9em;height:.9em;animation:vvspin 14s linear infinite}@keyframes vvspin{to{rotate:360deg}}.vv-bot{padding:14px clamp(16px,4vw,64px) calc(18px + env(safe-area-inset-bottom))}
 .vv button{all:unset;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -25,7 +25,7 @@
   const build = () => {
     const st = document.createElement('style'); st.textContent = css; document.head.append(st);
     vv = document.createElement('div'); vv.className = 'vv'; vv.hidden = true; vv.setAttribute('role', 'dialog'); vv.setAttribute('aria-modal', 'true');
-    vv.innerHTML = `<div class="vv-top"><p class="vv-h"></p><button type="button" class="vv-m">${T.m}</button><button type="button" class="vv-x">${T.x}</button></div><div class="vv-t"></div>`
+    vv.innerHTML = `<div class="vv-top"><p class="vv-h"></p><button type="button" class="vv-m">${T.m}</button><button type="button" class="vv-x" aria-label="${T.x}" title="${T.x}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="vv-t"></div>`
       + `<div class="vv-bot"><i class="vv-bar"><b></b></i><span class="vv-n"></span><button type="button" class="vv-c prev" aria-label="${T.p}"></button><button type="button" class="vv-c next" aria-label="${T.n}"></button></div>`;
     document.body.append(vv);
     track = vv.querySelector('.vv-t'); cnt = vv.querySelector('.vv-n'); fill = vv.querySelector('.vv-bar b'); mb = vv.querySelector('.vv-m');
@@ -76,7 +76,7 @@
       ? `<div class="vv-s"><video data-src="${esc(x.v)}" loop playsinline preload="none"${x.s ? ` poster="${esc(x.s)}"` : ''}></video><button type="button" class="vv-go">${T.play}</button></div>`
       : `<div class="vv-s"><img src="${esc(x.s)}" alt="${esc(x.c || '')}" loading="lazy"></div>`).join('');
     document.querySelectorAll('video').forEach(v => { if (!vv.contains(v)) v.pause(); });
-    vv.hidden = false; document.documentElement.style.overflow = 'hidden';
+    vv.classList.toggle('vv-lab', document.documentElement.dataset.side === 'B' || !!(document.activeElement && document.activeElement.closest && document.activeElement.closest('.lab-wall, .lab-sb'))); vv.hidden = false; document.documentElement.style.overflow = 'hidden';
     track.scrollLeft = i * track.clientWidth; ui();
     start(track.children[i]?.querySelector('video'));  // muted; Sound on is one tap away
   } };

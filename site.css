@@ -36,3 +36,7 @@
 /* 12/11: chrome pills: no square shadow */
 .chromecta { filter: none !important; border-radius: 999px !important; box-shadow: 0 12px 18px -10px rgb(40 0 0 / .45) !important; }
 .chromecta::after { display: none !important; }
+
+/* 12/11 */
+* { -webkit-tap-highlight-color: transparent; }
+:focus:not(:focus-visible) { outline: none !important; }
