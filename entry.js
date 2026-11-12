@@ -21,7 +21,7 @@
         const textureMove=cover?.animate([{backgroundPosition:'0px 0px'},{backgroundPosition:coverTarget+'px 0px'}],{pseudoElement:'::before',duration:480,easing:'cubic-bezier(.65,0,.25,1)',fill:'forwards'});
         const move=mark.animate([
           {transform:'translate(0,0) scale(1)',backgroundColor:'#FCFCFC'},
-          {transform:`translate(${to.left-from.left}px,${to.top-from.top}px) scale(${to.width/from.width},${to.height/from.height})`,backgroundColor:'#FCFCFC'}
+          {transform:`translate(${to.left-from.left}px,${to.top-from.top+(to.height-from.height*(to.width/from.width))/2}px) scale(${to.width/from.width})`,backgroundColor:'#FCFCFC'} /* 12/11: same scale both ways, the logo never stretches */
         ],{duration:480,easing:'cubic-bezier(.65,0,.25,1)',fill:'forwards'});
         await Promise.race([Promise.all([move.finished.catch(()=>{}),coverMove?.finished.catch(()=>{}),textureMove?.finished.catch(()=>{})]),skip,new Promise(resolve=>setTimeout(resolve,900))]);
       }
