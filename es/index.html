@@ -2103,7 +2103,7 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
 #gallery.pf-ban { padding: 0 !important; }
 .pf-ban a { min-height: min(86svh, 820px) !important; }
 </style>
-<script src="vv.js?v=1111d" defer></script>
+<script src="vv.js?v=1211a" defer></script>
 <style>/* 11/11/26: desktop uses the same hamburger menu as the phone (the bar had too many things) */
 @media (min-width: 761px) {
   header nav > a, .topbar nav { display: none !important; }
@@ -2149,6 +2149,22 @@ button, [role="button"], .gctl, .lp2-nav, .fnav, .chips, .cnav { -webkit-user-se
 <style>/* 12/11: About me shadow softer and with room, so the next section doesn't cut it; See the portfolio centred between the filters and the records */
 #welcome .wel-more { filter: drop-shadow(0 6px 8px rgb(60 10 0 / .22)) !important; margin-bottom: 22px !important; }
 @media (max-width: 860px) { #work .fgrid { margin: 38px 0 2px !important; } }
+</style>
+<style>/* 12/11: chrome pills: NO square shadow ever. No filter (Safari draws it as a box), no sheen; a soft rounded shadow instead */
+.chromecta, .jk, .wk, #more-r, #welcome .wel-more, .fgrid a, .pf-go, .scrfs { filter: none !important; -webkit-filter: none !important; border-radius: 999px !important; box-shadow: 0 12px 18px -10px rgb(40 0 0 / .45) !important; outline: none !important; }
+.chromecta::after { display: none !important; }
+</style>
+<style>/* 12/11: sliders: pictures fill the frame (rounded frame, square pictures inside), expand icon opens them whole in full screen */
+.lp2-car, .cgal { position: relative; }
+.xfs { all: unset; box-sizing: border-box; cursor: pointer; position: absolute; z-index: 4; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--w, #FCFCFC); color: var(--red, #F12009); box-shadow: 0 8px 16px -8px rgb(40 0 0 / .45); transition: transform .2s; }
+.xfs:hover { transform: scale(1.08); }
+.xfs:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.lp2-car > .xfs { top: 12px; right: 12px; }
+.cgal > .xfs { top: 16px; right: 16px; }
+.lab-wall .lp2-s { aspect-ratio: var(--ar, 4 / 5) !important; background: transparent !important; }
+html body .lab-wall .lp2 .lp2-car .lp2-imgs .lp2-s img, html body .lab-wall .lp2 .lp2-car .lp2-imgs .lp2-s video { object-fit: cover !important; border-radius: 0 !important; border: 0 !important; }
+.scrfs { display: grid !important; place-items: center; }
+.scrfs svg { width: 16px; height: 16px; }
 </style>
 </head>
 <body>
@@ -2278,7 +2294,7 @@ button, [role="button"], .gctl, .lp2-nav, .fnav, .chips, .cnav { -webkit-user-se
   <h2 class="motion-title">Motion<img src="img/ast/chrome.webp" alt="" width="180" height="180" loading="lazy"></h2>
   <div class="mstage">
     <div class="tv" id="tv"><div class="scr" id="scr"><video id="mvid" muted playsinline preload="none"></video><canvas id="mstatic" width="160" height="120" aria-hidden="true"></canvas><span class="ch" id="mch" aria-hidden="true">01</span></div>
-      <img src="img/tv.webp" alt="" width="1024" height="1536"><button type="button" class="scrfs" id="tvfs" style="left:80%;top:63.5%">Pantalla completa</button>
+      <img src="img/tv.webp" alt="" width="1024" height="1536"><button type="button" class="scrfs" id="tvfs" style="left:80%;top:63.5%" aria-label="Pantalla completa" title="Pantalla completa"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
       <button type="button" class="kb prev" id="mprev" aria-label="Vídeo anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14l-8-7zM11 5v14l-8-7z"/></svg></button><button type="button" class="kb play" id="mplay" aria-label="Pause"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></button><button type="button" class="kb next" id="mnext" aria-label="Vídeo siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14l8-7zM13 5v14l8-7z"/></svg></button><button type="button" class="kb snd" id="msnd" aria-pressed="false" aria-label="Con sonido"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9z"/><path class="i-wave" d="M15 8.5a5 5 0 0 1 0 7M17.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="i-mute" d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
     <div class="guide">
       <div class="now" aria-live="polite"><span class="k" id="mnum">Sonando · CH 01</span><b id="mwho"></b><i id="mwhat"></i></div>
@@ -2305,7 +2321,7 @@ button, [role="button"], .gctl, .lp2-nav, .fnav, .chips, .cnav { -webkit-user-se
     <img class="ml-img" src="img/labs/machine.webp?v=2" alt="" width="863" height="1036">
     <div class="ml-bez" style="left:12.86%;top:7.92%;width:74.28%;height:50.39%"></div>
     <button type="button" class="ml-b" data-n="01" data-i="0" aria-label="Imágenes IA" title="Imágenes IA" style="left:23.81%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="02" data-i="1" aria-label="Campañas" title="Campañas" style="left:37.11%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="03" data-i="2" aria-label="Reels" title="Reels" style="left:50.40%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="04" data-i="3" aria-label="Webs" title="Webs" style="left:63.70%;top:70.17%;width:8.69%"></button><button type="button" class="ml-b" data-n="05" data-i="4" aria-label="Smart Branding" title="Smart Branding" style="left:77.00%;top:70.17%;width:8.69%"></button>
-    <button type="button" class="scrfs" id="mlfs">Pantalla completa</button><div class="ml-paper" id="mlpaper" style="left:19.93%;width:60.50%;top:83.42%"></div>
+    <button type="button" class="scrfs" id="mlfs" aria-label="Pantalla completa" title="Pantalla completa"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button><div class="ml-paper" id="mlpaper" style="left:19.93%;width:60.50%;top:83.42%"></div>
   </div>
 </section>
 
@@ -2813,7 +2829,7 @@ button, [role="button"], .gctl, .lp2-nav, .fnav, .chips, .cnav { -webkit-user-se
   /* Labs: each project is a horizontal strip of whole images (swipe on phones, drag or arrows with a mouse). */
   document.querySelectorAll('.lp2-car').forEach(c=>{ const tr=c.querySelector('.lp2-imgs'), it=[...tr.children]; it.forEach(e=>e.classList.add('on')); tr.querySelectorAll('video').forEach(v=>new IntersectionObserver(([e])=>{ if(e.isIntersecting) v.play().catch(()=>{}); else v.pause(); },{threshold:.5}).observe(v)); let nav=c.querySelector('.lp2-nav'); if(!nav){ nav=document.createElement('div'); nav.className='fnav lp2-nav'; nav.innerHTML='<button type="button" aria-label="Imagen anterior">←</button><span></span><button type="button" aria-label="Next image">→</button>'; c.append(nav); } const [p,n]=nav.querySelectorAll('button'), bar=document.createElement('i'); nav.querySelector('span').textContent=''; bar.className='lp2-bar'; bar.innerHTML='<b></b>'; nav.prepend(bar); const fill=bar.firstChild;
     const up=()=>{ const m=tr.scrollWidth-tr.clientWidth; nav.style.setProperty('display',m>4?'':'none',m>4?'':'important'); fill.style.width=Math.min(100,(tr.clientWidth+tr.scrollLeft)/tr.scrollWidth*100)+'%'; if(matchMedia('(max-width: 760px)').matches){ const z=x=>String(x).padStart(2,'0'); nav.querySelector('span').textContent=z(Math.min(it.length,Math.round(tr.scrollLeft/tr.clientWidth)+1))+' / '+z(it.length); } p.disabled=tr.scrollLeft<4; n.disabled=tr.scrollLeft>m-4; };
-    const by=d=>tr.scrollBy({left:d*tr.clientWidth*.7,behavior:'smooth'}); p.onclick=()=>by(-1); n.onclick=()=>by(1); tr.addEventListener('scroll',up,{passive:true}); tr.addEventListener('load',up,true); addEventListener('resize',up,{passive:true}); up();
+    const by=d=>{ const pl=parseFloat(getComputedStyle(tr).scrollPaddingLeft)||0, x=tr.scrollLeft, L=it.map(e=>e.offsetLeft-tr.offsetLeft-pl); let k=d>0?L.findIndex(v=>v>x+4):(()=>{let j=-1;L.forEach((v,i)=>{if(v<x-4)j=i;});return j;})(); if(k<0) k=d>0?it.length-1:0; tr.scrollTo({left:Math.max(0,Math.min(L[k],tr.scrollWidth-tr.clientWidth)),behavior:'smooth'}); }; /* 12/11: arrows land on a whole slide */ p.onclick=()=>by(-1); n.onclick=()=>by(1); tr.addEventListener('scroll',up,{passive:true}); tr.addEventListener('load',up,true); addEventListener('resize',up,{passive:true}); up();
     let dn=null; tr.addEventListener('pointerdown',e=>{ if(e.pointerType==='mouse'&&!e.target.closest('video')) dn={x:e.clientX,l:tr.scrollLeft}; }); addEventListener('pointermove',e=>{ if(dn){ tr.scrollLeft=dn.l-(e.clientX-dn.x); tr.classList.add('drag'); } }); addEventListener('pointerup',()=>{ dn=null; tr.classList.remove('drag'); }); });
   /* Contact form: Hire me / Get your site open a 3-step form, sent to her inbox with FormSubmit (no key). */
   { const sh=document.getElementById('sheet'), f=document.getElementById('hire-form'); if(sh&&f){
@@ -2879,7 +2895,25 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) retu
 const step=t=>{ const k=Math.min(1,(t-t0)/1100), ease=1-Math.pow(1-k,3); b.textContent=fin.replace(/\d[\d,]*/g,m=>{ const n=+m.replace(/,/g,''), v=Math.round(n*ease); return m.includes(',')?v.toLocaleString('en-US'):String(v); }); if(k<1) requestAnimationFrame(step); else b.textContent=fin; }; requestAnimationFrame(step); }),{threshold:.6});
 bs.forEach(b=>io.observe(b));})();</script>
 <script>/* 12/11: phone overscroll under the blue footer is blue, the top stays as it was */
-(()=>{ const r=document.documentElement; const f=()=>{ r.style.background = (scrollY > (r.scrollHeight - innerHeight) / 2) ? (r.dataset.side==='B' ? '#F12009' : '#7ECAE4') : ''; }; addEventListener('scroll', f, {passive:true}); f(); })();
+(()=>{ const r=document.documentElement, b=document.body, tc=document.querySelector('meta[name=theme-color]'), t0=tc&&tc.content; const f=()=>{ const blue=r.dataset.side==='B'?'#F12009':'#7ECAE4'; const half=scrollY > (r.scrollHeight - innerHeight) / 2, end=scrollY > r.scrollHeight - innerHeight * 2.2; r.style.background = half ? blue : ''; b.style.background = end ? blue : ''; if(tc) tc.content = end ? blue : t0; }; addEventListener('scroll', f, {passive:true}); addEventListener('resize', f, {passive:true}); f(); })(); /* 12/11: body and Safari bars blue at the footer too */
+</script>
+<script>/* 12/11: expand icon on every slider: opens the pictures whole (Close, Esc or Back to leave) */
+(()=>{ const ICON='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+  const mk=(host,list,idx,title)=>{ const b=document.createElement('button'); b.type='button'; b.className='xfs'; b.setAttribute('aria-label','Full screen'); b.title='Full screen'; b.innerHTML=ICON; b.addEventListener('click',e=>{ e.preventDefault(); e.stopPropagation(); if(window.VV) VV.open(list(), idx(), null, title()); }); host.append(b); };
+  document.querySelectorAll('.lp2-car').forEach(c=>{ const tr=c.querySelector('.lp2-imgs'); if(!tr) return; const sl=[...tr.children];
+    const list=()=>sl.map(x=>{ const v=x.querySelector('video'), im=x.querySelector('img'); return v?{v:v.currentSrc||v.getAttribute('src'),s:v.getAttribute('poster')||''}:{s:im&&(im.currentSrc||im.src),c:im&&im.alt}; }).filter(x=>x.v||x.s);
+    const idx=()=>{ const x=tr.scrollLeft+tr.clientWidth/2; let k=0; sl.forEach((e,j)=>{ if(e.offsetLeft-tr.offsetLeft<=x) k=j; }); return k; };
+    mk(c,list,idx,()=>c.closest('.lp2')?.querySelector('h3')?.textContent||'');
+    if(c.closest('.lab-wall')){ const im=tr.querySelector('img'); const set=()=>{ if(im.naturalWidth) tr.style.setProperty('--ar', im.naturalWidth+' / '+im.naturalHeight); }; if(im){ im.complete?set():im.addEventListener('load',set,{once:true}); } }
+  });
+  const g=document.getElementById('cg'); if(g){ new MutationObserver(()=>{ if(g.querySelector(':scope > .xfs')||!g.querySelector('img,video')) return;
+    const ms=()=>[...g.querySelectorAll(':scope > img, :scope > video')];
+    mk(g,()=>ms().map(m=>m.tagName==='VIDEO'?{v:m.currentSrc||m.getAttribute('src')}:{s:m.currentSrc||m.src,c:m.alt}),()=>Math.max(0,ms().findIndex(m=>m.classList.contains('on'))),()=>document.querySelector('.case .cinfo h2')?.textContent||''); }).observe(g,{childList:true}); }
+})();
+</script>
+<script>/* 12/11: videos start by themselves; if the phone blocked autoplay, the first touch or scroll starts the ones on screen */
+(()=>{ const kick=()=>document.querySelectorAll('video').forEach(v=>{ if(!v.paused||v.closest('.vv')) return; const r=v.getBoundingClientRect(); if(r.width&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth&&getComputedStyle(v).opacity!=='0'&&(v.autoplay||v.loop)){ v.muted=true; if(!v.getAttribute('src')&&v.dataset.src) v.src=v.dataset.src; v.play().catch(()=>{}); } });
+  ['touchstart','pointerdown','scroll'].forEach(e=>addEventListener(e,()=>{ clearTimeout(kick.t); kick.t=setTimeout(kick,200); },{passive:true,capture:true})); })();
 </script>
 </body>
 </html>

@@ -120,10 +120,19 @@ footer a { text-decoration: none; }
 a,button,summary,[role=tab]{-webkit-tap-highlight-color:transparent}
 a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:focus-visible),[role=tab]:focus:not(:focus-visible){outline:none!important}
 </style>
+<style>/* 12/11: chrome pills: NO square shadow ever. No filter (Safari draws it as a box), no sheen; a soft rounded shadow instead */
+.cta { filter: none !important; -webkit-filter: none !important; border-radius: 999px !important; box-shadow: 0 12px 18px -10px rgb(40 0 0 / .45) !important; outline: none !important; }
+.chromecta::after { display: none !important; }
+</style>
+<style>/* 12/11: back to the main site + language switch */
+.top .top-r { display: flex; gap: 10px; align-items: center; }
+.top .top-r .pill { white-space: nowrap; background: var(--w); color: var(--red, #F12009); border: 0; }
+@media (max-width: 560px) { .top .top-r .bk { display: none; } .top .top-r .pill { padding-inline: 14px; } }
+</style>
 </head>
 <body>
 <header class="hero paper">
-  <div class="top"><a href="../" aria-label="JNPR® Club, inicio"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><a class="pill" href="../#labs">✱ Labs</a></div>
+  <div class="top"><a href="../" aria-label="JNPR® Club, inicio"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><span class="top-r"><a class="pill" href="../es/">← <span class="bk">Volver a </span>JNPR® Club</a><a class="pill lang" href="/websites/" hreflang="en" lang="en">EN</a></span></div>
   <div class="hero-grid">
     <div class="hero-txt">
       <h1>Tu web de siempre, ahora es <span class="nw">tuya<img src="../img/ast/chrome.webp" alt="" width="341" height="360"></span></h1>

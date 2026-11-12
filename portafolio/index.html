@@ -102,10 +102,17 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 @media (prefers-reduced-motion: reduce) { .wall .row, .ttl div, .ttl h2::after { animation: none; } .hero h1 span { animation: none; transform: none; opacity: 1; } }
 </style>
 <link rel="stylesheet" href="../site.css?v=1111d">
-<script src="../vv.js?v=1111d" defer></script>
+<script src="../vv.js?v=1211a" defer></script>
 <style>/* 12/11: chrome asterisk centred between tags (same space each side, middle of the text) */
 .pj .g span { display: inline-flex; align-items: center; }
 .pj .g span + span::before { margin: 0 10px 0 calc(4px - .16em) !important; vertical-align: 0 !important; }
+</style>
+<style>/* 12/11: chrome pills: NO square shadow ever. No filter (Safari draws it as a box), no sheen; a soft rounded shadow instead */
+.pj .open { filter: none !important; -webkit-filter: none !important; border-radius: 999px !important; box-shadow: 0 12px 18px -10px rgb(40 0 0 / .45) !important; outline: none !important; }
+.chromecta::after { display: none !important; }
+</style>
+<style>/* 12/11: full screen is an expand icon */
+.fs { width: 44px; height: 44px; padding: 0 !important; border-radius: 50% !important; display: grid !important; place-items: center; box-sizing: border-box; }
 </style>
 </head>
 <body>
@@ -174,7 +181,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
       <div class="pj-h"><p class="g">${p.genres.map(g => `<span>${esc(g)}</span>`).join('')}</p>${p.text && p.text.length ? `<button type="button" class="open" aria-expanded="false" data-t="Cerrar">Ver el caso</button>` : ''}</div>
       ${p.text && p.text.length ? `<div class="case" hidden><p>${esc(p.text[0])}</p>${p.url ? `<a class="site" href="${esc(p.url)}" target="_blank" rel="noopener">Ver la web</a>` : ''}</div>` : ''}
       ${NOTE[p.id] || p.note ? `<p class="note">${esc(NOTE[p.id] || p.note)}</p>` : ''}
-      <div class="strip">${imgs.map(s => `<figure${isV(s) ? ' class="vid"' : ''}>${media(s, p.name)}${isV(s) ? '<button type="button" class="fs">Pantalla completa</button>' : ''}</figure>`).join('')}</div>
+      <div class="strip">${imgs.map(s => `<figure${isV(s) ? ' class="vid"' : ''}>${media(s, p.name)}${isV(s) ? '<button type="button" class="fs" aria-label="Full screen" title="Full screen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' : ''}</figure>`).join('')}</div>
       ${imgs.length > 1 ? `<div class="snav"><i class="sbar"><b></b></i><span class="sn">01 / ${String(imgs.length).padStart(2, '0')}</span><button type="button" class="sc prev" aria-label="Anterior" disabled></button><button type="button" class="sc next" aria-label="Siguiente"></button></div>` : ''}
     </section>`;
   }).join('');
@@ -205,7 +212,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 
   // Phone: each strip nudges once so it's clear it scrolls sideways
   if (matchMedia('(pointer: coarse)').matches) {
-    const nio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; nio.unobserve(e.target); const s = e.target; s.scrollTo({ left: 90, behavior: 'smooth' }); setTimeout(() => s.scrollTo({ left: 0, behavior: 'smooth' }), 700); }), { threshold: .6 });
+    const nio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; nio.unobserve(e.target); const s = e.target; if (s.scrollLeft > 4 || s.dataset.used) return; s.scrollTo({ left: 90, behavior: 'smooth' }); setTimeout(() => { if (!s.dataset.used && s.scrollLeft <= 92) s.scrollTo({ left: 0, behavior: 'smooth' }); }, 700); /* 12/11: never undo a strip someone already moved */ }), { threshold: .6 });
     document.querySelectorAll('.strip').forEach(s => nio.observe(s));
   }
 
@@ -263,6 +270,25 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 <script src="../analytics.js?v=1111d" defer></script>
 
 
+<script>/* 12/11: phone: a strip keeps where you left it (Safari can snap a carousel back to the start when the page bar shows on the way up) */
+document.querySelectorAll('.strip').forEach(st => {
+  let last = st.scrollLeft, touch = false;
+  const mark = () => { touch = true; st.dataset.used = '1'; };
+  st.addEventListener('touchstart', mark, { passive: true });
+  st.addEventListener('pointerdown', mark, { passive: true });
+  st.addEventListener('touchend', () => setTimeout(() => { touch = false; }, 1200), { passive: true });
+  st.addEventListener('scroll', () => {
+    const x = st.scrollLeft;
+    if (!touch && st.dataset.used && last > 40 && x < 2 && last - x > 150) { st.scrollLeft = last; return; }
+    last = x;
+  }, { passive: true });
+  st.closest('.pj')?.querySelectorAll('.snav button').forEach(b => b.addEventListener('click', () => { st.dataset.used = '1'; touch = true; setTimeout(() => { touch = false; }, 900); }));
+});
+</script>
+<script>/* 12/11: videos start by themselves; if the phone blocked autoplay, the first touch or scroll starts the ones on screen */
+(()=>{ const kick=()=>document.querySelectorAll('video').forEach(v=>{ if(!v.paused||v.closest('.vv')) return; const r=v.getBoundingClientRect(); if(r.width&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth&&getComputedStyle(v).opacity!=='0'&&(v.autoplay||v.loop)){ v.muted=true; if(!v.getAttribute('src')&&v.dataset.src) v.src=v.dataset.src; v.play().catch(()=>{}); } });
+  ['touchstart','pointerdown','scroll'].forEach(e=>addEventListener(e,()=>{ clearTimeout(kick.t); kick.t=setTimeout(kick,200); },{passive:true,capture:true})); })();
+</script>
 <!--sf--><footer class="sf" id="contacto"><a class="sf-brand" href="../es/" aria-label="JNPR® Club, inicio"></a><p class="k">¿Buscas una directora creativa que construye con IA?</p><h2>Trabajemos juntos.</h2><div class="sf-doors"><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Trabajar%20contigo">Contrátame</a><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Mi%20web">Consigue tu web</a><a class="sf-in" href="https://www.linkedin.com/in/mariana-ortega-cardenas" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.83 2.67 4.83 6.13V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></div><a class="sf-mail" href="mailto:mariana.jnprclub@gmail.com">mariana.jnprclub@gmail.com</a><div class="sf-fine"><span>© 2026 JNPR® Club · Madrid</span><a href="/politica-de-cookies/">Cookies</a><a href="../es/">jnpr-club.com</a></div></footer><!--/sf-->
 </body>
 </html>

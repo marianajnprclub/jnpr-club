@@ -32,3 +32,7 @@
 /* Hamburger icon, same as the home */
 .sh-btn { font-size: 0 !important; width: 40px; height: 40px; padding: 0 !important; box-sizing: border-box; border-radius: 50% !important; border: 1px solid #FCFCFC; color: #FCFCFC !important;
   background: linear-gradient(currentColor, currentColor) center calc(50% - 5px) / 16px 1.5px no-repeat, linear-gradient(currentColor, currentColor) center / 16px 1.5px no-repeat, linear-gradient(currentColor, currentColor) center calc(50% + 5px) / 16px 1.5px no-repeat !important; }
+
+/* 12/11: chrome pills: no square shadow */
+.chromecta { filter: none !important; border-radius: 999px !important; box-shadow: 0 12px 18px -10px rgb(40 0 0 / .45) !important; }
+.chromecta::after { display: none !important; }

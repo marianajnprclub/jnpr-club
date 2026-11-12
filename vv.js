@@ -5,7 +5,7 @@
   const es = document.documentElement.lang === 'es';
   const T = es ? { x: 'Cerrar', m: 'Silenciar', u: 'Activar sonido', p: 'Anterior', n: 'Siguiente', play: 'Reproducir' }
                : { x: 'Close', m: 'Mute', u: 'Sound on', p: 'Previous', n: 'Next', play: 'Play' };
-  const css = `.vv{position:fixed;inset:0;z-index:2147483000;touch-action:manipulation;background:#F12009 url(/img/papel-rojo.webp) center/627px;color:#FCFCFC;display:grid;grid-template-rows:auto minmax(0,1fr) auto}.vv[hidden]{display:none}
+  const css = `.vv{position:fixed;inset:0;z-index:2147483000;touch-action:manipulation;background:#F12009 url(/img/papel-rojo.webp) center/627px;color:#FCFCFC;display:grid;grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr)}.vv>*{min-width:0}.vv[hidden]{display:none}
 .vv-top,.vv-bot{display:flex;align-items:center;gap:12px;padding:calc(14px + env(safe-area-inset-top)) clamp(16px,4vw,64px) 14px}
 .vv-top{justify-content:flex-end}.vv-h{margin-right:auto;font:400 clamp(20px,3vw,40px)/1 'MW',system-ui,sans-serif;text-transform:uppercase;display:flex;align-items:center;gap:.3em;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.vv-h img{width:.9em;height:.9em;animation:vvspin 14s linear infinite}@keyframes vvspin{to{rotate:360deg}}.vv-bot{padding:14px clamp(16px,4vw,64px) calc(18px + env(safe-area-inset-bottom))}
 .vv button{all:unset;cursor:pointer;-webkit-tap-highlight-color:transparent}
