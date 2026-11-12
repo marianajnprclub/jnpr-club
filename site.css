@@ -40,3 +40,6 @@
 /* 12/11 */
 * { -webkit-tap-highlight-color: transparent; }
 :focus:not(:focus-visible) { outline: none !important; }
+
+/* 12/11: floating Hire me small shadow, above the iPhone edge */
+html body .chromecta { box-shadow: 0 5px 9px -5px rgb(40 0 0 / .4) !important; bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; }
