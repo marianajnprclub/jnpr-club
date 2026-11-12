@@ -2128,7 +2128,7 @@ html[data-side="B"] .webban .wb-go { background: #9B7EEA; color: #FCFCFC; }
 .back .b-map a, .back .b-ck { all: unset; cursor: pointer; font-family: 'MW'; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: inherit; }
 .back .b-map a:hover, .back .b-ck:hover { opacity: .7; }
 .back .b-map :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
-html { background: linear-gradient(var(--red) 50%, #7ECAE4 50%); }
+html { background: var(--red); }
 html[data-side="B"] { background: var(--red); }
 </style>
 <style>/* 11/11: About me as a chrome CTA, like See the portfolio */
@@ -2139,6 +2139,16 @@ html[data-side="B"] { background: var(--red); }
 .clients .cmarq .pk { margin-bottom: var(--cg) !important; padding: 0 var(--pad); }
 .clients .c-all { margin-top: var(--cg) !important; }
 .clients .c-all .groups { margin-top: 0 !important; }
+</style>
+<style>/* 12/11: project carousels change fast; no black box or text selection when clicking anything */
+.cgal img, .cgal video { transition-duration: .16s !important; }
+* { -webkit-tap-highlight-color: transparent; }
+:focus:not(:focus-visible) { outline: none !important; }
+button, [role="button"], .gctl, .lp2-nav, .fnav, .chips, .cnav { -webkit-user-select: none; user-select: none; }
+</style>
+<style>/* 12/11: About me shadow softer and with room, so the next section doesn't cut it; See the portfolio centred between the filters and the records */
+#welcome .wel-more { filter: drop-shadow(0 6px 8px rgb(60 10 0 / .22)) !important; margin-bottom: 22px !important; }
+@media (max-width: 860px) { #work .fgrid { margin: 38px 0 2px !important; } }
 </style>
 </head>
 <body>
@@ -2455,11 +2465,11 @@ html[data-side="B"] { background: var(--red); }
     { const old=document.getElementById('ccta'); if(old) old.remove(); document.querySelectorAll('.case-bottom .clink').forEach(x=>x.remove()); (p.links||[]).slice().reverse().forEach(([t,u])=>{ const l=document.createElement('a'); l.className='cta live clink'; l.href=u; l.target='_blank'; l.rel='noopener'; l.textContent=t; document.querySelector('.case-bottom').prepend(l); }); if(p.cta){ const b=document.createElement('button'); b.type='button'; b.id='ccta'; b.className='cta'; b.textContent=p.cta.label; b.onclick=()=>window.openHire&&window.openHire(p.cta.need); document.querySelector('.case-bottom').prepend(b); } }
     const lv = document.getElementById('clive'); lv.hidden = !p.url; if (p.url) { lv.href = p.url; lv.target = '_blank'; lv.rel = 'noopener'; }
     const g = document.getElementById('cg'); g.classList.remove('magazine-mode');g.innerHTML = ''; g.scrollTop = 0;
-    p.img.forEach(([src], j) => { let im; if (/\.mp4$/.test(src)) { im = document.createElement('video'); im.controls = true; im.playsInline = true; im.preload = 'none'; im.poster = src.replace('video/', 'img/motion/p/').replace('.mp4', '.webp'); im.src = src; } else { im = new Image(); im.src = src; im.alt = p.name; } if (j === 0) im.classList.add('on'); g.append(im); });
+    p.img.forEach(([src], j) => { let im; if (/\.mp4$/.test(src)) { im = document.createElement('video'); im.muted = true; im.loop = true; im.playsInline = true; im.controls = true; im.preload = j === 0 ? 'auto' : 'metadata'; im.src = src; if (j === 0) { im.autoplay = true; } /* 12/11: videos play by themselves, no low-res cover */ } else { im = new Image(); im.src = src; im.alt = p.name; } if (j === 0) im.classList.add('on'); g.append(im); });
     const ctl = document.createElement('div'); ctl.className = 'gctl';
     ctl.innerHTML = `<button type="button" aria-label="Imagen anterior">←</button><span>01 / ${String(p.img.length).padStart(2, '0')}</span><button type="button" aria-label="Next image">→</button>`;
     if (p.img.length > 1) g.append(ctl);
-    let gi = 0; const ims = [...g.querySelectorAll('img,video')], go = d => { if (ims[gi].pause) ims[gi].pause(); ims[gi].classList.remove('on'); gi = (gi + d + ims.length) % ims.length; ims[gi].classList.add('on'); ctl.querySelector('span').textContent = String(gi + 1).padStart(2, '0') + ' / ' + String(ims.length).padStart(2, '0'); };
+    let gi = 0; const ims = [...g.querySelectorAll('img,video')], go = d => { if (ims[gi].pause) ims[gi].pause(); ims[gi].classList.remove('on'); gi = (gi + d + ims.length) % ims.length; ims[gi].classList.add('on'); if (ims[gi].play) ims[gi].play().catch(()=>{}); ctl.querySelector('span').textContent = String(gi + 1).padStart(2, '0') + ' / ' + String(ims.length).padStart(2, '0'); };
     const [bp, bn] = ctl.querySelectorAll('button'); bp.onclick = () => go(-1); bn.onclick = () => go(1);
     g.onclick = e => { if (e.target.tagName === 'IMG') go(1); };
     if(request!==caseVersion)return;
@@ -2868,5 +2878,8 @@ new MutationObserver(()=>{ if(!document.body.classList.contains('case-open')) la
 const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; io.unobserve(e.target); const b=e.target, fin=b.textContent, t0=performance.now();
 const step=t=>{ const k=Math.min(1,(t-t0)/1100), ease=1-Math.pow(1-k,3); b.textContent=fin.replace(/\d[\d,]*/g,m=>{ const n=+m.replace(/,/g,''), v=Math.round(n*ease); return m.includes(',')?v.toLocaleString('en-US'):String(v); }); if(k<1) requestAnimationFrame(step); else b.textContent=fin; }; requestAnimationFrame(step); }),{threshold:.6});
 bs.forEach(b=>io.observe(b));})();</script>
+<script>/* 12/11: phone overscroll under the blue footer is blue, the top stays as it was */
+(()=>{ const r=document.documentElement; const f=()=>{ r.style.background = (scrollY > (r.scrollHeight - innerHeight) / 2) ? (r.dataset.side==='B' ? '#F12009' : '#7ECAE4') : ''; }; addEventListener('scroll', f, {passive:true}); f(); })();
+</script>
 </body>
 </html>

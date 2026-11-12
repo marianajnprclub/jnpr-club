@@ -103,6 +103,10 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 </style>
 <link rel="stylesheet" href="../site.css?v=1111d">
 <script src="../vv.js?v=1111d" defer></script>
+<style>/* 12/11: chrome asterisk centred between tags (same space each side, middle of the text) */
+.pj .g span { display: inline-flex; align-items: center; }
+.pj .g span + span::before { margin: 0 10px 0 calc(4px - .16em) !important; vertical-align: 0 !important; }
+</style>
 </head>
 <body>
 <!--sh--><header class="sh" id="sh"><a class="sh-back" href="../" aria-label="Back" onclick="if(document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false}"></a><a class="sh-logo" href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menu</button><nav id="shnav"><a href="../work/" aria-current="page">Portfolio</a><a href="../#labs">AI Lab</a><a href="/websites/">Migrate your site</a><a href="/about/">About</a><a href="#contacto">Contact</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../portafolio/" hreflang="es">ES</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
@@ -154,7 +158,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
   const isV = s => /\.mp4$/.test(s);
   const poster = s => s.replace('video/', 'img/motion/p/').replace('.mp4', '.webp');
   const media = (src, alt) => isV(src)
-    ? `<video data-src="../${src}" poster="../${poster(src)}" muted loop playsinline preload="none" aria-label="${esc(alt)}"></video>`
+    ? `<video data-src="../${src}" data-poster="../${poster(src)}" muted loop autoplay playsinline preload="none" aria-label="${esc(alt)}"></video>`
     : `<img src="../${src}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
   const seen = new Set();
   const m = document.getElementById('m');
@@ -196,7 +200,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
     if (e.isIntersecting) {
       if (v) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); }
     } else if (v) v.pause();
-  }), { rootMargin: '0px 300px 0px 300px', threshold: .15 });
+  }), { rootMargin: '400px 300px 400px 300px', threshold: .01 } /* 12/11: no cover image; videos load early and play by themselves */);
   document.querySelectorAll('.strip figure').forEach(f => io.observe(f));
 
   // Phone: each strip nudges once so it's clear it scrolls sideways
@@ -222,7 +226,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
   m.addEventListener('click', e => {
     const b = e.target.closest('.fs'); if (!b) return;
     const sec = b.closest('.pj'), all = [...sec.querySelectorAll('.strip .fs')];
-    VV.open(all.map(x => { const v = x.parentElement.querySelector('video'); return { v: v.dataset.src, s: v.getAttribute('poster') }; }), all.indexOf(b), null, sec.querySelector('.ttl').getAttribute('aria-label'));
+    VV.open(all.map(x => { const v = x.parentElement.querySelector('video'); return { v: v.dataset.src, s: v.dataset.poster }; }), all.indexOf(b), null, sec.querySelector('.ttl').getAttribute('aria-label'));
   });
 
   // Slider nav, same as JNPR Labs: progress line, 01 / 07, chevrons
