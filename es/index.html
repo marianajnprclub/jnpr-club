@@ -2177,6 +2177,11 @@ html body .lp2 .lp2-car .lp2-nav { padding-inline: var(--pad) !important; }
 <style>/* 12/11: floating Hire me: small shadow that fits above the iPhone edge (a big one got cut and looked square) */
 html body .chromecta { box-shadow: 0 5px 9px -5px rgb(40 0 0 / .4) !important; bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; }
 </style>
+<style>/* 12/11: iPhone Safari paints a pale box behind fixed buttons stuck to the bottom. The Hire me now lives in a full-screen layer with no background, so Safari doesn't treat it as a bar */
+.cta-dock { position: fixed; inset: 0; z-index: 60; pointer-events: none; background: none; }
+html body .cta-dock .chromecta { position: absolute !important; pointer-events: auto; }
+html body .cta-dock .chromecta.cta-off, html body .cta-dock .chromecta.cta-hero, html body .cta-dock .chromecta.cta-busy, body.case-open .cta-dock .chromecta { pointer-events: none !important; }
+</style>
 </head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
@@ -2741,7 +2746,7 @@ html body .chromecta { box-shadow: 0 5px 9px -5px rgb(40 0 0 / .4) !important; b
   if (still) { document.documentElement.classList.add('motion-ready'); rec.classList.remove('in'); }
   else { addEventListener('club:entered',()=>{document.documentElement.classList.add('motion-ready');rec.classList.remove('in');revealPeek();const enteredAt=performance.now();window.clubSound?.start().then(ready=>{if(ready&&performance.now()-enteredAt<400)window.clubSound.play('hero-entry');}).catch(()=>{});setTimeout(cycle,2200);},{once:true}); }
 </script>
-<a class="chromecta" href="es/#contact">Contrátame</a>
+<div class="cta-dock"><a class="chromecta" href="es/#contact">Contrátame</a></div>
 
 <script>
 /* Motion section: chrome TV */
