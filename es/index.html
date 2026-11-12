@@ -2182,6 +2182,9 @@ html body .chromecta { box-shadow: 0 5px 9px -5px rgb(40 0 0 / .4) !important; b
 html body .cta-dock .chromecta { position: absolute !important; pointer-events: auto; }
 html body .cta-dock .chromecta.cta-off, html body .cta-dock .chromecta.cta-hero, html body .cta-dock .chromecta.cta-busy, body.case-open .cta-dock .chromecta { pointer-events: none !important; }
 </style>
+<style>/* 12/11: videos at real size: centred in the project gallery */
+@media (min-width: 761px) { .cgal video { margin: auto; } }
+</style>
 </head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
@@ -2930,6 +2933,13 @@ bs.forEach(b=>io.observe(b));})();</script>
 <script>/* 12/11: videos start by themselves; if the phone blocked autoplay, the first touch or scroll starts the ones on screen */
 (()=>{ const kick=()=>document.querySelectorAll('video').forEach(v=>{ if(!v.paused||v.closest('.vv')) return; const r=v.getBoundingClientRect(); if(r.width&&r.bottom>0&&r.top<innerHeight&&r.right>0&&r.left<innerWidth&&getComputedStyle(v).opacity!=='0'&&(v.autoplay||v.loop)){ v.muted=true; if(!v.getAttribute('src')&&v.dataset.src) v.src=v.dataset.src; v.play().catch(()=>{}); } });
   ['touchstart','pointerdown','scroll'].forEach(e=>addEventListener(e,()=>{ clearTimeout(kick.t); kick.t=setTimeout(kick,200); },{passive:true,capture:true})); })();
+</script>
+<script>/* 12/11: desktop: a video is never shown bigger than its real size (blown up it loses sharpness) */
+(()=>{ const big=matchMedia('(min-width: 761px)');
+  const cap=v=>{ if(!big.matches||!v.videoWidth){ v.style.removeProperty('max-width'); v.style.removeProperty('max-height'); return; } v.style.setProperty('max-width', v.videoWidth+'px', 'important'); v.style.setProperty('max-height', v.videoHeight+'px', 'important'); };
+  document.addEventListener('loadedmetadata', e=>{ if(e.target.tagName==='VIDEO') cap(e.target); }, true);
+  const all=()=>document.querySelectorAll('video').forEach(v=>{ if(v.readyState>0) cap(v); }); all(); big.addEventListener('change', all);
+})();
 </script>
 </body>
 </html>
