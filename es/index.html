@@ -2490,6 +2490,7 @@ html body .cta-dock .chromecta.cta-off, html body .cta-dock .chromecta.cta-hero,
     clearTimeout(auto);heroSwapVersion++;pending=null;setBusy(false);if(!cs.classList.contains('on'))clubState.set('case','opening');
     const cover=new Image();cover.src=p.img[0][0];await cover.decode().catch(()=>{});
     if(request!==caseVersion)return;
+    window.jnprTrack?.('case_open',{project:p.id,from:fromHero?'hero':'grid',page:location.pathname});
     if(!cs.classList.contains('on')){history.pushState({jnprCase:1},'');caseScroll=fromHero?0:window.scrollY;caseFocus=document.activeElement;document.documentElement.classList.add('case-scroll-locked');document.body.classList.add('case-open');document.querySelectorAll('body > .hero,body > section').forEach(el=>{if(el!==cs)el.inert=true;});}
     capsuleMotion?.cancel();capsuleMotion=null;document.getElementById('win').style.width='100%';document.getElementById('win').style.removeProperty('--capsule-image-width');document.getElementById('win').style.transform='none';rec.classList.remove('swap','open');spinEl.classList.remove('fast');spinEl.getAnimations().forEach(a=>a.updatePlaybackRate(1));document.documentElement.classList.remove('fastast');
     cs.scrollTop=0; document.querySelector('.cinfo').scrollTop=0;
@@ -2900,7 +2901,7 @@ html body .cta-dock .chromecta.cta-off, html body .cta-dock .chromecta.cta-hero,
 (()=>{const c=document.querySelector('.chromecta');const rows=[...document.querySelectorAll('#services .wkeys, #glist, #more-r, .fgrid, .pf-go, .scrfs')];if(!c||!rows.length||!('IntersectionObserver' in window))return;const on=new Set();
 const io=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?on.add(e.target):on.delete(e.target));c.classList.toggle('cta-busy',on.size>0);},{rootMargin:'-82% 0px 0px 0px'});rows.forEach(r=>io.observe(r)); /* 11/11: only when the row reaches the bottom strip where Hire me sits */
 })();</script>
-<script src="analytics.js?v=1111d" defer></script>
+<script src="analytics.js?v=1611a" defer></script>
 <script>/* clean address: in-page links still scroll, but the #section never stays in the URL */
 (()=>{const strip=()=>{if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);};
 addEventListener('hashchange',()=>setTimeout(strip,0));addEventListener('load',()=>setTimeout(strip,900));})();</script>

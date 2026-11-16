@@ -24,12 +24,16 @@
   document.addEventListener('click', e => {
     const a = e.target.closest('a, button'); if (!a) return;
     const t = (a.textContent || '').trim().slice(0, 40), h = a.getAttribute('href') || '';
-    if (a.matches('.chromecta, .cta, .go') || /hire=web|Hire me|Contrátame|Quiero mi web|La quiero|Hablemos|Get your site|Consigue tu web/i.test(t + h)) track('cta_click', { label: t, page: location.pathname });
+    if (/(^|\/)(work|portafolio)\/?$/.test(h)) track('portfolio_click', { label: t, page: location.pathname });
+    else if (a.matches('.chromecta, .cta, .go') || /hire=web|Hire me|Contrátame|Quiero mi web|La quiero|Hablemos|Get your site|Consigue tu web/i.test(t + h)) track('cta_click', { label: t, page: location.pathname });
     else if (/\.pdf$/i.test(h)) track('cv_download', { label: t });
     else if (/linkedin\.com/i.test(h)) track('linkedin_click');
     else if (/^https?:/i.test(h) && !h.includes(location.host)) track('outbound_click', { url: h });
     else if (a.classList.contains('lang-sw')) track('language_switch', { to: t });
   }, true);
+  // Did they reach the projects section on the home? (once per visit)
+  const wk = document.getElementById('work');
+  if (wk && 'IntersectionObserver' in window) { const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting) && on) { track('projects_seen', { page: location.pathname }); io.disconnect(); } }, { threshold: .25 }); io.observe(wk); }
   // Form sent (the contact sheet shows .done when it succeeds)
   const done = document.querySelector('#sheet .done');
   if (done) new MutationObserver(() => { if (!done.hidden) track('form_sent', { page: location.pathname }); }).observe(done, { attributes: true, attributeFilter: ['hidden'] });
