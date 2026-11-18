@@ -2541,8 +2541,8 @@ html body .cta-dock .chromecta.cta-off, html body .cta-dock .chromecta.cta-hero,
   // coverflow
   const fl2 = document.getElementById('grid'), fcount = document.getElementById('fcount'); let fi2 = 0;
   /* All projects advance on their own while in view (pauses on hover, touch or an open project) */
-  { let inV=false, hold=false, last=0; new IntersectionObserver(([e])=>inV=e.isIntersecting,{threshold:.5}).observe(fl2);
-    fl2.addEventListener('pointerenter',()=>hold=true); fl2.addEventListener('pointerleave',()=>hold=false); let used=0; const use=()=>{ used=Date.now(); }; /* 11/11: pauses while someone uses the section, starts turning again 6 s later */ ['pointerdown','wheel','touchstart','keydown'].forEach(ev=>fl2.addEventListener(ev,use,{passive:true})); document.querySelectorAll('#work button').forEach(b=>b.addEventListener('click',use));
+  { let inV=false, hold=false, last=0, used=0; /* 18/11: on arrival the first record (Pocoyo) stays ~6 s before turning */ new IntersectionObserver(([e])=>{ if(e.isIntersecting&&!inV) used=Date.now(); inV=e.isIntersecting; },{threshold:.5}).observe(fl2);
+    fl2.addEventListener('pointerenter',()=>hold=true); fl2.addEventListener('pointerleave',()=>hold=false); const use=()=>{ used=Date.now(); }; /* 11/11: pauses while someone uses the section, starts turning again 6 s later */ ['pointerdown','wheel','touchstart','keydown'].forEach(ev=>fl2.addEventListener(ev,use,{passive:true})); document.querySelectorAll('#work button').forEach(b=>b.addEventListener('click',use));
     setInterval(()=>{ if(Date.now()-used>6000&&inV&&!hold&&!document.hidden&&!document.body.classList.contains('case-open')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){ fi2++; flow(); } },3200); }
   let recordDragged = false;
   const vis = () => [...fl2.querySelectorAll('.lp')].filter(l => !l.classList.contains('hide'));
@@ -2574,7 +2574,7 @@ html body .cta-dock .chromecta.cta-off, html body .cta-dock .chromecta.cta-hero,
   let sx = null; fl2.addEventListener('pointerdown', e => { sx = e.clientX; recordDragged = false; }); addEventListener('pointerup', e => { if (sx === null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 50) { recordDragged = true; go(fi2 - Math.sign(dx)); } });
   addEventListener('keydown', e => { if (document.getElementById('case').classList.contains('on')) return; const r = fl2.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; if (e.key === 'ArrowRight') go(fi2 + 1); if (e.key === 'ArrowLeft') go(fi2 - 1); });
   document.querySelectorAll('.chips button').forEach(b => b.addEventListener('click', () => { fi2 = 0; setTimeout(flow, 0); }));
-  { /* 11/11: Miravia is the first record */ const v=vis(), k=v.findIndex(l=>/miravia/i.test((l.dataset.id||'')+' '+(l.querySelector('.gn-name,h3,b')||l).textContent)); if(k>=0) fi2=k; }
+  { /* 18/11: Pocoyo is the first record (was Miravia) */ const v=vis(), k=v.findIndex(l=>/pocoyo/i.test((l.dataset.id||'')+' '+(l.querySelector('.gn-name,h3,b')||l).textContent)); if(k>=0) fi2=k; }
   flow();
   // All scroll scenes use actual viewport visibility and the same replay boundary.
   const replayChecks=[];let replayFrame=0;
