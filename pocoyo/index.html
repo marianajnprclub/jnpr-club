@@ -16,13 +16,20 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--red:#F12009;--blue:#F4F1EA;--white:#FCFCFC}}
 :root[data-theme="dark"]{--red:#F12009;--blue:#F4F1EA;--white:#FCFCFC}
 *{box-sizing:border-box;margin:0}
-html{background:var(--blue)}
-body{background:var(--blue);color:var(--red);font:15px/1.5 MN,system-ui,sans-serif}
-.intro{min-height:92vh;display:flex;flex-direction:column;justify-content:flex-end;padding:72px 16px 7vh;max-width:1200px;margin:0 auto}
+html{background:var(--blue);overflow-x:hidden}
+body{background:transparent;color:var(--red);font:15px/1.5 MN,system-ui,sans-serif}
+.intro{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,64px);align-items:center;min-height:min(92svh,820px);padding:96px 32px 40px;max-width:1320px;margin:0 auto}
+.fan{position:relative;height:min(58vh,520px);aspect-ratio:1/1;max-width:100%;justify-self:center}
+.fan img{position:absolute;left:50%;top:50%;height:86%;aspect-ratio:1/1.414;object-fit:cover;border-radius:3px;box-shadow:0 24px 50px -18px rgba(90,40,20,.45);transform:translate(-50%,-50%);animation:fan 1.3s cubic-bezier(.2,.8,.2,1) .25s both}
+.fan img:nth-child(1){--r:-12deg;--x:-24%}.fan img:nth-child(2){--r:9deg;--x:22%}.fan img:nth-child(3){--r:-1deg;--x:-2%;z-index:2}
+@keyframes fan{from{transform:translate(-50%,-46%) rotate(0)}to{transform:translate(calc(-50% + var(--x)),-50%) rotate(var(--r))}}
+@media(max-width:760px){.intro{grid-template-columns:1fr;min-height:0;padding:64px 16px 24px;gap:8px}.fan{height:auto;width:100%;max-width:420px}.fan img{height:80%}}
+@media(prefers-reduced-motion:reduce){.fan img{animation:none;transform:translate(calc(-50% + var(--x)),-50%) rotate(var(--r))}}
 .k{font:11px MN;letter-spacing:.14em;text-transform:uppercase}
-h1{font:400 clamp(56px,15vw,210px)/.86 MW;letter-spacing:-.02em;margin:.25em 0 .2em;text-transform:uppercase}
-.sub{font:clamp(15px,1.6vw,20px)/1.45 MN;max-width:46em;color:var(--red)}
-.hint{margin-top:5vh;display:flex;align-items:center;gap:10px}
+h1{font:400 clamp(48px,7vw,112px)/.86 MW;letter-spacing:-.02em;margin:.3em 0 .1em;text-transform:uppercase}
+h1 small{display:block;font:400 clamp(14px,1.4vw,20px)/1.1 MW;letter-spacing:.02em;margin:.7em 0 0}
+.sub{font:clamp(15px,1.15vw,17px)/1.5 MN;max-width:34em;margin-top:22px;color:var(--red)}
+.hint{margin-top:28px;display:flex;align-items:center;gap:10px}
 .hint i{width:10px;height:10px;border-radius:50%;background:var(--red);animation:b 1.4s ease-in-out infinite}
 @keyframes b{50%{transform:translateY(6px)}}
 #mag{position:relative}
@@ -50,25 +57,49 @@ h1{font:400 clamp(56px,15vw,210px)/.86 MW;letter-spacing:-.02em;margin:.25em 0 .
 .strip>.f::after,.strip>.b::after{content:"";position:absolute;inset:0;pointer-events:none;background:#000;opacity:var(--sh,0)}
 .spine>.f::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.22),rgba(0,0,0,.06) 45%,transparent)}
 .spine>.b::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(270deg,rgba(0,0,0,.22),rgba(0,0,0,.06) 45%,transparent)}
-</style></head><body>
-<a class="home" href="../">JNPR®</a>
+.story{max-width:1320px;margin:0 auto;padding:24px 32px 12vh}
+.brief{display:grid;grid-template-columns:1fr 2fr;gap:24px;align-items:start;border-top:2px solid var(--red);padding:22px 0 64px}
+.brief ol{margin:0;padding:0;list-style:none;counter-reset:b;font:clamp(18px,1.7vw,26px)/1.15 MW;text-transform:uppercase}
+.brief li{counter-increment:b;margin:0 0 .45em}.brief li::before{content:"0" counter(b) " ";font:12px MN;letter-spacing:.12em;vertical-align:.9em;margin-right:.6em}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,36px);margin:20px 0 48px}
+.cols figure{margin:0}.cols img{width:100%;aspect-ratio:1/1.414;object-fit:cover;display:block;border-radius:3px;box-shadow:0 18px 40px -20px rgba(90,40,20,.45);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.cols figure:hover img{transform:translateY(-6px) rotate(-1.5deg)}
+.cols figcaption{margin-top:14px;font:15px/1.4 MN}.cols b{display:block;font:400 clamp(15px,1.5vw,20px)/1.15 MW;text-transform:uppercase;margin-bottom:4px}.cols i{font-style:normal;opacity:.7}
+.close{font:clamp(16px,1.3vw,19px)/1.5 MN;max-width:40em}
+@media(max-width:760px){.story{padding:16px 16px 10vh}.brief{grid-template-columns:1fr;padding-bottom:40px}.cols{grid-template-columns:1fr 1fr}.cols figure:last-child{grid-column:1/-1;max-width:60%}}
+</style><link rel="stylesheet" href="../site.css?v=1211b">
+</head><body>
+<!--sh--><header class="sh" id="sh"><a class="sh-back" href="../" aria-label="Back" onclick="if(document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false}"></a><a class="sh-logo" href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menu</button><nav id="shnav"><a href="../work/" aria-current="page">Portfolio</a><a href="../#labs">AI Lab</a><a href="/websites/">Migrate your site</a><a href="/about/">About</a><a href="#contacto">Contact</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../es/" hreflang="es">ES</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
 <section class="intro">
+ <div class="itxt">
   <p class="k">Animaj · Brand · Editorial &amp; Packaging</p>
-  <h1>Pocoyo<br>Early Years</h1>
-  <p class="sub">Pocoyo is one of the most loved preschool characters in the world, and Animaj needed its Early Years (0–3) style guide rebuilt from the ground up. I designed the complete guide: every pattern, every product and all the AI images. Eighty pages, print-ready, presented at Brand Licensing Europe.</p>
+  <h1>Pocoyo<small>Early Years Guide 0–3</small></h1>
+  <p class="sub">Animaj asked me to design the Pocoyo Early Years Guide 0–3: the 80-page book that licensees, agents and retailers use to create everything for babies and toddlers. Presented at Brand Licensing Europe, October 2026.</p>
   <p class="hint k"><i></i>Scroll to turn the pages</p>
+ </div>
+ <div class="fan" aria-hidden="true"><img src="../img/p/pocoyo/guide-29.webp" alt=""><img src="../img/p/pocoyo/guide-39.webp" alt=""><img src="../img/p/pocoyo/guide/p01.webp" alt=""></div>
 </section>
-<section id="mag"><div class="stage"><p class="legal" aria-hidden="true">Pocoyo™ © Animaj</p><div class="clip"><div class="book" id="book"></div><div class="shadow"></div></div>
-<div class="hud"><span id="pg">01 / 76</span><span class="bar"><b id="bar"></b></span><span>Early Years Guide 0–3</span></div></div></section>
-<section class="after"><a href="../#work">Back to projects</a></section>
+<section class="story">
+ <div class="brief"><p class="k">The brief</p><ol><li>Feel unmistakably 0–3.</li><li>Speak to the parents who grew up with Pocoyo.</li><li>Go far beyond clothes.</li></ol></div>
+ <p class="k">Three collections</p>
+ <div class="cols">
+  <figure><img src="../img/p/pocoyo/guide/p04.webp" alt="Lil' Pocoyo opening page" loading="lazy"><figcaption><b>Lil' Pocoyo</b>Soft and pastel, like a lullaby.</figcaption></figure>
+  <figure><img src="../img/p/pocoyo/guide/p26.webp" alt="Bright and Bold Expressions opening page" loading="lazy"><figcaption><b>Bright and Bold Expressions</b>Full colour and full personality.</figcaption></figure>
+  <figure><img src="../img/p/pocoyo/guide/p56.webp" alt="Colouring Book opening page" loading="lazy"><figcaption><b>Colouring Book <i>by Guillermo</i></b>Drawn from his original sketches.</figcaption></figure>
+ </div>
+ <p class="close">Inside each one, newborn pieces stay simple and toddler pieces get louder, just like kids do. From there came the patterns and palettes, the packaging and swing tags. I art-directed every product shot and every photo in the guide.</p>
+</section>
+<section id="mag"><div class="stage"><div class="clip"><div class="book" id="book"></div><div class="shadow"></div></div>
+<div class="hud"><span id="pg">01 / 76</span><span class="bar"><b id="bar"></b></span><span>Pocoyo™ © Animaj</span></div></div></section>
+<section class="after"><a href="../#work">Back to all projects</a></section>
 <script>
 // 76 pages: colour-palette pages (5, 27, 57) and the commercial-contacts page (79) are left out
 const PAGES=[...Array(80)].map((_,i)=>i+1).filter(n=>![5,27,57,79].includes(n));
-const N=PAGES.length,S=9,book=document.getElementById('book'),mag=document.getElementById('mag'),clip=document.querySelector('.clip');
+let S=9;const N=PAGES.length,book=document.getElementById('book'),mag=document.getElementById('mag'),clip=document.querySelector('.clip');
 const src=i=>`../img/p/pocoyo/guide/p${String(PAGES[i]).padStart(2,'0')}.webp`;
 let leaves=[],L=N/2,mode=null;
 // desktop: one leaf = a spread (front + back page). phone: one leaf = one page, turned away to reveal the next.
-function build(){book.innerHTML='';leaves=[];L=mobile?N:N/2;
+function build(){book.innerHTML='';leaves=[];L=mobile?N:N/2;S=mobile?4:9;
  for(let k=0;k<L;k++){const d=document.createElement('div');d.className='leaf';book.appendChild(d);
   let parent=d;const strips=[];
   for(let i=0;i<S;i++){const s=document.createElement('div');s.className='strip'+(i===0?' spine':'');s.innerHTML='<div class="f"></div><div class="b"></div>';parent.appendChild(s);strips.push({s,f:s.children[0],b:s.children[1]});parent=s;}
@@ -82,7 +113,7 @@ function size(){mobile=innerWidth<760;if(mode!==mobile){mode=mobile;build();}con
   l.strips.forEach((x,i)=>{x.s.style.width=(w+.6)+'px';x.s.style.left=(i===0?0:w)+'px';
    x.f.style.backgroundSize=x.b.style.backgroundSize=`${pw}px ${ph}px`;
    x.f.style.backgroundPosition=`${-i*w}px 0`;x.b.style.backgroundPosition=`${-(pw-(i+1)*w)}px 0`;});});
- mag.style.height=(L*(mobile?34:48)+100)+'vh';clip.style.perspective=(mobile?1400:2600)+'px';draw();}
+ mag.style.height=(L*(mobile?48:60)+100)+'vh';clip.style.perspective=(mobile?1400:2600)+'px';draw();}
 const ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
 function load(l){if(l.loaded)return;l.loaded=true;const fu=`url(${src(mobile?l.k:2*l.k)})`,bu=mobile?'none':`url(${src(2*l.k+1)})`;l.strips.forEach(x=>{x.f.style.backgroundImage=fu;x.b.style.backgroundImage=bu;if(mobile)x.b.style.backgroundColor='#E9E4D9';});}
 function draw(){const r=mag.getBoundingClientRect(),run=mag.offsetHeight-innerHeight;
@@ -90,7 +121,7 @@ function draw(){const r=mag.getBoundingClientRect(),run=mag.offsetHeight-innerHe
  const cur=Math.min(L-1,Math.floor(t));
  if(!mobile){const s=Math.min(1,t)*.5-Math.max(0,t-(L-1))*.5;book.style.transform=`translateX(${(-.5+s)*pw}px)`;}else book.style.transform='none';
  leaves.forEach((l,k)=>{const raw=Math.max(0,Math.min(1,t-k)),p=ease(raw);
-  if(Math.abs(k-t)<4)load(l);
+  if(Math.abs(k-t)<7)load(l);
   l.d.style.display=(k>=cur-1&&k<=cur+2)?'block':'none';
   const lift=Math.sin(p*Math.PI);
   // the page bends: its free edge leads while it turns, then flattens as it lands
@@ -103,9 +134,14 @@ function draw(){const r=mag.getBoundingClientRect(),run=mag.offsetHeight-innerHe
   l.d.style.opacity=mobile?Math.max(0,1-p*p*1.2):1;});
  document.getElementById('pg').textContent=String(Math.max(1,Math.min(N,Math.floor(mobile?t:t*2)+1))).padStart(2,'0')+' / '+N;
  document.getElementById('bar').style.width=(t/L*100)+'%';}
-addEventListener('scroll',()=>requestAnimationFrame(draw),{passive:true});addEventListener('resize',size);
+// 18/11: when scrolling stops, the page always finishes turning (no half-turned pages)
+let snapT=0,snapping=false,lastY=scrollY,dir=1;
+function settle(){const r=mag.getBoundingClientRect(),run=mag.offsetHeight-innerHeight,f=-r.top/run;if(f<=0||f>=1)return;
+ const t=f*L,fr=t-Math.floor(t);if(fr<.03||fr>.97)return;const target=mag.offsetTop+run*(dir>0?Math.ceil(t):Math.floor(t))/L;snapping=true;scrollTo({top:target,behavior:'smooth'});setTimeout(()=>snapping=false,700);}
+addEventListener('scroll',()=>{if(scrollY!==lastY){dir=scrollY>lastY?1:-1;lastY=scrollY;}requestAnimationFrame(draw);clearTimeout(snapT);if(!snapping)snapT=setTimeout(settle,160);},{passive:true});addEventListener('resize',size);
 addEventListener('keydown',e=>{const run=mag.offsetHeight-innerHeight,step=run/L;if(e.key==='ArrowRight')scrollBy({top:step,behavior:'smooth'});if(e.key==='ArrowLeft')scrollBy({top:-step,behavior:'smooth'});});
 size();
 const hm=location.hash.match(/t=([\d.]+)/);if(hm){const run=mag.offsetHeight-innerHeight;scrollTo(0,mag.offsetTop+run*(+hm[1])/L);leaves.forEach(load);draw();}
 </script><script src="../analytics.js?v=1611b" defer></script>
+<!--sf--><footer class="sf" id="contacto"><a class="sf-brand" href="../" aria-label="JNPR® Club, home"></a><p class="k">Looking for a Creative Director who builds with AI?</p><h2>Let’s work together.</h2><div class="sf-doors"><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Working%20with%20you">Hire me</a><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=My%20website">Get your site</a><a class="sf-in" href="https://www.linkedin.com/in/mariana-ortega-cardenas" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.83 2.67 4.83 6.13V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></div><a class="sf-mail" href="mailto:mariana.jnprclub@gmail.com">mariana.jnprclub@gmail.com</a><div class="sf-fine"><span>© 2026 JNPR® Club · Madrid</span><a href="/cookies/">Cookies</a><a href="../">jnpr-club.com</a></div></footer><!--/sf-->
 </body></html>
