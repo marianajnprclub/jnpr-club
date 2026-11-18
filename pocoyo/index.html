@@ -33,7 +33,11 @@ h1 small{display:block;font:400 clamp(14px,1.4vw,20px)/1.1 MW;letter-spacing:.02
 .hint i{width:10px;height:10px;border-radius:50%;background:var(--red);animation:b 1.4s ease-in-out infinite}
 @keyframes b{50%{transform:translateY(6px)}}
 #mag{position:relative}
-.stage{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:8px 0 84px;touch-action:pan-y}
+.clip{cursor:pointer}
+.nav{display:flex;gap:10px}.nav button,.totop{width:44px;height:44px;border-radius:50%;border:0;background:#F12009;color:#FCFCFC;font:18px MN;cursor:pointer;display:grid;place-items:center}
+.nav button:disabled{opacity:.3;cursor:default}
+.totop{position:fixed;left:16px;bottom:16px;z-index:30;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:0 8px 20px -8px rgba(0,0,0,.35)}.totop.on{opacity:1;transform:none;pointer-events:auto}
 .clip{position:relative}
 .book{position:relative;transform-style:preserve-3d;transition:none}
 .leaf{position:absolute;top:0;left:50%;transform-origin:0 50%;transform-style:preserve-3d;will-change:transform}
@@ -57,7 +61,7 @@ h1 small{display:block;font:400 clamp(14px,1.4vw,20px)/1.1 MW;letter-spacing:.02
 .strip>.f::after,.strip>.b::after{content:"";position:absolute;inset:0;pointer-events:none;background:#000;opacity:var(--sh,0)}
 .spine>.f::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,0,.22),rgba(0,0,0,.06) 45%,transparent)}
 .spine>.b::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(270deg,rgba(0,0,0,.22),rgba(0,0,0,.06) 45%,transparent)}
-.story{max-width:1320px;margin:0 auto;padding:24px 32px 12vh}
+.story{max-width:1320px;margin:0 auto;padding:24px 32px 8px}
 .brief{display:grid;grid-template-columns:1fr 2fr;gap:24px;align-items:start;border-top:2px solid var(--red);padding:22px 0 64px}
 .brief ol{margin:0;padding:0;list-style:none;counter-reset:b;font:clamp(18px,1.7vw,26px)/1.15 MW;text-transform:uppercase}
 .brief li{counter-increment:b;margin:0 0 .45em}.brief li::before{content:"0" counter(b) " ";font:12px MN;letter-spacing:.12em;vertical-align:.9em;margin-right:.6em}
@@ -66,9 +70,9 @@ h1 small{display:block;font:400 clamp(14px,1.4vw,20px)/1.1 MW;letter-spacing:.02
 .cols figure:hover img{transform:translateY(-6px) rotate(-1.5deg)}
 .cols figcaption{margin-top:14px;font:15px/1.4 MN}.cols b{display:block;font:400 clamp(15px,1.5vw,20px)/1.15 MW;text-transform:uppercase;margin-bottom:4px}.cols i{font-style:normal;opacity:.7}
 /* each collection title in its own colour, taken from its cover */
-.cols figure:nth-child(1) b{color:#2FA4E7}.cols figure:nth-child(2) b{color:#9B45EE}.cols figure:nth-child(3) b{color:#E0A100}
+.cols figure:nth-child(1) b{color:#8E9AA4}.cols figure:nth-child(2) b{color:#9B45EE}.cols figure:nth-child(3) b{color:#E0A100}
 .close{font:clamp(16px,1.3vw,19px)/1.5 MN;max-width:40em}
-@media(max-width:760px){.stage{align-items:flex-start;padding-top:72px}.story{padding:16px 16px 8px}.brief{grid-template-columns:1fr;padding-bottom:40px}.cols{grid-template-columns:1fr 1fr}.cols figure:last-child{grid-column:1/-1;max-width:60%}}
+@media(max-width:760px){.stage{padding:8px 0 76px}.story{padding:16px 16px 8px}.brief{grid-template-columns:1fr;padding-bottom:40px}.cols{grid-template-columns:1fr 1fr}.cols figure:last-child{grid-column:1/-1;max-width:60%}}
 </style><link rel="stylesheet" href="../site.css?v=1211b">
 </head><body>
 <!--sh--><header class="sh" id="sh"><a class="sh-back" href="../" aria-label="Back" onclick="if(document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false}"></a><a class="sh-logo" href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menu</button><nav id="shnav"><a href="../work/" aria-current="page">Portfolio</a><a href="../#labs">AI Lab</a><a href="/websites/">Migrate your site</a><a href="/about/">About</a><a href="#contacto">Contact</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../es/" hreflang="es">ES</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
@@ -77,7 +81,7 @@ h1 small{display:block;font:400 clamp(14px,1.4vw,20px)/1.1 MW;letter-spacing:.02
   <p class="k">Animaj · Brand · Editorial &amp; Packaging</p>
   <h1>Pocoyo<small>Early Years Guide 0–3</small></h1>
   <p class="sub">Animaj asked me to design the Pocoyo Early Years Guide 0–3: the 80-page book that licensees, agents and retailers use to create everything for babies and toddlers. Presented at Brand Licensing Europe, October 2026.</p>
-  <p class="hint k"><i></i>Scroll to turn the pages</p>
+  <p class="hint k"><i></i>Swipe or tap to turn the pages</p>
  </div>
  <div class="fan" aria-hidden="true"><img src="../img/p/pocoyo/guide-29.webp" alt=""><img src="../img/p/pocoyo/guide-39.webp" alt=""><img src="../img/p/pocoyo/guide/p01.webp" alt=""></div>
 </section>
@@ -92,7 +96,8 @@ h1 small{display:block;font:400 clamp(14px,1.4vw,20px)/1.1 MW;letter-spacing:.02
  <p class="close">Inside each one, newborn pieces stay simple and toddler pieces get louder, just like kids do. From there came the patterns and palettes, the packaging and swing tags. I art-directed every product shot and every photo in the guide.</p>
 </section>
 <section id="mag"><div class="stage"><div class="clip"><div class="book" id="book"></div><div class="shadow"></div></div>
-<div class="hud"><span id="pg">01 / 76</span><span class="bar"><b id="bar"></b></span><span>Pocoyo™ © Animaj</span></div></div></section>
+<div class="hud"><span class="nav"><button type="button" id="pv" aria-label="Previous page">←</button><button type="button" id="nx" aria-label="Next page">→</button></span><span id="pg">01 / 76</span><span class="bar"><b id="bar"></b></span><span>Pocoyo™ © Animaj</span></div></div></section>
+<button type="button" class="totop" id="totop" aria-label="Back to top">↑</button>
 <section class="after"><a href="../#work">Back to all projects</a></section>
 <script>
 // 76 pages: colour-palette pages (5, 27, 57) and the commercial-contacts page (79) are left out
@@ -115,11 +120,11 @@ function size(){mobile=innerWidth<760;if(mode!==mobile){mode=mobile;build();}con
   l.strips.forEach((x,i)=>{x.s.style.width=(w+.6)+'px';x.s.style.left=(i===0?0:w)+'px';
    x.f.style.backgroundSize=x.b.style.backgroundSize=`${pw}px ${ph}px`;
    x.f.style.backgroundPosition=`${-i*w}px 0`;x.b.style.backgroundPosition=`${-(pw-(i+1)*w)}px 0`;});});
- mag.style.height=(L*(mobile?48:60)+100)+'vh';clip.style.perspective=(mobile?1400:2600)+'px';draw();}
+ clip.style.perspective=(mobile?1400:2600)+'px';draw();}
 const ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
 function load(l){if(l.loaded)return;l.loaded=true;const fu=`url(${src(mobile?l.k:2*l.k)})`,bu=mobile?'none':`url(${src(2*l.k+1)})`;l.strips.forEach(x=>{x.f.style.backgroundImage=fu;x.b.style.backgroundImage=bu;if(mobile)x.b.style.backgroundColor='#E9E4D9';});}
-function draw(){const r=mag.getBoundingClientRect(),run=mag.offsetHeight-innerHeight;
- const t=Math.max(0,Math.min(1,-r.top/run))*L;
+let T=0,target=0,anim=0;
+function draw(){const t=T;
  const cur=Math.min(L-1,Math.floor(t));
  if(!mobile){const s=Math.min(1,t)*.5-Math.max(0,t-(L-1))*.5;book.style.transform=`translateX(${(-.5+s)*pw}px)`;}else book.style.transform='none';
  leaves.forEach((l,k)=>{const raw=Math.max(0,Math.min(1,t-k)),p=ease(raw);
@@ -136,14 +141,22 @@ function draw(){const r=mag.getBoundingClientRect(),run=mag.offsetHeight-innerHe
   l.d.style.opacity=mobile?Math.max(0,1-p*p*1.2):1;});
  document.getElementById('pg').textContent=String(Math.max(1,Math.min(N,Math.floor(mobile?t:t*2)+1))).padStart(2,'0')+' / '+N;
  document.getElementById('bar').style.width=(t/L*100)+'%';}
-// 18/11: when scrolling stops, the page always finishes turning (no half-turned pages)
-let snapT=0,snapping=false,lastY=scrollY,dir=1;
-function settle(){const r=mag.getBoundingClientRect(),run=mag.offsetHeight-innerHeight,f=-r.top/run;if(f<=0||f>=1)return;
- const t=f*L,fr=t-Math.floor(t);if(fr<.03||fr>.97)return;const target=mag.offsetTop+run*(dir>0?Math.ceil(t):Math.floor(t))/L;snapping=true;scrollTo({top:target,behavior:'smooth'});setTimeout(()=>snapping=false,700);}
-addEventListener('scroll',()=>{if(scrollY!==lastY){dir=scrollY>lastY?1:-1;lastY=scrollY;}requestAnimationFrame(draw);clearTimeout(snapT);if(!snapping)snapT=setTimeout(settle,160);},{passive:true});addEventListener('resize',size);
-addEventListener('keydown',e=>{const run=mag.offsetHeight-innerHeight,step=run/L;if(e.key==='ArrowRight')scrollBy({top:step,behavior:'smooth'});if(e.key==='ArrowLeft')scrollBy({top:-step,behavior:'smooth'});});
-size();
-const hm=location.hash.match(/t=([\d.]+)/);if(hm){const run=mag.offsetHeight-innerHeight;scrollTo(0,mag.offsetTop+run*(+hm[1])/L);leaves.forEach(load);draw();}
+// 18/11 (4): no scroll hijack. Pages turn with swipe, tap, arrows or keys; the page scrolls normally.
+function tick(){const d=target-T;if(Math.abs(d)<.004){T=target;draw();anim=0;return;}
+ T+=Math.sign(d)*Math.min(Math.abs(d),Math.max(1/44,Math.abs(d)/14));draw();anim=requestAnimationFrame(tick);}
+function go(n){target=Math.max(0,Math.min(L,Math.round(target)+n));leaves.forEach((l,k)=>{if(Math.abs(k-target)<4)load(l)});
+ document.getElementById('pv').disabled=target<=0;document.getElementById('nx').disabled=target>=L;if(!anim)anim=requestAnimationFrame(tick);}
+document.getElementById('pv').onclick=()=>go(-1);document.getElementById('nx').onclick=()=>go(1);
+clip.addEventListener('click',e=>{const r=clip.getBoundingClientRect();go(e.clientX<r.left+r.width/2&&!(mobile)?-1:(mobile&&e.clientX<r.left+r.width*.3?-1:1));});
+let tx=null,ty=null;const stg=document.querySelector('.stage');
+stg.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+stg.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;tx=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){e.preventDefault();go(dx<0?1:-1);}});
+addEventListener('keydown',e=>{const r=stg.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);});
+addEventListener('resize',size);
+const upb=document.getElementById('totop');upb.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+addEventListener('scroll',()=>upb.classList.toggle('on',scrollY>innerHeight*.8),{passive:true});
+size();go(0);
+const hm=location.hash.match(/t=([\d.]+)/);if(hm){T=target=+hm[1];leaves.forEach(load);draw();}
 </script><script src="../analytics.js?v=1611b" defer></script>
 <!--sf--><footer class="sf" id="contacto"><a class="sf-brand" href="../" aria-label="JNPR® Club, home"></a><p class="k">Looking for a Creative Director who builds with AI?</p><h2>Let’s work together.</h2><div class="sf-doors"><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=Working%20with%20you">Hire me</a><a class="cta" href="mailto:mariana.jnprclub@gmail.com?subject=My%20website">Get your site</a><a class="sf-in" href="https://www.linkedin.com/in/mariana-ortega-cardenas" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.83v1.54h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.83 2.67 4.83 6.13V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></div><a class="sf-mail" href="mailto:mariana.jnprclub@gmail.com">mariana.jnprclub@gmail.com</a><div class="sf-fine"><span>© 2026 JNPR® Club · Madrid</span><a href="/cookies/">Cookies</a><a href="../">jnpr-club.com</a></div></footer><!--/sf-->
 </body></html>
