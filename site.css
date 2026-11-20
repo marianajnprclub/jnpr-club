@@ -43,3 +43,11 @@
 
 /* 12/11: floating Hire me small shadow, above the iPhone edge */
 html body .chromecta { box-shadow: 0 5px 9px -5px rgb(40 0 0 / .4) !important; bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important; }
+
+/* 20/11: inner menu = same full-screen menu as the home */
+.sh nav { position: absolute; top: 100%; left: 0; right: 0; height: calc(100dvh - 100%); overflow-y: auto; box-sizing: border-box; flex-direction: column; align-items: stretch; gap: 4px; padding: 10vh clamp(16px, 4vw, 64px) 40px; background: #F12009; }
+.sh nav a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-size: clamp(30px, 10vw, 44px); line-height: 1.15; letter-spacing: 0; padding: 6px 0; border-bottom: 1px solid rgb(252 252 252 / .3); white-space: normal; }
+.sh nav a em { font-size: 11px; font-style: normal; letter-spacing: .14em; opacity: .75; white-space: nowrap; }
+.sh nav a[aria-current] { opacity: 1; }
+.sh nav .lang { border: 0; font-size: 12px; letter-spacing: .14em; padding: 20px 0 0; }
+@media (max-width: 600px) { .sh nav a em { display: none; } }

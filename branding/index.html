@@ -22,8 +22,8 @@
 @font-face{font-family:MN;src:url(../fonts/PPMonumentNormal-Regular.otf);font-display:swap}
 :root{--red:#F12009;--blue:#7ECAE4;--paper:#F4F1EA;--w:#FCFCFC;--pad:clamp(16px,4vw,64px)}
 *{box-sizing:border-box}
-html{background:var(--paper);overflow-x:hidden}
-body{margin:0;background:var(--paper);color:var(--red);font:15px/1.5 MN,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{background:var(--red);overflow-x:hidden}
+body{margin:0;background:var(--red);color:var(--red);font:15px/1.5 MN,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a,button{-webkit-tap-highlight-color:transparent}
 a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -40,8 +40,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 .g{display:flex;flex-wrap:wrap;align-items:center;gap:6px 0;margin:0}
 .g span{display:inline-flex;align-items:center;font:12px MW,system-ui;text-transform:uppercase;letter-spacing:.16em}
 .g span+span::before{content:'';display:inline-block;width:12px;height:12px;margin:0 10px 0 calc(4px - .16em);background:url(../img/ast/chrome.webp) center/contain no-repeat}
-.open{position:relative;display:inline-flex;align-items:center;justify-content:center;height:42px;aspect-ratio:1719/385;font:10px MW,system-ui;text-transform:uppercase;letter-spacing:.14em;text-decoration:none;white-space:nowrap;color:#1b1b1b;text-shadow:0 1px 0 rgb(255 255 255/.6);background:url(../img/ast/pill-silver.webp) center/contain no-repeat;border:0;padding:0;cursor:pointer;border-radius:999px;box-shadow:0 12px 18px -10px rgb(40 0 0/.45);transition:transform .2s}
-.open:hover{transform:scale(1.04)}
+.pill{position:relative;display:inline-flex;align-items:center;justify-content:center;height:42px;aspect-ratio:1719/385;font:10px MW,system-ui;text-transform:uppercase;letter-spacing:.14em;text-decoration:none;white-space:nowrap;color:#1b1b1b;text-shadow:0 1px 0 rgb(255 255 255/.6);background:url(../img/ast/pill-silver.webp) center/contain no-repeat;border:0;padding:0;cursor:pointer;border-radius:999px;box-shadow:0 12px 18px -10px rgb(40 0 0/.45);transition:transform .2s}
+.pill:hover{transform:scale(1.04)}
 .case{padding:0 var(--pad);display:grid;gap:14px;justify-items:start;max-width:62ch}
 .case[hidden]{display:none}
 .case p{margin:0;font:400 clamp(16px,1.4vw,20px)/1.45 MW,system-ui}
@@ -49,7 +49,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 .strip::-webkit-scrollbar{display:none}
 .strip.drag{scroll-snap-type:none}
 .strip figure{margin:0;flex:none;scroll-snap-align:start;border-radius:22px;overflow:hidden;box-shadow:0 34px 60px -30px rgb(80 10 0/.6)}
-.strip img{height:clamp(300px,58svh,760px);width:auto;max-width:92vw;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+.strip img{aspect-ratio:var(--r);height:clamp(300px,58svh,760px);width:auto;max-width:92vw;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
 .snav{display:flex;align-items:center;gap:6px;padding:0 var(--pad);margin-top:6px}
 .sbar{flex:1;height:2px;position:relative;overflow:hidden;background:rgb(252 252 252/.35)}
 .pj.alt .sbar{background:rgb(241 32 9/.25)}
@@ -60,57 +60,59 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 .sc.prev::before{transform:translateX(2px) rotate(-135deg)}
 .sc[disabled]{opacity:.35;cursor:default}
 /* hero: 8pt scale, proximity */
-.hero{--sayfs:clamp(20px,2.2vw,34px);--top:64px;--t2s:32px;--s2i:48px;--i2n:24px;--end:64px;gap:0;padding:0 0 var(--end)}
+.hero{--sayfs:clamp(20px,2.2vw,34px);--top:80px;--t2s:48px;--s2i:80px;--i2n:24px;--end:80px;gap:0;padding:0 0 var(--end)}
 .hero .ttl h2{line-height:.74;padding-top:var(--top)}
 .h2b{padding:0 var(--pad);margin-top:calc(var(--t2s) - 6px - .16*var(--sayfs));display:flex;justify-content:space-between;align-items:center;gap:32px}
 .say{margin:0;font:400 var(--sayfs)/1.08 MW;text-transform:uppercase;max-width:26ch}
-.open.qq{height:58px;font-size:12px;flex:none}
+.pill.qq{height:58px;font-size:12px;flex:none}
 .hero .strip{padding:var(--s2i) var(--pad) 72px;margin:0 0 calc(-72px + var(--i2n))}
 .hero .strip img{height:clamp(260px,46svh,560px)}
 .hero .snav{margin-top:0;position:relative}
 /* what you get */
-.get{padding:64px var(--pad);display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.lead{color:var(--w);background:var(--red) url(../img/papel-rojo.webp) center/627px}
+.lead .pj{background:none}
+.get{padding:0 var(--pad) 80px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
 .get h2{font:400 clamp(32px,4vw,56px)/.95 MW;text-transform:uppercase;margin:0;padding-top:15px}
 .get ol{list-style:none;margin:0;padding:0;font:400 clamp(20px,2vw,30px)/1 MW;text-transform:uppercase}
-.get li{display:grid;grid-template-columns:3.2em 1fr;align-items:baseline;padding:18px 0;border-top:1.5px solid var(--red)}
-.get li:last-child{border-bottom:1.5px solid var(--red)}
+.get li{display:grid;grid-template-columns:3.2em 1fr;align-items:baseline;padding:18px 0;border-top:1.5px solid currentColor}
+.get li:last-child{border-bottom:1.5px solid currentColor}
 @media(max-width:760px){
-.hero{--sayfs:22px;--top:48px;--t2s:24px;--s2i:40px;--i2n:16px;--end:48px}
+.hero{--sayfs:22px;--top:48px;--t2s:32px;--s2i:56px;--i2n:16px;--end:56px}
 .h2b{flex-direction:column;align-items:flex-start;gap:16px}
-.open.qq{height:50px}
+.pill.qq{height:50px}
 .strip{overflow-y:hidden;transition:height .35s ease}
-.strip img{height:auto;max-height:62svh;max-width:calc(100vw - 2*var(--pad))}
+.strip img{width:auto;height:min(62svh,calc((100vw - 2*var(--pad))/var(--r)));max-height:none;max-width:none}
 .hero .strip img{height:auto;width:calc(100vw - 2*var(--pad) - 40px);max-width:none;max-height:none}
 .ttl h2{font-size:14vw}
-.get{grid-template-columns:1fr;padding:48px var(--pad);gap:24px}.get ol{font-size:20px}.get li{padding:16px 0}}
+.get{grid-template-columns:1fr;padding:0 var(--pad) 56px;gap:24px}.get ol{font-size:20px}.get li{padding:16px 0}}
 @media(prefers-reduced-motion:reduce){.ttl div,.ttl h2::after{animation:none}}
 </style>
-<link rel="stylesheet" href="../site.css?v=1211b">
+<link rel="stylesheet" href="../site.css?v=2011a">
 </head>
 <body>
-<!--sh--><header class="sh" id="sh"><a class="sh-back" href="../" aria-label="Back" onclick="if(document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false}"></a><a class="sh-logo" href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menu</button><nav id="shnav"><a href="../work/">Portfolio</a><a href="../#labs">AI Lab</a><a href="/websites/">Migrate your site</a><a href="/about/">About</a><a href="#contacto">Contact</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../diseno-de-marca/" hreflang="es">ES</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
+<!--sh--><header class="sh" id="sh"><a class="sh-back" href="../" aria-label="Back" onclick="if(document.referrer.indexOf(location.origin)===0&&history.length>1){history.back();return false}"></a><a class="sh-logo" href="../" aria-label="JNPR® Club, home"><img src="../img/jnpr-wordmark.svg" alt="JNPR®" width="661" height="163"></a><button type="button" class="sh-btn" aria-expanded="false" aria-controls="shnav">Menu</button><nav id="shnav"><a href="../work/">Portfolio</a><a href="../#labs">AI Lab</a><a href="/websites/">Websites <em>Service · 01</em></a><a href="/branding/">Brand Design <em>Service · 02</em></a><a href="/ai-photography/">AI Photography <em>Service · 03</em></a><a href="/about/">About</a><a href="#contacto">Contact</a><a href="../cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a><a class="lang" href="../diseno-de-marca/" hreflang="es">ES</a></nav></header><script>(()=>{const h=document.getElementById("sh"),b=h.querySelector(".sh-btn");b.onclick=()=>{const o=h.classList.toggle("open");b.setAttribute("aria-expanded",o)};h.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>{h.classList.remove("open");b.setAttribute("aria-expanded",false)}))})()</script><!--/sh-->
 <main>
-<section class="pj alt hero"><h1 class="vh">Branding: brand identity design</h1><div class="ttl"><div style="--t:26s"><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2></div></div>
-<div class="h2b"><p class="say">Brands that look the same everywhere, from the logo to the last label.</p><a class="open qq" href="mailto:mariana.jnprclub@gmail.com?subject=Branding%20quote">Request a quote</a></div>
-<div class="strip"><figure><img src="../img/p/argen/01.webp" alt="Branding work" width="1080" height="760" decoding="async"></figure><figure><img src="../img/p/clarity/03.webp" alt="Branding work" width="1080" height="760" decoding="async"></figure><figure><img src="../img/p/proarte/02.webp" alt="Branding work" width="1080" height="760" decoding="async"></figure><figure><img src="../img/p/quantum/03.webp" alt="Branding work" width="1100" height="760" decoding="async"></figure><figure><img src="../img/p/argen/05.webp" alt="Branding work" width="1080" height="760" decoding="async"></figure><figure><img src="../img/p/clarity/01.webp" alt="Branding work" width="1080" height="760" decoding="async"></figure></div>
+<div class="lead"><section class="pj hero"><h1 class="vh">Branding: brand identity design</h1><div class="ttl"><div style="--t:26s"><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2><h2 aria-hidden="true">Branding</h2></div></div>
+<div class="h2b"><p class="say">Brands that look the same everywhere, from the logo to the last label.</p><a class="pill qq" href="mailto:mariana.jnprclub@gmail.com?subject=Branding%20quote">Request a quote</a></div>
+<div class="strip"><figure><img src="../img/p/argen/01.webp" alt="Branding work" width="1080" height="760" style="--r:1.4211" decoding="async"></figure><figure><img src="../img/p/clarity/03.webp" alt="Branding work" width="1080" height="760" style="--r:1.4211" decoding="async"></figure><figure><img src="../img/p/proarte/02.webp" alt="Branding work" width="1080" height="760" style="--r:1.4211" decoding="async"></figure><figure><img src="../img/p/quantum/03.webp" alt="Branding work" width="1100" height="760" style="--r:1.4474" decoding="async"></figure><figure><img src="../img/p/argen/05.webp" alt="Branding work" width="1080" height="760" style="--r:1.4211" decoding="async"></figure><figure><img src="../img/p/clarity/01.webp" alt="Branding work" width="1080" height="760" style="--r:1.4211" decoding="async"></figure></div>
 <div class="snav"><i class="sbar"><b></b></i><span class="sn">01 / 06</span><button type="button" class="sc prev" aria-label="Previous" disabled></button><button type="button" class="sc next" aria-label="Next"></button></div>
 </section>
-<section class="get"><h2>What you get</h2><ol><li><b>01</b>Logo and identity</li><li><b>02</b>Brand system</li><li><b>03</b>Brand Hub</li><li><b>04</b>Smart Branding</li></ol></section>
+<section class="get"><h2>What you get</h2><ol><li><b>01</b>Logo and identity</li><li><b>02</b>Brand system</li><li><b>03</b>Brand Hub</li><li><b>04</b>Smart Branding</li></ol></section></div>
 <section class="pj alt"><h2 class="vh">The Clarity Protocol</h2><div class="ttl"><div style="--t:40.0s"><h2 aria-hidden="true">The Clarity Protocol</h2><h2 aria-hidden="true">The Clarity Protocol</h2><h2 aria-hidden="true">The Clarity Protocol</h2><h2 aria-hidden="true">The Clarity Protocol</h2><h2 aria-hidden="true">The Clarity Protocol</h2><h2 aria-hidden="true">The Clarity Protocol</h2><h2 aria-hidden="true">The Clarity Protocol</h2><h2 aria-hidden="true">The Clarity Protocol</h2></div></div>
-<div class="pj-h"><p class="g"><span>Brand</span><span>Web Design</span><span>Editorial &amp; Packaging</span></p><button type="button" class="open" aria-expanded="false" data-t="Close">Read the case</button></div>
+<div class="pj-h"><p class="g"><span>Brand</span><span>Web Design</span><span>Editorial &amp; Packaging</span></p><button type="button" class="pill" aria-expanded="false" data-t="Close">Read the case</button></div>
 <div class="case" hidden><p>The Clarity Protocol came to me as an idea and a belief. A wellness and mindset brand built on the conviction that inner clarity and bold self-expression are not opposites but two sides of the same thing. My job was to make that belief visible.</p></div>
-<div class="strip"><figure><img src="../img/p/clarity/02.webp" alt="The Clarity Protocol" width="1800" height="1013" loading="lazy" decoding="async"></figure><figure><img src="../img/p/clarity/01.webp" alt="The Clarity Protocol" width="1080" height="760" loading="lazy" decoding="async"></figure><figure><img src="../img/p/clarity/03.webp" alt="The Clarity Protocol" width="1080" height="760" loading="lazy" decoding="async"></figure></div>
+<div class="strip"><figure><img src="../img/p/clarity/02.webp" alt="The Clarity Protocol" width="1800" height="1013" style="--r:1.7769" loading="lazy" decoding="async"></figure><figure><img src="../img/p/clarity/01.webp" alt="The Clarity Protocol" width="1080" height="760" style="--r:1.4211" loading="lazy" decoding="async"></figure><figure><img src="../img/p/clarity/03.webp" alt="The Clarity Protocol" width="1080" height="760" style="--r:1.4211" loading="lazy" decoding="async"></figure></div>
 <div class="snav"><i class="sbar"><b></b></i><span class="sn">01 / 03</span><button type="button" class="sc prev" aria-label="Previous" disabled></button><button type="button" class="sc next" aria-label="Next"></button></div>
 </section>
 <section class="pj"><h2 class="vh">Espacio Argén</h2><div class="ttl"><div style="--t:31.6s"><h2 aria-hidden="true">Espacio Argén</h2><h2 aria-hidden="true">Espacio Argén</h2><h2 aria-hidden="true">Espacio Argén</h2><h2 aria-hidden="true">Espacio Argén</h2><h2 aria-hidden="true">Espacio Argén</h2><h2 aria-hidden="true">Espacio Argén</h2><h2 aria-hidden="true">Espacio Argén</h2><h2 aria-hidden="true">Espacio Argén</h2></div></div>
-<div class="pj-h"><p class="g"><span>Brand</span><span>Editorial &amp; Packaging</span></p><button type="button" class="open" aria-expanded="false" data-t="Close">Read the case</button></div>
+<div class="pj-h"><p class="g"><span>Brand</span><span>Editorial &amp; Packaging</span></p><button type="button" class="pill" aria-expanded="false" data-t="Close">Read the case</button></div>
 <div class="case" hidden><p>Espacio Argén had evolved. What started as one thing had grown into something more considered, more contemporary, more intentional.</p></div>
-<div class="strip"><figure><img src="../img/p/argen/01.webp" alt="Espacio Argén" width="1080" height="760" loading="lazy" decoding="async"></figure><figure><img src="../img/p/argen/02.webp" alt="Espacio Argén" width="1080" height="760" loading="lazy" decoding="async"></figure><figure><img src="../img/p/argen/03.webp" alt="Espacio Argén" width="1080" height="760" loading="lazy" decoding="async"></figure><figure><img src="../img/p/argen/05.webp" alt="Espacio Argén" width="1080" height="760" loading="lazy" decoding="async"></figure></div>
+<div class="strip"><figure><img src="../img/p/argen/01.webp" alt="Espacio Argén" width="1080" height="760" style="--r:1.4211" loading="lazy" decoding="async"></figure><figure><img src="../img/p/argen/02.webp" alt="Espacio Argén" width="1080" height="760" style="--r:1.4211" loading="lazy" decoding="async"></figure><figure><img src="../img/p/argen/03.webp" alt="Espacio Argén" width="1080" height="760" style="--r:1.4211" loading="lazy" decoding="async"></figure><figure><img src="../img/p/argen/05.webp" alt="Espacio Argén" width="1080" height="760" style="--r:1.4211" loading="lazy" decoding="async"></figure></div>
 <div class="snav"><i class="sbar"><b></b></i><span class="sn">01 / 04</span><button type="button" class="sc prev" aria-label="Previous" disabled></button><button type="button" class="sc next" aria-label="Next"></button></div>
 </section>
 </main>
 <script>
-document.querySelectorAll('.open[aria-expanded]').forEach(b=>b.onclick=()=>{const c=b.closest('.pj').querySelector('.case'),o=c.hidden;c.hidden=!o;b.setAttribute('aria-expanded',o);[b.textContent,b.dataset.t]=[b.dataset.t,b.textContent]});
+document.querySelectorAll('.pill[aria-expanded]').forEach(b=>b.onclick=()=>{const c=b.closest('.pj').querySelector('.case'),o=c.hidden;c.hidden=!o;b.setAttribute('aria-expanded',o);[b.textContent,b.dataset.t]=[b.dataset.t,b.textContent]});
 document.querySelectorAll('.strip').forEach(s=>{let x0=0,l0=0,down=false,moved=false;
 s.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;x0=e.clientX;l0=s.scrollLeft;e.preventDefault()});
 addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-x0;if(Math.abs(dx)>4){moved=true;s.classList.add('drag')}s.scrollLeft=l0-dx});
