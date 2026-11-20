@@ -3,7 +3,7 @@
 (() => {
   const GTM_ID = ''; // optional: Tag Manager container (GTM-M5ZQJSB9 not found in her accounts)
   const GA_ID = 'G-1FST6VRM2T'; // GA4 stream "JNPR Club web"
-  const CLARITY_ID = ''; // 20/11: Microsoft Clarity project ID (clarity.microsoft.com → Settings → Overview). Loads only after consent.
+  const CLARITY_ID = 'zgkhjttm84'; // 20/11: Microsoft Clarity project ID (clarity.microsoft.com → Settings → Overview). Loads only after consent.
   if (!GTM_ID && !GA_ID) return;
   const KEY = 'jnpr-consent', es = (document.documentElement.lang || '').startsWith('es');
   let on = false;
@@ -64,7 +64,7 @@
     const c = e.target.closest('button'); if (!c) return;
     try { localStorage.setItem(KEY, c.dataset.c); } catch (err) {}
     if (c.dataset.c === 'yes') load();
-    else document.cookie.split(';').map(x => x.split('=')[0].trim()).filter(n => /^_ga/.test(n)).forEach(n => { ['', '; domain=' + location.hostname.replace(/^www\./, ''), '; domain=.' + location.hostname.replace(/^www\./, '')].forEach(d => { document.cookie = n + '=; Max-Age=0; path=/' + d; }); }); // 11/11: declining removes Analytics cookies
+    else document.cookie.split(';').map(x => x.split('=')[0].trim()).filter(n => /^(_ga|_clck|_clsk)/.test(n)).forEach(n => { ['', '; domain=' + location.hostname.replace(/^www\./, ''), '; domain=.' + location.hostname.replace(/^www\./, '')].forEach(d => { document.cookie = n + '=; Max-Age=0; path=/' + d; }); }); // 11/11: declining removes Analytics cookies
     b.remove();
   });
   }
