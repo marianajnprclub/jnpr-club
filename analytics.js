@@ -3,6 +3,7 @@
 (() => {
   const GTM_ID = ''; // optional: Tag Manager container (GTM-M5ZQJSB9 not found in her accounts)
   const GA_ID = 'G-1FST6VRM2T'; // GA4 stream "JNPR Club web"
+  const CLARITY_ID = ''; // 20/11: Microsoft Clarity project ID (clarity.microsoft.com → Settings → Overview). Loads only after consent.
   if (!GTM_ID && !GA_ID) return;
   const KEY = 'jnpr-consent', es = (document.documentElement.lang || '').startsWith('es');
   let on = false;
@@ -16,6 +17,7 @@
     if (GTM_ID) { dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' }); s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID; }
     else { gtag('config', GA_ID); s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID; }
     document.head.appendChild(s);
+    if (CLARITY_ID) { (function (c, l, a, r, i, t, y) { c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); }; t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i; y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y); })(window, document, 'clarity', 'script', CLARITY_ID); }
   };
   const track = (name, params) => { if (!on) return; if (GTM_ID) dataLayer.push(Object.assign({ event: name }, params || {})); else if (window.gtag) gtag('event', name, params || {}); };
   window.jnprTrack = track;
