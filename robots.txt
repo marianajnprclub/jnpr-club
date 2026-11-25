@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /mail/
+Disallow: /samenight/
 Sitemap: https://jnpr-club.com/sitemap.xml
