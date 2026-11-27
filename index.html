@@ -2186,7 +2186,7 @@ html body .cta-dock .chromecta.cta-off, html body .cta-dock .chromecta.cta-hero,
 <style>/* 12/11: videos at real size: centred in the project gallery */
 @media (min-width: 761px) { .cgal video { margin: auto; } }
 </style>
-</head>
+<style id="ld-gate">html:not(.ld) :is(#welcome,#lead,#work,#clients,#services,#motion,#gallery,#tools,#webban,#contact),html:not(.ld) :is(#welcome,#lead,#work,#clients,#services,#motion,#gallery,#tools,#webban,#contact) *,html:not(.ld) :is(#welcome,#lead,#work,#clients,#services,#motion,#gallery,#tools,#webban,#contact) *::before,html:not(.ld) :is(#welcome,#lead,#work,#clients,#services,#motion,#gallery,#tools,#webban,#contact) *::after{background-image:none!important}</style><script>(function(){var d=document.documentElement,f=function(){if(d.classList.contains("ld"))return;d.classList.add("ld");document.querySelectorAll("img[data-src]").forEach(function(i){i.src=i.dataset.src;i.removeAttribute("data-src")})};if(location.hash||location.search.indexOf("open=")>-1)return f();addEventListener("load",function(){setTimeout(f,200)});["scroll","touchstart","wheel","keydown","pointerdown"].forEach(function(e){addEventListener(e,f,{once:true,passive:true})})})()</script></head>
 <body>
 <div id="brand-intro" aria-hidden="true"><div class="intro-cover"></div><span class="intro-brand"></span></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="duo" color-interpolation-filters="sRGB">
@@ -2254,7 +2254,7 @@ html body .cta-dock .chromecta.cta-off, html body .cta-dock .chromecta.cta-hero,
 </div>
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Menu"><div class="mnav-top"><span class="tb-logo"></span><button type="button" class="mbtn" id="mclose" style="display:inline-flex">Close</button></div><nav><a href="#work">Work</a><a href="work/">Portfolio</a><a href="#labs">AI Lab</a><a href="/websites/">Websites <em>Service · 01</em></a><a href="/branding/">Brand Design <em>Service · 02</em></a><a href="/ai-photography/">AI Photography <em>Service · 03</em></a><a href="/about/">About</a><a href="#contact">Contact</a><a href="cv/Mariana-Ortega_CV.pdf" target="_blank" rel="noopener">CV</a></nav></div>
 <section class="club a-only" id="welcome">
-    <h2 class="welcome-img" id="wel"><span class="wwrap"><img src="img/ast/welcome-chrome-silver.webp" alt="Welcome to the club."><i class="wshine" aria-hidden="true"></i></span></h2>
+    <h2 class="welcome-img" id="wel"><span class="wwrap"><img src="img/ast/welcome-chrome-silver.webp" alt="Welcome to the club." loading="lazy"><i class="wshine" aria-hidden="true"></i></span></h2>
   <div class="tmach"><span class="stampA" aria-hidden="true">Admitted<small>JNPR® Club · Nº 0001</small></span><div class="tclip"><div class="flipper" id="flipper"><div class="back" aria-hidden="true"><span class="blogo"></span><span class="bk">Members only · Madrid</span></div>
   <div class="card" aria-label="JNPR Club admission ticket"><span class="glint" aria-hidden="true"></span>
     <div class="t-main"><span class="k1">JNPR® Club · Private members' club</span><span class="adm">Admit<br>one</span><div class="row"><span>Est. 2020</span><span>Madrid</span></div></div>
@@ -2522,7 +2522,7 @@ html body .cta-dock .chromecta.cta-off, html body .cta-dock .chromecta.cta-hero,
   PROJECTS.forEach((p, k) => { if(p.id==='nuevarevista'||p.lab)return;const d = document.createElement('div'); d.className = 'lp'; d.tabIndex = 0; d.setAttribute('role','group'); d.setAttribute('aria-label', p.name); d.dataset.g = p.genres.join('|');
     const dir = p.img[0][0].replace(/[^/]+$/, ''),texture=p.texture||`tex/${p.id}.webp`;
     d.innerHTML = `<div class="crate"><div class="vin"><div class="vl" style="background-image:url(${texture})"></div></div>
-      <div class="sl" style="--img:url(${texture})"><i class="colbg" style="background-image:url(${p.img[0][0]})"></i><i class="paper"></i><span class="sl-k">JNPR® Club</span><div class="art"><img class="duo" src="${p.cover||dir+'cover-duo.webp'}" alt="${p.name}" loading="lazy"><img class="col" src="${p.img[0][0]}" alt="" loading="lazy"></div><span class="sl-n">${p.name}</span></div><button type="button" class="project-open" aria-label="View ${p.name} project">View project</button></div>
+      <div class="sl" style="--img:url(${texture})"><i class="colbg" style="background-image:url(${p.img[0][0]})"></i><i class="paper"></i><span class="sl-k">JNPR® Club</span><div class="art"><img class="duo" ${document.documentElement.classList.contains('ld')?'src':'data-src'}="${p.cover||dir+'cover-duo.webp'}" alt="${p.name}" loading="lazy"><img class="col" ${document.documentElement.classList.contains('ld')?'src':'data-src'}="${p.img[0][0]}" alt="" loading="lazy"></div><span class="sl-n">${p.name}</span></div><button type="button" class="project-open" aria-label="View ${p.name} project">View project</button></div>
       <span class="gn"><b class="gn-name">${p.name}</b>${p.genres.join(' · ')}</span>`;
     d.querySelector('.project-open').onclick = e => { e.stopPropagation(); if (!recordDragged) openCase(k); }; grid.append(d); });
   document.querySelectorAll('.chips button').forEach(b => b.onclick = () => { document.querySelectorAll('.chips button').forEach(x => x.classList.toggle('on', x === b));
