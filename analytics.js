@@ -58,14 +58,19 @@
 .cookie-note button{all:unset;cursor:pointer;font-family:'MW',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:10px;padding:10px 15px;border-radius:99px;background:#F12009;color:#FCFCFC}
 .cookie-note button[data-c="no"]{background:#FCFCFC;color:#F12009;box-shadow:inset 0 0 0 1.5px #F12009}
 .cookie-note button:focus-visible{outline:2px solid #F12009;outline-offset:2px}
-@media (max-width:520px){.cookie-note{right:12px;bottom:12px;left:auto}.cookie-note p{display:none}}`;
+@media (max-width:520px){.cookie-note{right:12px;bottom:12px;left:auto}.cookie-note p{display:none}}
+@media (min-width:1024px){.cookie-note{flex-direction:column;align-items:stretch;white-space:normal;width:200px;border-radius:24px;padding:16px;gap:10px;text-align:center}.cookie-note .ck-h{justify-content:center}.cookie-note p{margin:0}.cookie-note .ck-b{display:flex;gap:8px}.cookie-note .ck-b button{flex:1;text-align:center}}
+@media (min-width:1024px) and (max-width:1120px){body.cookie-open .story>*{padding-right:72px}}`; // 28/11: on desktop a narrow card that fits in the right margin, clear of the text
+  st.textContent += `body.cookie-open{padding-bottom:calc(var(--cookie-h,56px) + 32px)}body.cookie-open .chromecta{bottom:calc(var(--cookie-h,56px) + 28px)!important}`; // 28/11: page ends clear of the bar; the floating Hire me sits above it
   document.head.appendChild(st); document.body.appendChild(b);
+  const fit = () => document.body.style.setProperty('--cookie-h', b.offsetHeight + 'px'); fit(); addEventListener('resize', fit);
+  document.body.classList.add('cookie-open');
   b.addEventListener('click', e => {
     const c = e.target.closest('button'); if (!c) return;
     try { localStorage.setItem(KEY, c.dataset.c); } catch (err) {}
     if (c.dataset.c === 'yes') load();
     else document.cookie.split(';').map(x => x.split('=')[0].trim()).filter(n => /^(_ga|_clck|_clsk)/.test(n)).forEach(n => { ['', '; domain=' + location.hostname.replace(/^www\./, ''), '; domain=.' + location.hostname.replace(/^www\./, '')].forEach(d => { document.cookie = n + '=; Max-Age=0; path=/' + d; }); }); // 11/11: declining removes Analytics cookies
-    b.remove();
+    b.remove(); document.body.classList.remove('cookie-open'); removeEventListener('resize', fit);
   });
   }
 })();

@@ -3,26 +3,18 @@
 <head>
 <meta charset="utf-8"><!--sec--><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms; connect-src 'self' https://formsubmit.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob:; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co"><meta name="referrer" content="strict-origin-when-cross-origin"><!--/sec-->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Portfolio · Brand, web and AI work by Mariana Ortega</title>
-<meta name="description" content="Brand, websites, campaigns, motion and editorial work by Creative Director Mariana Ortega, for Pocoyo, Miravia and more. Full screen.">
-<link rel="alternate" hreflang="en" href="https://jnpr-club.com/work/"><link rel="alternate" hreflang="es" href="https://jnpr-club.com/portafolio/">
+<title>Portfolio · AI, brand and web work by Mariana Ortega</title>
+<meta name="description" content="Selected work by AI Creative Director Mariana Ortega: the Pocoyo Early Years Guide for Animaj, Miravia (Alibaba) campaigns, brand systems and websites.">
 <link rel="canonical" href="https://jnpr-club.com/work/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jnpr-club.com/work/">
-<meta property="og:description" content="Brand, websites, campaigns, motion and editorial work by Creative Director Mariana Ortega, for Pocoyo, Miravia and more. Full screen.">
-<meta property="og:title" content="Portfolio · Brand, web and AI work by Mariana Ortega">
-<meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://jnpr-club.com/img/share.gif">
-<meta property="og:image:type" content="image/gif">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta name="theme-color" content="#F12009">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
-@font-face { font-family: 'MW'; src: url('../fonts/PPMonumentWide-Regular.otf'); font-display: swap; }
-@font-face { font-family: 'MN'; src: url('../fonts/PPMonumentNormal-Regular.otf'); font-display: swap; }
+@font-face { font-family: 'MW'; src: url('../fonts/PPMonumentWide-Regular.woff2') format('woff2'), url('../fonts/PPMonumentWide-Regular.otf') format('opentype'); font-display: swap; }
+@font-face { font-family: 'MN'; src: url('../fonts/PPMonumentNormal-Regular.woff2') format('woff2'), url('../fonts/PPMonumentNormal-Regular.otf') format('opentype'); font-display: swap; }
 :root { --red: #F12009; --w: #FCFCFC; --grey: #6E6660; --blue: #7ECAE4; --pad: clamp(16px, 4vw, 64px); }
 * { box-sizing: border-box; }
 html { background: var(--red); }
@@ -62,8 +54,8 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .pj.alt { background: var(--blue); color: var(--red); }
 .ttl { overflow: hidden; white-space: nowrap; }
 .ttl div { display: inline-flex; width: max-content; animation: run var(--t, 22s) linear infinite; }
-.ttl h2 { font: 400 clamp(60px, 11vw, 200px)/.95 'MW', system-ui; text-transform: uppercase; margin: 0; padding-right: .35em; }
-.ttl h2::after { content: ''; display: inline-block; width: .62em; height: .62em; vertical-align: .08em; margin-left: .35em; background: url(../img/ast/chrome.webp) center / contain no-repeat; animation: spin 9s linear infinite; }
+.ttl h2, .ttl .h2 { font: 400 clamp(60px, 11vw, 200px)/.95 'MW', system-ui; text-transform: uppercase; margin: 0; padding-right: .35em; }
+.ttl h2::after, .ttl .h2::after { content: ''; display: inline-block; width: .62em; height: .62em; vertical-align: .08em; margin-left: .35em; background: url(../img/ast/chrome.webp) center / contain no-repeat; animation: spin 9s linear infinite; }
 @keyframes spin { to { rotate: 360deg; } }
 .pj-h { padding: 0 var(--pad); display: grid; justify-items: start; gap: 14px; }
 .pj-h .g { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; margin: 0; }
@@ -105,8 +97,8 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 .cur.red { background: var(--red); color: var(--w); }
 @media (hover: hover) and (pointer: fine) { .strip { cursor: none; } }
 
-@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 62svh; width: auto; max-width: calc(100vw - 2 * var(--pad)); } .pj.full .strip figure { width: calc(100vw - 2 * var(--pad)); height: 70svh; } .ttl h2 { font-size: 14vw; } .wall .row img { height: 19svh; } }
-@media (prefers-reduced-motion: reduce) { .wall .row, .ttl div, .ttl h2::after { animation: none; } .hero h1 span { animation: none; transform: none; opacity: 1; } }
+@media (max-width: 760px) { .strip img, .strip video { height: auto; max-height: 62svh; width: auto; max-width: calc(100vw - 2 * var(--pad)); } .pj.full .strip figure { width: calc(100vw - 2 * var(--pad)); height: 70svh; } .ttl h2, .ttl .h2 { font-size: 14vw; } .wall .row img { height: 19svh; } }
+@media (prefers-reduced-motion: reduce) { .wall .row, .ttl div, .ttl h2::after, .ttl .h2::after { animation: none; } .hero h1 span { animation: none; transform: none; opacity: 1; } }
 </style>
 <link rel="stylesheet" href="../site.css?v=2011a">
 <script src="../vv.js?v=1211b" defer></script>
@@ -126,6 +118,21 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 </style>
 <style>/* tags: no ✱ at the start of a wrapped line */.pj .g span::before{content:''!important;display:inline-block!important;flex:none;width:12px!important;height:12px!important;margin:0 10px 0 2.08px!important;vertical-align:0!important;background:url(../img/ast/chrome.webp) center/contain no-repeat!important}.pj .g{margin-left:-24.08px!important;clip-path:inset(-8px -8px -8px 24.08px);row-gap:6px!important;column-gap:0!important}</style>
 <!--seo--><meta name="robots" content="max-image-preview:large, max-snippet:-1">
+<link rel="alternate" hreflang="en" href="https://jnpr-club.com/work/">
+<link rel="alternate" hreflang="es" href="https://jnpr-club.com/portafolio/">
+<link rel="alternate" hreflang="x-default" href="https://jnpr-club.com/work/">
+<meta property="og:title" content="Portfolio · AI, brand and web work by Mariana Ortega">
+<meta property="og:description" content="Selected work by AI Creative Director Mariana Ortega: the Pocoyo Early Years Guide for Animaj, Miravia (Alibaba) campaigns, brand systems and websites.">
+<meta property="og:image" content="https://jnpr-club.com/img/share.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio · AI, brand and web work by Mariana Ortega">
+<meta name="twitter:description" content="Selected work by AI Creative Director Mariana Ortega: the Pocoyo Early Years Guide for Animaj, Miravia (Alibaba) campaigns, brand systems and websites.">
+<meta name="twitter:image" content="https://jnpr-club.com/img/share.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://jnpr-club.com/"}, {"@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://jnpr-club.com/work/"}]}]}</script><!--/seo-->
 </head>
 <body>
@@ -174,6 +181,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
     else if (!p.lab) list.push(p);
     if (p.id === 'miravia') list.push(...extra);  // motion lands early, right after the first big campaign
   });
+  const CASE = { pocoyo: '/pocoyo/', miravia: '/miravia/' };  // pages of their own
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const isV = s => /\.mp4$/.test(s);
   const poster = s => s.replace('video/', 'img/motion/p/').replace('.mp4', '.webp');
@@ -188,11 +196,11 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
     if (SKIP[p.id]) imgs = imgs.filter(s => !SKIP[p.id].some(n => s.endsWith('/' + n + '.webp')));
     if (PICKS[p.id]) imgs = PICKS[p.id].map(n => imgs.find(s => s.endsWith('/' + n + '.webp'))).filter(Boolean);
     if (FIRST[p.id]) imgs = [...FIRST[p.id], ...imgs];
-    const t = Array(4).fill(`<h2>${esc(p.name)}</h2>`).join('');
+    const hn = esc(p.name), rep = `<span class="h2" aria-hidden="true">${hn}</span>`, t = rep.repeat(4);  // one real H2 per project, the rest of the marquee is decoration
     return `<section class="pj${i % 2 ? '' : ' alt'}${p.genres.includes('Motion') ? ' full' : ''}" data-g="${esc(p.genres.join('|'))}">
-      <div class="ttl" aria-label="${esc(p.name)}"><div style="--t:${16 + p.name.length * 1.2}s">${t}${t}</div></div>
+      <div class="ttl"><div style="--t:${16 + p.name.length * 1.2}s"><h2>${hn}</h2>${rep.repeat(3)}${t}</div></div>
       <div class="pj-h"><p class="g">${p.genres.map(g => `<span>${esc(g)}</span>`).join('')}</p>${p.text && p.text.length ? `<button type="button" class="open" aria-expanded="false" data-t="Close">Read the case</button>` : ''}</div>
-      ${p.text && p.text.length ? `<div class="case" hidden><p>${esc(p.text[0])}</p>${p.url ? `<a class="site" href="${esc(p.url)}" target="_blank" rel="noopener">Visit the site</a>` : ''}</div>` : ''}
+      ${p.text && p.text.length ? `<div class="case" hidden><p>${esc(p.text[0])}</p>${p.url ? `<a class="site" href="${esc(p.url)}" target="_blank" rel="noopener">Visit the site</a>` : ''}${CASE[p.id] ? `<a class="site" href="${CASE[p.id]}">Full case</a>` : ''}</div>` : ''}
       ${NOTE[p.id] || p.note ? `<p class="note">${esc(NOTE[p.id] || p.note)}</p>` : ''}
       <div class="strip">${imgs.map(s => `<figure${isV(s) ? ' class="vid"' : ''}>${media(s, p.name)}${isV(s) ? '<button type="button" class="fs" aria-label="Full screen" title="Full screen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>' : ''}</figure>`).join('')}</div>
       ${imgs.length > 1 ? `<div class="snav"><i class="sbar"><b></b></i><span class="sn">01 / ${String(imgs.length).padStart(2, '0')}</span><button type="button" class="sc prev" aria-label="Previous" disabled></button><button type="button" class="sc next" aria-label="Next"></button></div>` : ''}
@@ -208,10 +216,11 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
 
   // Hero wall: a moving collage of the best stills
   const wallImgs = ['pocoyo/guide-29', 'miravia/01', 'clarity/01', 'pocoyo/guide-39', 'argen/01', 'quantum/01', 'camomilla/01', 'popeyes/01', 'pocoyo/guide-09', 'vandido/01', 'proarte/01', 'ucles/01'];
+  const WALT = { pocoyo: 'Pocoyo Early Years Guide for Animaj', miravia: 'Miravia (Alibaba) campaign', clarity: 'The Clarity Protocol brand system', argen: 'Espacio Argén brand and editorial', quantum: 'Quantum Realisation brand', camomilla: 'Camomilla/Xico at Fashion Week MX', popeyes: 'Popeyes campaign', vandido: 'Vandido website and brand', proarte: 'Proarte identity', ucles: 'Brand work for Uclés' };
   const rows = document.querySelectorAll('#wall .row');
   [wallImgs.slice(0, 4), wallImgs.slice(4, 8), wallImgs.slice(8)].forEach((g, r) => {
-    const h = g.map(s => `<img src="../img/p/${s}.webp" alt="" decoding="async" onerror="this.remove()">`).join('');
-    rows[r].innerHTML = h + h;
+    const im = alt => g.map(s => `<img src="../img/p/${s}.webp" alt="${alt ? esc(WALT[s.split('/')[0]] || '') : ''}" decoding="async" onerror="this.remove()">`).join('');
+    rows[r].innerHTML = im(1) + `<span aria-hidden="true" style="display:contents">${im(0)}</span>`;  // second copy only loops the marquee
   });
 
   // Reveal on scroll; videos load and play only while on screen
@@ -280,7 +289,7 @@ a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
   });
 })();
 </script>
-<script src="../analytics.js?v=2011" defer></script>
+<script src="../analytics.js?v=2811" defer></script>
 
 
 <script>/* 12/11: phone: a strip keeps where you left it (Safari can snap a carousel back to the start when the page bar shows on the way up) */
